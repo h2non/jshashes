@@ -1,6 +1,6 @@
 { "name" : "jshashes"
 , "description" : "A hashes algorithms library pure JavaScript implemented for both server and client side"
-, "tags" : ["hash", "md5", "util", "sha1", "sha256", "hashes", "sha512, "RIPEMD160","checksum, "algorithm", "library"]
+, "tags" : ["hash", "md5", "util", "sha1", "sha256", "hashes", "sha512, "RIPEMD160","checksum", "algorithm", "library"]
 , "version" : "0.1.1b"
 , "author" : "Tomas Aparicio <tomas@rijndael-project.com>"
 , "repository" :
