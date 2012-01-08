@@ -27,17 +27,19 @@ All the hash algorithms include the following public methods:
 
 * hex(string) - Hexadecimal hash calculation from string 
 * b64(string) - Base64 hash calculation from string
-* any(string,encoding) - Any method with encoding
+* any(string,encoding) - Custom hash algorithm values encoding
 * hex_hmac(string,key) - Hexadecimal hash with HMAC key
 * b64_hmac(string,key) - Base64 hash with HMAC key 
-* any_hmac(string,key,encoding) - Any method with HMAC support
+* any_hmac(string,key,encoding) - Custom hash values encoding with HMAC support
 * vm_test() - Simple self-test to see is working
 
 ## Encoding hash supported
 
 * Hexadecimal (most extended)
 * Base64
-* HMAC encryption
+* Custom hash values encoding
+
+All include HMAC support.
 
 ## Benchmark
 TODO...
@@ -50,7 +52,7 @@ TODO...
 
 ## Version
 
-* 1.0b - First release: the code is stable, but the library is still beta and must be improved and documented.
+* 1.0b - First release: the code is stable, but the library still beta and must be improved and documented.
 
 ## Authors 
 
