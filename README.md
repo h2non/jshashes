@@ -28,9 +28,9 @@ All the hash algorithms include the following public methods:
 * hex(string) - Hexadecimal hash calculation from string 
 * b64(string) - Base64 hash calculation from string
 * any(string,encoding) - Custom hash algorithm values encoding
-* hex_hmac(string,key) - Hexadecimal hash with HMAC key
-* b64_hmac(string,key) - Base64 hash with HMAC key 
-* any_hmac(string,key,encoding) - Custom hash values encoding with HMAC support
+* hex_hmac(string,key) - Hexadecimal hash with HMAC salt key
+* b64_hmac(string,key) - Base64 hash with HMAC salt key 
+* any_hmac(string,key,encoding) - Custom hash values encoding with HMAC salt key support
 * vm_test() - Simple self-test to see is working
 
 ## Hash encoding formats supported
