@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jsHashes - Hexadecimal Hash Sample</title>
+<script type="application/javascript" src="src/hashes.js"></script>
+<script type="application/javascript">
+// sample string 
+var str = 'This is a sample script!';
+
+// new MD5 instance
+var MD5 = new Hash.MD5;
+// new SHA1 instance
+var SHA1 = new Hash.SHA1;
+// new SHA256 instance
+var SHA256 =  new Hash.SHA256;
+// new SHA512 instace
+var SHA512 = new Hash.SHA512;
+// new RIPEMD160 instace
+var RMD160 = new Hash.RMD160;
+
+// output into DOM
+document.write('<p>MD5 hexadecimal hash: <b>' + MD5.hex(str) + '</b></p>');
+document.write('<p>SHA1 hexadecimal hash: <b>' + SHA1.hex(str) + '</b></p>');
+document.write('<p>SHA256 hexadecimal hash: <b>' + SHA256.hex(str) + '</b></p>');
+document.write('<p>SHA512 hexadecimal hash: <b>' + SHA512.hex(str) + '</b></p>');
+document.write('<p>RIPEMD-160 hexadecimal hash: <b>' + RMD160.hex(str) + '</b></p>');
+
+</script>
+</head>
+<body>
+</body>
+</html>

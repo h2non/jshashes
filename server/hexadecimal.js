@@ -1,11 +1,11 @@
-#!/opt/opew/stack/node/bin/node
+#!/usr/bin/env node
 
 var Hash = require('./lib/hashlib').Hash;
-   
-var str = 'Sample text ajajajaja';
+  
+// sample string
+var str = 'This is a sample text!';
 
-console.log('Hashes JavaScript testing...\n');
-console.log('Typeof -> ' + typeof Hash.MD5);
+console.log('jsHashes hexadecimal sample...\n');
 
 console.log('MD5 HEX -> ' + new Hash.MD5().hex(str));
 console.log('SHA1 HEX -> ' + new Hash.SHA1().hex(str));

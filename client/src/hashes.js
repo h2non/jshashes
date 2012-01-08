@@ -1,17 +1,13 @@
 /**
- * jsHashes - A hashes algorithms utility library pure JavaScript implemented for both client and server side
+ * jsHashes - A hashes algorithms library pure JavaScript implemented for both client and server side
  * 
- * @package jsHashes.Node
+ * @package jsHashes.Client-Side
  * @author Paul Johnston <http://pajhome.org.uk/crypt/md5>	
  * @author Tomas Aparicio <tomas _AT_ rijndael-project . com>
  * @license New BSD (see LICENSE.txt)
- * @version 1.0 revision 09/01/2012
+ * @version 1.0b revision 09/01/2012
  * @see README.md
  *
- * This is a utility library of a full-implemented JavaScript hash algorithms, supporting MD5, RIPEMD-160, SHA1, SHA265, SHA512 (including HMAC).
- * The code is full compatible with the current ECMAScript language specification standard.
- * The implementation is focused also for client-side like server-side environment.
- * 
  * The algorithms implementations was based on it's respective standard especification:
  *
  * MD5 <http://www.ietf.org/rfc/rfc1321.txt>
@@ -2035,13 +2031,3 @@ Hash.RMD160 = function ()
 	/* return this object */
 	return this;	
 }
-
-/* node.js module */
-exports.Hash = Hash;
-/*
-exports.MD5 = Hash.MD5;
-exports.SHA1 = Hash.SHA1;
-exports.SHA256 = Hash.SHA256;
-exports.SHA512 = Hash.SHA512;
-exports.RMD160 = Hash.RMD160;
-*/
