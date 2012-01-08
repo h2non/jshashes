@@ -3,7 +3,7 @@
 ## About
 
 jsHashes is a pure JavaScript implementation of the most extended hash algorithms.
-It's goal is to provide a easy solution for hash algorithms both for client-side and server-side JavaScript environment.
+It's goal is to provide an independent, fast and easy solution for hash algorithms both for client-side and server-side JavaScript environments.
 The code is full compatible with the ECMAScript language specification and was tested in all major browsers (client-side) and Node.js 6.x.x (server-side).   
 
 ## Supported hash algorithms
