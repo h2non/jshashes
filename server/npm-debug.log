@@ -1,0 +1,29 @@
+info it worked if it ends with ok
+verbose cli [ '/opt/opew/stack/node/bin/node.bin',
+verbose cli   '/opt/opew/stack/node/bin/npm.bin',
+verbose cli   'install',
+verbose cli   '.' ]
+info using npm@1.1.0-beta-10
+info using node@v0.6.7
+verbose config file /root/.npmrc
+verbose config file /opt/opew/stack/node/etc/npmrc
+verbose config file /opt/opew/stack/node/lib/node_modules/npm/npmrc
+ERR! Couldn't read dependencies.
+ERR! Failed to parse json
+ERR! Unexpected token R
+ERR! File: /opt/jsHashes/server/package.json
+ERR! JSON.parse Failed to parse package.json data.
+ERR! JSON.parse package.json must be actual JSON, not just JavaScript.
+ERR! JSON.parse This is not a bug in npm.
+ERR! JSON.parse Tell the package author to fix their package.json file.
+ERR! 
+ERR! System Linux 2.6.32-5-amd64
+ERR! command "/opt/opew/stack/node/bin/node.bin" "/opt/opew/stack/node/bin/npm.bin" "install" "."
+ERR! cwd /opt/jsHashes/server
+ERR! node -v v0.6.7
+ERR! npm -v 1.1.0-beta-10
+ERR! file /opt/jsHashes/server/package.json
+ERR! code EJSONPARSE
+ERR! message Failed to parse json
+ERR! message Unexpected token R
+verbose exit [ 1, true ]
