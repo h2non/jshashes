@@ -33,7 +33,7 @@ All the hash algorithms include the following public methods:
 * any_hmac(string,key,encoding) - Custom hash values encoding with HMAC support
 * vm_test() - Simple self-test to see is working
 
-## Encoding hash supported
+## Hash encoding formats supported
 
 * Hexadecimal (most extended)
 * Base64
