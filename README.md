@@ -49,6 +49,7 @@ TODO...
 * Don't support checksum hash for files on the server-side, only text-based inputs are supported.
 * Not has been planned to add support for more hash algorithms.
 * The goal is to provide the same JavaScript code in both server and client side. 
+* Only Node.js server-side was tested, so with minimal changes, you can setup jsHashes in other server-side JS environment.
 
 ## Version
 
