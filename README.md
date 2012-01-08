@@ -31,6 +31,7 @@ All the hash algorithms include the following public methods:
 * hex_hmac(string,key) - Hexadecimal hash with HMAC key
 * b64_hmac(string,key) - Base64 hash with HMAC key 
 * any_hmac(string,key,encoding) - Any method with HMAC support
+* vm_test() - Simple self-test to see is working
 
 ## Encoding hash supported
 
@@ -43,12 +44,13 @@ TODO...
 
 ## Notes
 
-* Don't support checksum hashes for files in the server-side, only text-based inputs are supported.
-* Not be planned add support for more hash algorithms. 
+* Don't support checksum hash for files on the server-side, only text-based inputs are supported.
+* Not has been planned to add support for more hash algorithms.
+* The goal is to provide the same JavaScript code in both server and client side. 
 
 ## Version
 
-* 1.0b - First release: the code is stable, but the complete library is still beta and must be improved.
+* 1.0b - First release: the code is stable, but the library is still beta and must be improved and documented.
 
 ## Authors 
 

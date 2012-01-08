@@ -2,13 +2,12 @@
  * jsHashes - A hashes algorithms library pure JavaScript implemented for both client and server side
  * 
  * @package jsHashes.Client-Side
- * @author Paul Johnston <http://pajhome.org.uk/crypt/md5>	
  * @author Tomas Aparicio <tomas _AT_ rijndael-project . com>
  * @license New BSD (see LICENSE.txt)
  * @version 1.0b revision 09/01/2012
  * @see README.md
  *
- * The algorithms implementations was based on it's respective standard especification:
+ * The algorithms implementations was based on its respective standard especification:
  *
  * MD5 <http://www.ietf.org/rfc/rfc1321.txt>
  * RIPEMD-160 <http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>
