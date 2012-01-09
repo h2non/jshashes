@@ -55,7 +55,7 @@ var str = 'This is a sample text!';
 // new MD5 instance and hexadecimal string encoding
 var MD5 = new Hash.MD5().hex(str);
 // output into DOM
-document.write('<p>MD5: <b>' + MD5 + '</b></p>');
+document.write('MD5: ' + MD5 + '');
 </script>
 </head>
 <body>
