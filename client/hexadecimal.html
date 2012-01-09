@@ -5,8 +5,9 @@
 <title>jsHashes - Hexadecimal Hash Sample</title>
 <script type="application/javascript" src="src/hashes.js"></script>
 <script type="application/javascript">
+
 // sample string 
-var str = 'This is a sample script!';
+var str = 'This is a sample text!';
 
 // new MD5 instance
 var MD5 = new Hash.MD5;
@@ -20,11 +21,14 @@ var SHA512 = new Hash.SHA512;
 var RMD160 = new Hash.RMD160;
 
 // output into DOM
-document.write('<p>MD5 hexadecimal hash: <b>' + MD5.hex(str) + '</b></p>');
-document.write('<p>SHA1 hexadecimal hash: <b>' + SHA1.hex(str) + '</b></p>');
-document.write('<p>SHA256 hexadecimal hash: <b>' + SHA256.hex(str) + '</b></p>');
-document.write('<p>SHA512 hexadecimal hash: <b>' + SHA512.hex(str) + '</b></p>');
-document.write('<p>RIPEMD-160 hexadecimal hash: <b>' + RMD160.hex(str) + '</b></p>');
+document.write('<h2>jsHashes</h2>');
+document.write('<h3>Hexadecimal encoding hashes example</h3>');
+
+document.write('<p>MD5: <b>' + MD5.hex(str) + '</b></p>');
+document.write('<p>SHA1: <b>' + SHA1.hex(str) + '</b></p>');
+document.write('<p>SHA256: <b>' + SHA256.hex(str) + '</b></p>');
+document.write('<p>SHA512: <b>' + SHA512.hex(str) + '</b></p>');
+document.write('<p>RIPEMD-160: <b>' + RMD160.hex(str) + '</b></p>');
 
 </script>
 </head>

@@ -1,7 +1,7 @@
 { 
   "name" : "jshashes"
 , "description" : "A hashes algorithms indepent library pure JavaScript implemented for both server and client side"
-, "tags" : ["hash", "md5", "util", "sha1", "sha256", "hashes", "sha512", "RIPEMD160","checksum", "algorithm", "library"]
+, "tags" : ["hash", "md5", "sha1", "sha256", "hashes", "sha512", "RIPEMD160","checksum", "algorithm", "library"]
 , "version" : "0.1.1b"
 , "author" : "Tomas Aparicio <tomas@rijndael-project.com>"
 , "repository" :
@@ -9,8 +9,15 @@
     "type" : "git"
   , "url" : "http://github.com/h2non/jsHashes.git"
   }
-, "bugs" :
-  { "url" : "http://github.com/h2non/jsHashes/issues" }
-, "engines" : ["node >= 0.3.0"]
+, "homepage": "https://github.com/h2non/jsHashes"
+, "dependencies": {}
+, "bugs" : { "url" : "http://github.com/h2non/jsHashes/issues" }
+, "engines" : {"node" : "*"}
 , "main" : "./server/lib/hashes"
+, "licenses": [
+    {
+      "type": "New BSD",
+      "url": "http://github.com/h2non/jsHashes/raw/master/LICENSE.txt"
+    }
+  ]
 }
