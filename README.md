@@ -37,17 +37,22 @@ var RMD160 = new Hash.RMD160;
 ```
 
 Now, an example of how to output an hexadecimal-based hash encoding for each algorithm (client-side):
+
 ```javascript
 // sample string
 var str = 'Sample text!';
 // output into DOM
-document.write('MD5: ' + MD5.hex(str) + '');
+document.write('<p>MD5: <b>' + MD5.hex(str) + '</b></p>');
+document.write('<p>SHA1: <b>' + SHA1.hex(str) + '</b></p>');
+document.write('<p>SHA256: <b>' + SHA256.hex(str) + '</b></p>');
+document.write('<p>SHA512: <b>' + SHA512.hex(str) + '</b></p>');
+document.write('<p>RIPEMD-160: <b>' + RMD160.hex(str) + '</b></p>');
 ```
 
 ### Client-Side
 Easy way to usage for client-side environment:
 
-```javascript
+```html
 <html>
 <head>
 <script type="application/javascript" src="src/hashes.js"></script>
@@ -57,7 +62,7 @@ var str = 'This is a sample text!';
 // new MD5 instance and hexadecimal string encoding
 var MD5 = new Hash.MD5().hex(str);
 // output into DOM
-document.write('MD5: ' + MD5 + '');
+document.write('<p>MD5: <b>' + MD5 + '</b></p>');
 </script>
 </head>
 <body>
