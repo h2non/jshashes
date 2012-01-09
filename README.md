@@ -19,7 +19,7 @@ The code is full compatible with the ECMAScript language specification and was t
 `jsHashes` implement a simple object-oriented for easy and clean way to usage. 
 Each algorithm had its respective `class`, providing encapsulation (public and private methods) and independence from others.   
 
-All the `classes` are defined inside the Object called `Hash` (like namespace implementation). 
+All the `classes` are defined inside the Object called `Hash` (like namespace). 
 
 Here an example of how to create a new instance for each algorithm:
 
