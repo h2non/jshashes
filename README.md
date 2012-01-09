@@ -16,10 +16,10 @@ The code is full compatible with the ECMAScript language specification and was t
 * RIPEMD-160 <http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>
 
 ## Usage
-jsHashes implement a simple object-oriented for easy and clean way to usage. 
-Each algorithm had its respective 'class', providing encapsulation (public and private methods) and independence from others.   
+`jsHashes` implement a simple object-oriented for easy and clean way to usage. 
+Each algorithm had its respective `class`, providing encapsulation (public and private methods) and independence from others.   
 
-All the 'classes' are defined inside the Object 'Hash' (like namespace implementation). 
+All the `classes` are defined inside the Object called `Hash` (like namespace implementation). 
 
 Here an example of how to create a new instance for each algorithm:
 
@@ -70,10 +70,10 @@ document.write('<p>MD5: <b>' + MD5 + '</b></p>');
 </html>
 ```
 
-### Server-Side (Node.js)
-The server-side by default was implemented for node.js (V8 chrome engine).
+### Server-Side
+The server-side by default was implemented for node.js (V8 chrome engine) <http://nodejs.org>.
 
-jsHashes is available via NPM. You can it simply doing:
+`jsHashes` is available via NPM. You can it simply doing:
 
 ```
 $ npm install jshashes
