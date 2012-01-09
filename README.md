@@ -2,7 +2,7 @@
 
 ## About
 
-jsHashes is a pure JavaScript implementation of the most extended hash algorithms.
+`jsHashes` is a pure JavaScript implementation of the most extended hash algorithms.
 It's goal is to provide an independent, fast and easy solution for hash algorithms both for client-side and server-side JavaScript environments.
 The code is full compatible with the ECMAScript language specification and was tested in all major browsers (client-side) and node.js all versions (server-side).   
 
@@ -40,11 +40,7 @@ Now, an example of how to output an hexadecimal-based hash encoding for each alg
 // sample string
 var str = 'Sample text!';
 // output into DOM
-document.write('<p>MD5: <b>' + MD5.hex(str) + '</b></p>');
-document.write('<p>SHA1: <b>' + SHA1.hex(str) + '</b></p>');
-document.write('<p>SHA256: <b>' + SHA256.hex(str) + '</b></p>');
-document.write('<p>SHA512: <b>' + SHA512.hex(str) + '</b></p>');
-document.write('<p>RIPEMD-160: <b>' + RMD160.hex(str) + '</b></p>');
+document.write('MD5: ' + MD5.hex(str) + '');
 ```
 
 ### Client-Side
