@@ -4,7 +4,7 @@
 
 jsHashes is a pure JavaScript implementation of the most extended hash algorithms.
 It's goal is to provide an independent, fast and easy solution for hash algorithms both for client-side and server-side JavaScript environments.
-The code is full compatible with the ECMAScript language specification and was tested in all major browsers (client-side) and Node.js >= 0.3.x (server-side).   
+The code is full compatible with the ECMAScript language specification and was tested in all major browsers (client-side) and node.js all versions (server-side).   
 
 ## Supported hash algorithms
 
@@ -16,11 +16,71 @@ The code is full compatible with the ECMAScript language specification and was t
 * RIPEMD-160 <http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>
 
 ## Usage
-TODO...
+jsHashes implement a simple object-oriented for easy and clean way to usage. 
+Each algorithm had its respective 'class', providing encapsulation (public and private methods) and independence from others.   
+
+All the 'classes' are defined inside the Object 'Hash' (like namespace implementation). 
+
+Here an example of how to create a new instance for each algorithm:
+```javascript
+// new MD5 instance
+var MD5 = new Hash.MD5;
+// new SHA1 instance
+var SHA1 = new Hash.SHA1;
+// new SHA256 instance
+var SHA256 =  new Hash.SHA256;
+// new SHA512 instace
+var SHA512 = new Hash.SHA512;
+// new RIPEMD-160 instace
+var RMD160 = new Hash.RMD160; 
+```
+
+Now, an example of how to output an hexadecimal-based hash encoding for each algorithm (client-side):
+```javascript
+// sample string
+var str = 'Sample text!';
+// output into DOM
+document.write('<p>MD5: <b>' + MD5.hex(str) + '</b></p>');
+document.write('<p>SHA1: <b>' + SHA1.hex(str) + '</b></p>');
+document.write('<p>SHA256: <b>' + SHA256.hex(str) + '</b></p>');
+document.write('<p>SHA512: <b>' + SHA512.hex(str) + '</b></p>');
+document.write('<p>RIPEMD-160: <b>' + RMD160.hex(str) + '</b></p>');
+```
 
 ### Client-Side
+Easy way to usage for client-side environment:
+```html
+<html>
+<head>
+<script type="application/javascript" src="src/hashes.js"></script>
+<script type="application/javascript">
+// sample string 
+var str = 'This is a sample text!';
+// new MD5 instance and hexadecimal string encoding
+var MD5 = new Hash.MD5().hex(str);
+// output into DOM
+document.write('<p>MD5: <b>' + MD5 + '</b></p>');
+</script>
+</head>
+<body>
+</body>
+</html>
+```
 
 ### Server-Side (Node.js)
+The server-side by default was implemented for node.js (V8 chrome engine).
+You can use it like a module. Here a simple example:
+```javascript
+#!/usr/bin/env node
+// require the module and use Hash object
+var Hash = require('./lib/hashes').Hash;
+// sample string
+var str = 'This is a sample text!';
+// new SHA1 instance and base64 string encoding
+var SHA1 = new Hash.SHA1().b64(str);
+// output to console
+console.log('SHA1: ' + SHA1);
+```
 
 ## Public methods
 All the hash algorithms include the following public methods:
@@ -48,11 +108,12 @@ TODO...
 
 * Don't support checksum hash for files on the server-side, only text-based inputs are supported.
 * Not has been planned to add support for more hash algorithms.
-* The goal is to provide the same JavaScript code in both server and client side. 
+* The goal is to provide the same JavaScript code in both server and client side, so at the moment is not pretended to improve it in other ways. 
 * Only Node.js server-side was tested, so with minimal changes, you can setup jsHashes in other server-side JS environment.
 
 ## Version
 
+* 1.1b - Minimal library improves. Added some samples, how to usage and first NPM package.
 * 1.0b - First release: the code is stable, but the library still beta and must be improved and documented.
 
 ## Authors 

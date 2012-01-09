@@ -4,8 +4,8 @@
  * @package jsHashes.Client-Side
  * @author Tomas Aparicio <tomas _AT_ rijndael-project . com>
  * @license New BSD (see LICENSE.txt)
- * @version 1.0b revision 09/01/2012
- * @see README.md
+ * @version 0.1.1b revision 09/01/2012
+ * @see https://github.com/h2non/jsHashes
  *
  * The algorithms implementations was based on its respective standard especification:
  *
