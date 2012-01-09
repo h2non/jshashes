@@ -22,6 +22,7 @@ Each algorithm had its respective 'class', providing encapsulation (public and p
 All the 'classes' are defined inside the Object 'Hash' (like namespace implementation). 
 
 Here an example of how to create a new instance for each algorithm:
+
 ```javascript
 // new MD5 instance
 var MD5 = new Hash.MD5;
@@ -45,6 +46,7 @@ document.write('MD5: ' + MD5.hex(str) + '');
 
 ### Client-Side
 Easy way to usage for client-side environment:
+
 ```javascript
 <html>
 <head>
@@ -67,11 +69,13 @@ document.write('MD5: ' + MD5 + '');
 The server-side by default was implemented for node.js (V8 chrome engine).
 
 jsHashes is available via NPM. You can it simply doing:
+
 ```
 $ npm install jshashes
 ```
 
 You can use it like module. Here a simple example:
+
 ```javascript
 #!/usr/bin/env node
 // require the module and use Hash object
