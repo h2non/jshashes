@@ -75,7 +75,7 @@ jsHashes is available via NPM. You can it simply doing:
 $ npm install jshashes
 ```
 
-You can use it like a module. Here a simple example:
+You can use it like module. Here a simple example:
 ```javascript
 #!/usr/bin/env node
 // require the module and use Hash object
