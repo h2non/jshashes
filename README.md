@@ -49,7 +49,7 @@ document.write('<p>RIPEMD-160: <b>' + RMD160.hex(str) + '</b></p>');
 
 ### Client-Side
 Easy way to usage for client-side environment:
-```html
+```javascript
 <html>
 <head>
 <script type="application/javascript" src="src/hashes.js"></script>
@@ -69,6 +69,12 @@ document.write('<p>MD5: <b>' + MD5 + '</b></p>');
 
 ### Server-Side (Node.js)
 The server-side by default was implemented for node.js (V8 chrome engine).
+
+jsHashes is available via NPM. You can it simply doing:
+```
+$ npm install jshashes
+```
+
 You can use it like a module. Here a simple example:
 ```javascript
 #!/usr/bin/env node
