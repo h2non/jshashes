@@ -110,7 +110,7 @@ Each algorithm `class` provides the following public methods:
 * Base64
 * Custom hash values encoding
 
-All include HMAC support.
+All include HMAC support. UTF-16 also supported.
 
 ## Benchmark
 TODO...
