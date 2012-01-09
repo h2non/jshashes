@@ -3,8 +3,8 @@
 ## About
 
 `jsHashes` is a pure JavaScript implementation of the most extended hash algorithms.
-It's goal is to provide an independent, fast and easy solution for hash algorithms both for client-side and server-side JavaScript environments.
-The code is full compatible with the ECMAScript language specification and was tested in all major browsers (client-side) and node.js all versions (server-side).   
+Its goal is to provide an independent, fast and easy solution for hash algorithms both for client-side and server-side JavaScript environments.
+The code is fully compatible with the ECMAScript language specification and was tested in all major browsers (client-side) and node.js all versions (server-side).   
 
 ## Supported hash algorithms
 
@@ -16,12 +16,12 @@ The code is full compatible with the ECMAScript language specification and was t
 * RIPEMD-160 <http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>
 
 ## Usage
-`jsHashes` implement a simple object-oriented for easy and clean way to usage. 
-Each algorithm had its respective `class`, providing encapsulation (public and private methods) and independence from others.   
+`jsHashes` implements an object-oriented paradigm for an easy and clean use. 
+Each algorithm has its respective own `class`, providing encapsulation (public and private methods) and independence from other classes.   
 
 All the `classes` are defined inside the Object called `Hash` (like namespace). 
 
-Here an example of how to create a new instance for each algorithm:
+Here you can see an example of how to create a new instance for each algorithm:
 
 ```javascript
 // new MD5 instance
@@ -50,7 +50,7 @@ document.write('<p>RIPEMD-160: <b>' + RMD160.hex(str) + '</b></p>');
 ```
 
 ### Client-Side
-Easy way to usage for client-side environment:
+This is a simple implementation for client-side environment:
 
 ```html
 <html>
@@ -71,7 +71,7 @@ document.write('<p>MD5: <b>' + MD5 + '</b></p>');
 ```
 
 ### Server-Side
-The server-side by default was implemented for node.js (V8 chrome engine) <http://nodejs.org>.
+The server-side was implemented by default for node.js (V8 chrome engine) <http://nodejs.org>.
 
 `jsHashes` is available via NPM. You can install it simply doing:
 
@@ -118,14 +118,14 @@ TODO...
 ## Notes
 
 * Don't support checksum hash for files on the server-side, only text-based inputs are supported.
-* Not has been planned to add support for more hash algorithms.
-* The goal is to provide the same JavaScript code in both server and client side, so at the moment is not pretended to improve it in other ways. 
-* Only Node.js server-side was tested, so with minimal changes, you can setup jsHashes in other server-side JS environment.
+* It has not been planned to include support for more hash algorithms.
+* The goal is to provide the same JavaScript code in both server and client side, so it isn't planned to improve it in other ways. 
+* Only Node.js server-side was tested, so with minimal changes, you can setup `jsHashes` in other server-side JS environment.
 
 ## Version
 
-* 1.1b - Minimal library improves. Added some samples, how to usage and first NPM package.
-* 1.0b - First release: the code is stable, but the library still beta and must be improved and documented.
+* 1.1b - Minimal library improvements. There has been added some samples, like how to use it and support for NPM package.
+* 1.0b - First release: the code is stable, but the library is still beta and must be improved and documented.
 
 ## Authors 
 
