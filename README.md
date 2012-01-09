@@ -73,7 +73,7 @@ document.write('<p>MD5: <b>' + MD5 + '</b></p>');
 ### Server-Side
 The server-side by default was implemented for node.js (V8 chrome engine) <http://nodejs.org>.
 
-`jsHashes` is available via NPM. You can it simply doing:
+`jsHashes` is available via NPM. You can install it simply doing:
 
 ```
 $ npm install jshashes
