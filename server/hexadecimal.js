@@ -16,7 +16,7 @@ var SHA512 = new Hash.SHA512;
 // new RIPEMD160 instace
 var RMD160 = new Hash.RMD160;
 
-console.log('jsHashes\nHexadecimal coding hashes example...\n');
+console.log('jsHashes\nHexadecimal encoding hashes example...\n');
 
 console.log('MD5 -> ' + MD5.hex(str));
 console.log('SHA1 -> ' + SHA1.hex(str));
