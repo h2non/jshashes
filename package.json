@@ -17,7 +17,7 @@
 , "licenses": [
     {
       "type": "New BSD",
-      "url": "http://github.com/h2non/jsHashes/raw/master/LICENSE.txt"
+      "url": "http://github.com/h2non/jsHashes/raw/master/LICENSE"
     }
   ]
 }

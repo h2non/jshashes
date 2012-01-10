@@ -170,7 +170,7 @@ TODO...
 
 ## License
 
-jsHashes is released under New BSD license. See LICENSE file.
+jsHashes is released under `New BSD` license. See `LICENSE` file.
 
 ## Issues
 
