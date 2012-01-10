@@ -112,7 +112,7 @@ Each algorithm `class` provides the following public methods:
 * Base64
 * Custom hash values encoding
 
-All include HMAC support. UTF-16 also supported.
+All include HMAC support. UTF-8 support.
 
 ## Benchmark
 TODO...
@@ -128,7 +128,8 @@ TODO...
 
 ### Beta
 * `0.1.2b` 
-  - SHA1 fixed error. General code changes (renaming classes, private methods, new methods...). 
+  - SHA1 error fixed. 
+  - General code changes (renaming classes, private methods, new methods...). 
   - Changing library namespace to 'Hashes'. 
   - Starting code documentation. 
   - Added new examples of how to use. 
