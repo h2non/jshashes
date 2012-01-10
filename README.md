@@ -104,7 +104,7 @@ Each algorithm `class` provides the following public methods:
 * `any_hmac(string,key,encoding)` - Custom hash values encoding with HMAC salt key support
 * `vm_test()` - Simple self-test to see is working
 * `setUpperCase(boolean)` - Enable/disable uppercase hexadecimal returned string 
-* `setPad(string)` - Defines a base64 pad string
+* `setPad(string)` - Defines a custom base64 pad string. Default is '=' according with the RFC standard.
 
 ## Hash encoding formats supported
 
