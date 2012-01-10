@@ -152,11 +152,11 @@ TODO...
 
 * Tomas Aparicio (<https://github.com/h2non/>)
 
-### Original code author and algorithms implementation
+### Original algorithms implementations authors
 
 * Paul Johnston (<http://pajhome.org.uk/crypt/md5/>)
-* Angel Marin
-* Jeremy Lin
+* Angel Marin (SHA256)
+* Jeremy Lin (RIPEMD-160)
 
 ### Other contributors
 

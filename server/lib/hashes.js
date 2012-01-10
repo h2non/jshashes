@@ -1739,7 +1739,7 @@ Hashes.SHA512 = function ()
 }
 
 /**
- * @class Hashes.RIPEMD
+ * @class Hashes.RMD160
  * @param {none}
  * 
  * A JavaScript implementation of the RIPEMD-160 Algorithm
