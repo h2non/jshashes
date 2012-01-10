@@ -16,10 +16,24 @@ var SHA512 = new Hashes.SHA512;
 // new RIPEMD160 instace
 var RMD160 = new Hashes.RMD160;
 
-console.log('jsHashes\nHexadecimal encoding hashes example...\n');
+console.log('jsHashes\nHexadecimal uppercase encoding hashes example...\n');
 
+console.log('\nLowercase encoding (default)');
 console.log('MD5 -> ' + MD5.hex(str));
 console.log('SHA1 -> ' + SHA1.hex(str));
 console.log('SHA256 -> ' + SHA256.hex(str));
 console.log('SHA512 -> ' + SHA512.hex(str));
 console.log('RIPEMD160 -> ' + RMD160.hex(str));
+
+// set uppercase via setUpperCase() method
+console.log('Uppercase (calling setUpperCase() method)');
+MD5.setUpperCase(true);
+console.log('MD5 -> ' + MD5.hex(str));
+SHA1.setUpperCase(true);
+console.log('SHA1 -> ' + SHA1.hex(str));
+SHA256.setUpperCase(true);
+console.log('SHA256 -> ' + SHA256.hex(str));
+SHA512.setUpperCase(true);
+console.log('SHA512 -> ' + SHA512.hex(str));
+RMD160.setUpperCase(true);
+console.log('RIPEMD-160 -> ' + RMD160.hex(str));

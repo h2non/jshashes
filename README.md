@@ -1,4 +1,4 @@
-# jsHashes
+# jsHashes `A hash algorithm independent library purely JavaScript implemented for both server and client side`
 
 ## About
 
@@ -16,7 +16,7 @@ The code is fully compatible with the ECMAScript language specification and was 
 * RIPEMD-160 <http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>
 
 ## Usage
-`jsHashes` implements an object-oriented paradigm for an easy and clean use. 
+Following some software design patterns, `jsHashes` implements an object-oriented paradigm for an easy and clean use. 
 Each algorithm has its respective own `class`, providing encapsulation (public and private methods) and independence from other classes.   
 
 All the `classes` are defined inside the Object called `Hash` (like namespace). 
@@ -25,15 +25,15 @@ Here you can see an example of how to create a new instance for each algorithm:
 
 ```javascript
 // new MD5 instance
-var MD5 = new Hash.MD5;
+var MD5 = new Hashes.MD5;
 // new SHA1 instance
-var SHA1 = new Hash.SHA1;
+var SHA1 = new Hashes.SHA1;
 // new SHA256 instance
-var SHA256 =  new Hash.SHA256;
+var SHA256 =  new Hashes.SHA256;
 // new SHA512 instace
-var SHA512 = new Hash.SHA512;
+var SHA512 = new Hashes.SHA512;
 // new RIPEMD-160 instace
-var RMD160 = new Hash.RMD160; 
+var RMD160 = new Hashes.RMD160; 
 ```
 
 Now, an example of how to output an hexadecimal-based hash encoding for each algorithm (client-side):
@@ -60,7 +60,7 @@ This is a simple implementation for client-side environment:
 // sample string 
 var str = 'This is a sample text!';
 // new MD5 instance and hexadecimal string encoding
-var MD5 = new Hash.MD5().hex(str);
+var MD5 = new Hashes.MD5().hex(str);
 // output into DOM
 document.write('<p>MD5: <b>' + MD5 + '</b></p>');
 </script>
@@ -84,11 +84,11 @@ You can use it like module. Here a simple example:
 ```javascript
 #!/usr/bin/env node
 // require the module and use Hash object
-var Hash = require('./lib/hashes').Hash;
+var Hashes = require('./lib/hashes').Hashes;
 // sample string
 var str = 'This is a sample text!';
 // new SHA1 instance and base64 string encoding
-var SHA1 = new Hash.SHA1().b64(str);
+var SHA1 = new Hashes.SHA1().b64(str);
 // output to console
 console.log('SHA1: ' + SHA1);
 ```
@@ -122,20 +122,38 @@ TODO...
 * The goal is to provide the same JavaScript code in both server and client side, so it isn't planned to improve it in other ways. 
 * Only Node.js server-side was tested, so with minimal changes, you can setup `jsHashes` in other server-side JS environment.
 
-## Version
+## Changelog
 
-* 1.1b - Minimal library improvements. There has been added some samples, like how to use it and support for NPM package.
-* 1.0b - First release: the code is stable, but the library is still beta and must be improved and documented.
+### Beta
+* `0.1.2b` 
+  - SHA1 fixed error. General code changes (renaming classes, private methods, new methods...). 
+  - Changing library namespace to 'Hashes'. 
+  - Starting code documentation. 
+  - Added new examples of how to use. 
+* `0.1.1b` 
+  - Minimal library improvements. 
+  - There has been added some samples, like how to use it and support for NPM package.
+* `0.1.0b` 
+  - First release: the code is stable, but the library is still beta and must be improved and documented.
+  
+## TODO list
+
+* Add support for CRC32
+* Debugging and validation
+* Code refactoring and remove redundancy
+* Implement new hash algorithms for experimental proposals (tiger, ripemd320, gost, adler32, haval...)
+* Improve and standard code documentation
+* Benchmarking 
 
 ## Authors 
 
 ### Library author
 
-* Tomas Aparicio <https://github.com/h2non/>
+* Tomas Aparicio (<https://github.com/h2non/>)
 
 ### Original code author and algorithms implementation
 
-* Paul Johnston <http://pajhome.org.uk/crypt/md5/>
+* Paul Johnston (<http://pajhome.org.uk/crypt/md5/>)
 * Angel Marin
 * Jeremy Lin
 
@@ -148,8 +166,7 @@ TODO...
 
 ## License
 
-jsHashes is released under New BSD license <http://www.opensource.org/licenses/BSD-3-Clause>.
-See LICENSE.txt
+jsHashes is released under New BSD license. See LICENSE file.
 
 ## Issues
 

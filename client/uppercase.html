@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>jsHashes - Hexadecimal Hash example</title>
+<title>jsHashes - Hexadecimal Uppercase example</title>
 <script type="application/javascript" src="src/hashes.js"></script>
 <script type="application/javascript">
 
@@ -22,12 +22,26 @@ var RMD160 = new Hashes.RMD160;
 
 // output into DOM
 document.write('<h2>jsHashes</h2>');
-document.write('<h3>Hexadecimal encoding hashes example</h3>');
+document.write('<h3>Hexadecimal uppercase encoding hashes example</h3>');
 
+document.write('<h3>Lowercase (default)</h3>');
 document.write('<p>MD5: <b>' + MD5.hex(str) + '</b></p>');
 document.write('<p>SHA1: <b>' + SHA1.hex(str) + '</b></p>');
 document.write('<p>SHA256: <b>' + SHA256.hex(str) + '</b></p>');
 document.write('<p>SHA512: <b>' + SHA512.hex(str) + '</b></p>');
+document.write('<p>RIPEMD-160: <b>' + RMD160.hex(str) + '</b></p>');
+
+// set uppercase via setUpperCase() method
+document.write('<h3>Uppercase (calling setUpperCase() method)</h3>');
+MD5.setUpperCase(true);
+document.write('<p>MD5: <b>' + MD5.hex(str) + '</b></p>');
+SHA1.setUpperCase(true);
+document.write('<p>SHA1: <b>' + SHA1.hex(str) + '</b></p>');
+SHA256.setUpperCase(true);
+document.write('<p>SHA256: <b>' + SHA256.hex(str) + '</b></p>');
+SHA512.setUpperCase(true);
+document.write('<p>SHA512: <b>' + SHA512.hex(str) + '</b></p>');
+RMD160.setUpperCase(true);
 document.write('<p>RIPEMD-160: <b>' + RMD160.hex(str) + '</b></p>');
 
 </script>

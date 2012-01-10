@@ -1,22 +1,22 @@
 #!/usr/bin/env node
 
-var Hash = require('./lib/hashes').Hash;
+var Hashes = require('./lib/hashes').Hashes;
   
 // sample string
 var str = 'This is a sample text!';
 
 // new MD5 instance
-var MD5 = new Hash.MD5;
+var MD5 = new Hashes.MD5;
 // new SHA1 instance
-var SHA1 = new Hash.SHA1;
+var SHA1 = new Hashes.SHA1;
 // new SHA256 instance
-var SHA256 =  new Hash.SHA256;
+var SHA256 =  new Hashes.SHA256;
 // new SHA512 instace
-var SHA512 = new Hash.SHA512;
+var SHA512 = new Hashes.SHA512;
 // new RIPEMD160 instace
-var RMD160 = new Hash.RMD160;
+var RMD160 = new Hashes.RMD160;
 
-console.log('jsHashes\nHash example with HMAC salt key encoding...\n');
+console.log('jsHashes\nHashes example with HMAC salt key encoding...\n');
 
 // HMAC salt key
 var key = 'th!$-!S-@-k3Y';
