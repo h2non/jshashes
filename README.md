@@ -135,23 +135,22 @@ TODO...
   - There has been added some samples, like how to use it and support for NPM package.
 * `0.1.0b` 
   - First release: the code is stable, but the library is still beta and must be improved and documented.
-<<<<<<< HEAD
   
 ## TODO list
 
 * Add support for CRC32
 * Debugging and validation
-* Code refactoring and remove redundancy
+* Code refactoring
+* Remove redundancy and create a global functions
 * Implement new hash algorithms for experimental proposals (tiger, ripemd320, gost, adler32, haval...)
 * Improve and standard code documentation
-=======
+* Benchmarking 
 
 ## TODO list
 
 * Add support for CRC32
 * Implement new hash algorithms for experimental proposals (tiger, ripemd320, gost, adler32, haval...)
 * Improve and standarize code documentation
->>>>>>> d3e504dca227cdd77b9735e96b2fa810819f6201
 * Benchmarking 
 
 ## Authors 
