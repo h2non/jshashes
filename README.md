@@ -1,10 +1,6 @@
 # jsHashes `A hash algorithm independent library purely JavaScript implemented for both server and client side`
-<<<<<<< HEAD
-=======
 
->>>>>>> d3e504dca227cdd77b9735e96b2fa810819f6201
-
-## About
+# About
 
 `jsHashes` is a pure JavaScript implementation of the most extended hash algorithms.
 Its goal is to provide an independent, fast and easy solution for hash algorithms both for client-side and server-side JavaScript environments.
