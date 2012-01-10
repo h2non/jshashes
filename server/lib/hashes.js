@@ -44,7 +44,7 @@ Hashes.MD5 = function ()
 	 * @see this.setPad() method
 	 */
 	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad  = '';  /* base-64 pad character. "=" for strict RFC compliance   */
+	var b64pad = '=';  /* base-64 pad character. "=" for strict RFC compliance   */
 
 
 	/* PUBLIC METHODS */
@@ -151,7 +151,7 @@ Hashes.MD5 = function ()
 	 */
 	function rstr2b64(input)
 	{
-	  try { b64pad } catch(e) { b64pad=''; }
+	  try { b64pad } catch(e) { b64pad='='; }
 	  var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 	  var output = "";
 	  var len = input.length;
@@ -466,7 +466,7 @@ Hashes.SHA1 = function ()
 	 * @see this.setPad() method
 	 */
 	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad  = '';  /* base-64 pad character. "=" for strict RFC compliance   */
+	var b64pad = '=';  /* base-64 pad character. "=" for strict RFC compliance   */
 	
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
@@ -571,7 +571,7 @@ Hashes.SHA1 = function ()
 	 */
 	function rstr2b64(input)
 	{
-	  try { b64pad } catch(e) { b64pad=''; }
+	  try { b64pad } catch(e) { b64pad='='; }
 	  var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 	  var output = "";
 	  var len = input.length;
@@ -838,7 +838,7 @@ Hashes.SHA256 = function ()
 	 * @see this.setPad() method
 	 */
 	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad  = '';  /* base-64 pad character. "=" for strict RFC compliance   */
+	var b64pad = '=';  /* base-64 pad character. "=" for strict RFC compliance   */
 
 
 	/* PUBLIC METHODS */
@@ -946,7 +946,7 @@ Hashes.SHA256 = function ()
 	 */
 	function rstr2b64(input)
 	{
-	  try { b64pad } catch(e) { b64pad=''; }
+	  try { b64pad } catch(e) { b64pad='='; }
 	  var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 	  var output = "";
 	  var len = input.length;
@@ -1218,7 +1218,7 @@ Hashes.SHA512 = function ()
 	 * @see this.setPad() method
 	 */
 	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad  = '';  /* base-64 pad character. "=" for strict RFC compliance   */
+	var b64pad = '=';  /* base-64 pad character. "=" for strict RFC compliance   */
 
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
@@ -1326,7 +1326,7 @@ Hashes.SHA512 = function ()
 	 */
 	function rstr2b64(input)
 	{
-	  try { b64pad } catch(e) { b64pad=''; }
+	  try { b64pad } catch(e) { b64pad='='; }
 	  var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 	  var output = "";
 	  var len = input.length;
@@ -1758,7 +1758,7 @@ Hashes.RMD160 = function ()
 	 * @see this.setPad() method
 	 */
 	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad  = '';  /* base-64 pad character. "=" for strict RFC compliance   */
+	var b64pad = '=';  /* base-64 pad character. "=" for strict RFC compliance   */
 
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
@@ -1863,7 +1863,7 @@ Hashes.RMD160 = function ()
 	 */
 	function rstr2b64(input)
 	{
-	  try { b64pad } catch(e) { b64pad=''; }
+	  try { b64pad } catch(e) { b64pad='='; }
 	  var tab = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 	  var output = "";
 	  var len = input.length;
