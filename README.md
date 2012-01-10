@@ -1,4 +1,4 @@
-# jsHashes
+# jsHashes `A hash algorithm independent library purely JavaScript implemented for both server and client side`
 
 ## About
 
