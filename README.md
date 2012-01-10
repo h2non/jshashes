@@ -146,13 +146,6 @@ TODO...
 * Improve and standard code documentation
 * Benchmarking 
 
-## TODO list
-
-* Add support for CRC32
-* Implement new hash algorithms for experimental proposals (tiger, ripemd320, gost, adler32, haval...)
-* Improve and standarize code documentation
-* Benchmarking 
-
 ## Authors 
 
 ### Library author
