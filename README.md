@@ -84,11 +84,7 @@ You can use it like module. Here a simple example:
 ```javascript
 #!/usr/bin/env node
 // require the module and use Hash object
-<<<<<<< HEAD
 var Hashes = require('./lib/hashes').Hashes;
-=======
-var Hash = require('./lib/hashes').Hashes;
->>>>>>> d3e504dca227cdd77b9735e96b2fa810819f6201
 // sample string
 var str = 'This is a sample text!';
 // new SHA1 instance and base64 string encoding

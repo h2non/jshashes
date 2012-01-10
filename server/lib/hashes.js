@@ -79,7 +79,7 @@ Hashes.MD5 = function ()
 	{
 	  return hex("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
 	}
-    /** 
+	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
 	 * @public
@@ -89,7 +89,7 @@ Hashes.MD5 = function ()
 			hexcase = a;
 		}
 	}
-    /** 
+	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
 	 * @public
@@ -499,7 +499,7 @@ Hashes.SHA1 = function ()
 	{
 	  return hex("abc").toLowerCase() == "a9993e364706816aba3e25717850c26c9cd0d89d";
 	}
-    /** 
+	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
 	 * @public
@@ -509,7 +509,7 @@ Hashes.SHA1 = function ()
 			hexcase = a;
 		}
 	}
-    /** 
+	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
 	 * @public
@@ -883,7 +883,7 @@ Hashes.SHA256 = function ()
 			hexcase = a;
 		}
 	}
-    /** 
+	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
 	 * @public
@@ -1254,7 +1254,7 @@ Hashes.SHA512 = function ()
 			"ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a" +
 			"2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f";
 	}
-    /** 
+	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
 	 * @public
@@ -1264,7 +1264,7 @@ Hashes.SHA512 = function ()
 			hexcase = a;
 		}
 	}
-    /** 
+	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
 	 * @public
@@ -1791,7 +1791,7 @@ Hashes.RMD160 = function ()
 	{
 		return hex("abc").toLowerCase() == "8eb208f7e05d987a9b044a8e98c6b087f15a0bfc";
 	}
-    /** 
+	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
 	 * @public
@@ -1801,7 +1801,7 @@ Hashes.RMD160 = function ()
 			hexcase = a;
 		}
 	}
-    /** 
+	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
 	 * @public
