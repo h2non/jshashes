@@ -4,7 +4,7 @@
  * @package jsHashes.Client-Side
  * @author Tomas Aparicio <tomas _AT_ rijndael-project . com>
  * @license New BSD (see LICENSE.txt)
- * @version 0.1.1b revision 09/01/2012
+ * @version 0.1.2b revision 10/01/2012
  * @see https://github.com/h2non/jsHashes
  *
  * The algorithms implementations was based on its respective standard especification:
@@ -465,7 +465,7 @@ Hash.SHA1 = function ()
 	{ 
 		return rstr2b64(rstr_hmac_sha1(str2rstr_utf8(k), str2rstr_utf8(d)));
 	}
-	this.any_hmac_sha1 = function (k, d, e)
+	this.any_hmac = function (k, d, e)
 	{ 
 		return rstr2any(rstr_hmac_sha1(str2rstr_utf8(k), str2rstr_utf8(d)), e); 
 	}
