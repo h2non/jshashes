@@ -44,7 +44,7 @@ Hashes.MD5 = function ()
 	 * @see this.setPad() method
 	 */
 	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad = '=';  /* base-64 pad character. "=" for strict RFC compliance   */
+	var b64pad = '=';  /* base-64 pad character. Default "=" for strict RFC compliance   */
 
 
 	/* PUBLIC METHODS */
@@ -466,7 +466,7 @@ Hashes.SHA1 = function ()
 	 * @see this.setPad() method
 	 */
 	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad = '=';  /* base-64 pad character. "=" for strict RFC compliance   */
+	var b64pad = '=';  /* base-64 pad character. Default "=" for strict RFC compliance   */
 	
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
@@ -838,7 +838,7 @@ Hashes.SHA256 = function ()
 	 * @see this.setPad() method
 	 */
 	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad = '=';  /* base-64 pad character. "=" for strict RFC compliance   */
+	var b64pad = '=';  /* base-64 pad character. Default "=" for strict RFC compliance   */
 
 
 	/* PUBLIC METHODS */
@@ -1218,7 +1218,7 @@ Hashes.SHA512 = function ()
 	 * @see this.setPad() method
 	 */
 	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad = '=';  /* base-64 pad character. "=" for strict RFC compliance   */
+	var b64pad = '=';  /* base-64 pad character. Default "=" for strict RFC compliance   */
 
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
@@ -1758,7 +1758,7 @@ Hashes.RMD160 = function ()
 	 * @see this.setPad() method
 	 */
 	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad = '=';  /* base-64 pad character. "=" for strict RFC compliance   */
+	var b64pad = '=';  /* base-64 pad character. Default "=" for strict RFC compliance   */
 
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
