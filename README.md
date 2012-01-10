@@ -126,13 +126,15 @@ TODO...
 
 ### Beta
 * `0.1.2b` 
-  ```- SHA1 fixed error. General code changes (renaming classes, private methods, new methods...). 
-     - Changing library namespace to 'Hashes'. 
-     - Starting code documentation. 
-     - Added new examples of how to use. 
- ```
-* `0.1.1b` - Minimal library improvements. There has been added some samples, like how to use it and support for NPM package.
-* `0.1.0b` - First release: the code is stable, but the library is still beta and must be improved and documented.
+  - SHA1 fixed error. General code changes (renaming classes, private methods, new methods...). 
+  - Changing library namespace to 'Hashes'. 
+  - Starting code documentation. 
+  - Added new examples of how to use. 
+* `0.1.1b` 
+  - Minimal library improvements. 
+  - There has been added some samples, like how to use it and support for NPM package.
+* `0.1.0b` 
+  - First release: the code is stable, but the library is still beta and must be improved and documented.
 
 ## TODO list
 
