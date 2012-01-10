@@ -84,7 +84,7 @@ You can use it like module. Here a simple example:
 ```javascript
 #!/usr/bin/env node
 // require the module and use Hash object
-var Hashes = require('./lib/hashes').Hashes;
+var Hashes = require('./lib/hashes');
 // sample string
 var str = 'This is a sample text!';
 // new SHA1 instance and base64 string encoding
@@ -96,13 +96,15 @@ console.log('SHA1: ' + SHA1);
 ## Public methods
 Each algorithm `class` provides the following public methods:
 
-* hex(string) - Hexadecimal hash encoding from string 
-* b64(string) - Base64 hash encondig from string
-* any(string,encoding) - Custom hash algorithm values encoding
-* hex_hmac(string,key) - Hexadecimal hash with HMAC salt key
-* b64_hmac(string,key) - Base64 hash with HMAC salt key 
-* any_hmac(string,key,encoding) - Custom hash values encoding with HMAC salt key support
-* vm_test() - Simple self-test to see is working
+* `hex(string)` - Hexadecimal hash encoding from string 
+* `b64(string)` - Base64 hash encondig from string
+* `any(string,encoding)` - Custom hash algorithm values encoding
+* `hex_hmac(string,key)` - Hexadecimal hash with HMAC salt key
+* `b64_hmac(string,key)` - Base64 hash with HMAC salt key 
+* `any_hmac(string,key,encoding)` - Custom hash values encoding with HMAC salt key support
+* `vm_test()` - Simple self-test to see is working
+* `setUpperCase(boolean)` - Enable/disable uppercase hexadecimal returned string 
+* `setPad(string)` - Defines a base64 pad string
 
 ## Hash encoding formats supported
 

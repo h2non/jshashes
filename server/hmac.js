@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var Hashes = require('./lib/hashes').Hashes;
+var Hashes = require('./lib/hashes');
   
 // sample string
 var str = 'This is a sample text!';

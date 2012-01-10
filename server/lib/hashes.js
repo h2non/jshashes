@@ -2140,4 +2140,4 @@ Hashes.RMD160 = function ()
 }
 
 /* node.js module export */
-exports.Hashes = Hashes;
+module.exports = Hashes;

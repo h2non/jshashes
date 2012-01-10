@@ -1792,7 +1792,7 @@ Hashes.RMD160 = function ()
 		return hex("abc").toLowerCase() == "8eb208f7e05d987a9b044a8e98c6b087f15a0bfc";
 	}
 	/** 
-	 * @description Enable/disable uppercase hexadecimal returned string 
+	 * @description Enable/disable uppercase hexadecimal returned string
 	 * @param {boolean} 
 	 * @public
 	 */ 
