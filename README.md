@@ -8,12 +8,12 @@ The code is fully compatible with the ECMAScript language specification and was 
 
 ## Supported hash algorithms
 
-* MD5 <http://www.ietf.org/rfc/rfc1321.txt>
-* SHA1 <http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>
-* SHA256 <http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf>
-* SHA512 <http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf>
-* HMAC <http://www.ietf.org/rfc/rfc2104.txt>
-* RIPEMD-160 <http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>
+* MD5 (<http://www.ietf.org/rfc/rfc1321.txt>)
+* SHA1 (<http://www.itl.nist.gov/fipspubs/fip180-1.htm>)
+* SHA256 (<http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf>)
+* SHA512 (<http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf>)
+* HMAC (<http://www.ietf.org/rfc/rfc2104.txt>)
+* RIPEMD-160 (<http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>)
 
 ## Usage
 Following some software design patterns, `jsHashes` implements an object-oriented paradigm for an easy and clean use. 
