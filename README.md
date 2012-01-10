@@ -155,7 +155,7 @@ TODO...
 
 * Tomas Aparicio (<https://github.com/h2non/>)
 
-### Original algorithms implementations authors
+### Original algorithm implementation authors
 
 * Paul Johnston (<http://pajhome.org.uk/crypt/md5/>)
 * Angel Marin (SHA256)
