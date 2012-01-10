@@ -1,0 +1,47 @@
+info it worked if it ends with ok
+verbose cli [ '/opt/opew/stack/node/bin/node.bin',
+verbose cli   '/opt/opew/stack/node/bin/npm.bin',
+verbose cli   'unpublish',
+verbose cli   'jshashes@0.1.2b' ]
+info using npm@1.1.0-beta-10
+info using node@v0.6.7
+verbose config file /root/.npmrc
+verbose config file /opt/opew/stack/node/etc/npmrc
+verbose config file /opt/opew/stack/node/lib/node_modules/npm/npmrc
+verbose raw, before any munging jshashes
+verbose url resolving [ 'https://registry.npmjs.org/', './jshashes' ]
+verbose url resolved https://registry.npmjs.org/jshashes
+verbose etag "BAM1233YG8NJIJ6PZWGPJKIT8"
+http GET https://registry.npmjs.org/jshashes
+http 304 https://registry.npmjs.org/jshashes
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.1.0 (Erlang OTP/R14B04)',
+silly get cb     etag: '"BAM1233YG8NJIJ6PZWGPJKIT8"',
+silly get cb     date: 'Tue, 10 Jan 2012 22:23:16 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag jshashes from cache
+verbose removing attachments { shasum: '7f99846dac8a77f5b9bd996177526a57ba93f45f',
+verbose removing attachments   tarball: 'http://registry.npmjs.org/jshashes/-/jshashes-0.1.2b.tgz' }
+verbose raw, before any munging jshashes/-rev/37-577f44c1e319d3930d1d47a81cf3e7fe
+verbose url resolving [ 'https://registry.npmjs.org/',
+verbose url resolving   './jshashes/-rev/37-577f44c1e319d3930d1d47a81cf3e7fe' ]
+verbose url resolved https://registry.npmjs.org/jshashes/-rev/37-577f44c1e319d3930d1d47a81cf3e7fe
+http PUT https://registry.npmjs.org/jshashes/-rev/37-577f44c1e319d3930d1d47a81cf3e7fe
+ERR! Failed to update the data
+ERR! Error: getaddrinfo ENOENT
+ERR!     at errnoException (dns.js:31:11)
+ERR!     at Object.onanswer [as oncomplete] (dns.js:140:16)
+ERR! Report this *entire* log at:
+ERR!     <http://github.com/isaacs/npm/issues>
+ERR! or email it to:
+ERR!     <npm-@googlegroups.com>
+ERR! 
+ERR! System Linux 2.6.32-5-amd64
+ERR! command "/opt/opew/stack/node/bin/node.bin" "/opt/opew/stack/node/bin/npm.bin" "unpublish" "jshashes@0.1.2b"
+ERR! cwd /opt/jsHashes
+ERR! node -v v0.6.7
+ERR! npm -v 1.1.0-beta-10
+ERR! syscall getaddrinfo
+ERR! code ENOTFOUND
+ERR! message getaddrinfo ENOENT
+verbose exit [ 1, true ]
