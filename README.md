@@ -1,4 +1,8 @@
 # jsHashes `A hash algorithm independent library purely JavaScript implemented for both server and client side`
+<<<<<<< HEAD
+=======
+
+>>>>>>> d3e504dca227cdd77b9735e96b2fa810819f6201
 
 ## About
 
@@ -84,7 +88,11 @@ You can use it like module. Here a simple example:
 ```javascript
 #!/usr/bin/env node
 // require the module and use Hash object
+<<<<<<< HEAD
 var Hashes = require('./lib/hashes').Hashes;
+=======
+var Hash = require('./lib/hashes').Hashes;
+>>>>>>> d3e504dca227cdd77b9735e96b2fa810819f6201
 // sample string
 var str = 'This is a sample text!';
 // new SHA1 instance and base64 string encoding
@@ -135,6 +143,7 @@ TODO...
   - There has been added some samples, like how to use it and support for NPM package.
 * `0.1.0b` 
   - First release: the code is stable, but the library is still beta and must be improved and documented.
+<<<<<<< HEAD
   
 ## TODO list
 
@@ -143,6 +152,14 @@ TODO...
 * Code refactoring and remove redundancy
 * Implement new hash algorithms for experimental proposals (tiger, ripemd320, gost, adler32, haval...)
 * Improve and standard code documentation
+=======
+
+## TODO list
+
+* Add support for CRC32
+* Implement new hash algorithms for experimental proposals (tiger, ripemd320, gost, adler32, haval...)
+* Improve and standarize code documentation
+>>>>>>> d3e504dca227cdd77b9735e96b2fa810819f6201
 * Benchmarking 
 
 ## Authors 
@@ -171,3 +188,4 @@ jsHashes is released under New BSD license. See LICENSE file.
 ## Issues
 
 Feel free to report any issue you experiment via Github <https://github.com/h2non/jsHashes/issues>.
+
