@@ -133,6 +133,12 @@ TODO...
 ## Changelog
 
 ### Beta
+* `0.1.3b`
+  - Starting non-redundancy code refactorization
+  - Added `Helpers` Object with some global functions
+  - Added native support for Base64 provided as `class`
+  - Added CRC-32 calculation support
+  - Added URL encode/decode helpers functions 
 * `0.1.2b` 
   - SHA1 error fixed. 
   - General code changes (renaming classes, private methods, new methods...). 
