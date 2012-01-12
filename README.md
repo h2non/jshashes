@@ -8,18 +8,24 @@ The code is fully compatible with the ECMAScript language specification and was 
 
 ## Supported hash algorithms
 
-* MD5 (<http://www.ietf.org/rfc/rfc1321.txt>)
-* SHA1 (<http://www.itl.nist.gov/fipspubs/fip180-1.htm>)
-* SHA256 (<http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf>)
-* SHA512 (<http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf>)
-* HMAC (<http://www.ietf.org/rfc/rfc2104.txt>)
-* RIPEMD-160 (<http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>)
+* `MD5` (<http://www.ietf.org/rfc/rfc1321.txt>)
+* `SHA1` (<http://www.itl.nist.gov/fipspubs/fip180-1.htm>)
+* `SHA256` (<http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf>)
+* `SHA512` (<http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf>)
+* `HMAC` (<http://www.ietf.org/rfc/rfc2104.txt>)
+* `RIPEMD-160` (<http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>)
+
+**Aditional encoding supported**
+
+* `Base64` (<http://tools.ietf.org/html/rfc3548>)
+* `CRC-32`
+* `URL encode/decode`
 
 ## Usage
 Following some software design patterns, `jsHashes` implements an object-oriented paradigm for an easy and clean use. 
 Each algorithm has its respective own `class`, providing encapsulation (public and private methods) and independence from other classes.   
 
-All the `classes` are defined inside the Object called `Hash` (like namespace). 
+All the `classes` are defined inside the Object called `Hashes` (like namespace). 
 
 Here you can see an example of how to create a new instance for each algorithm:
 
