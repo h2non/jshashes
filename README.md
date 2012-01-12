@@ -15,7 +15,7 @@ The code is fully compatible with the ECMAScript language specification and was 
 * `HMAC` (<http://www.ietf.org/rfc/rfc2104.txt>)
 * `RIPEMD-160` (<http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>)
 
-**Aditional funtionalities**
+**Aditional functionalities**
 
 * `Base64 encode/decode` (<http://tools.ietf.org/html/rfc3548>)
 * `CRC-32 calculation`
