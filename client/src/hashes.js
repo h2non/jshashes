@@ -30,28 +30,40 @@ var Hashes = new Object;
  */
 Hashes.Helpers = new Object;
 
-Hashes.Helpers.utf8Encode = function (string)
+Hashes.Helpers.utf8Encode = function (input)
 {
-	string = string.replace(/\r\n/g,"\n");
-	var utftext = "";
-
-	for (var n = 0; n < string.length; n++) 
+	var output = "";
+	var i = -1;
+	var x, y;
+	
+	while(++i < input.length)
 	{
-		var c = string.charCodeAt(n);
-		if (c < 128) {
-			utftext += String.fromCharCode(c);
+		/* Decode utf-16 surrogate pairs */
+		x = input.charCodeAt(i);
+		y = i + 1 < input.length ? input.charCodeAt(i + 1) : 0;
+		if(0xD800 <= x && x <= 0xDBFF && 0xDC00 <= y && y <= 0xDFFF)
+		{
+			x = 0x10000 + ((x & 0x03FF) << 10) + (y & 0x03FF);
+			i++;
 		}
-		else if((c > 127) && (c < 2048)) {
-			utftext += String.fromCharCode((c >> 6) | 192);
-			utftext += String.fromCharCode((c & 63) | 128);
-		}
-		else {
-			utftext += String.fromCharCode((c >> 12) | 224);
-			utftext += String.fromCharCode(((c >> 6) & 63) | 128);
-			utftext += String.fromCharCode((c & 63) | 128);
-		}
+		
+		/* Encode output as utf-8 */
+		if(x <= 0x7F)
+			output += String.fromCharCode(x);
+		else if(x <= 0x7FF)
+			output += String.fromCharCode(0xC0 | ((x >>> 6 ) & 0x1F),
+										0x80 | ( x         & 0x3F));
+		else if(x <= 0xFFFF)
+			output += String.fromCharCode(0xE0 | ((x >>> 12) & 0x0F),
+										0x80 | ((x >>> 6 ) & 0x3F),
+										0x80 | ( x         & 0x3F));
+		else if(x <= 0x1FFFFF)
+			output += String.fromCharCode(0xF0 | ((x >>> 18) & 0x07),
+										0x80 | ((x >>> 12) & 0x3F),
+										0x80 | ((x >>> 6 ) & 0x3F),
+										0x80 | ( x         & 0x3F));
 	}
-	return utftext;
+	return output;
 }
 
 Hashes.Helpers.utf8Decode = function (str_data) 
@@ -82,6 +94,7 @@ Hashes.Helpers.utf8Decode = function (str_data)
 }
 /**
  * URL Decode
+ * @function
  */
 Hashes.Helpers.urlDecode = function (str)
 {
@@ -90,6 +103,7 @@ Hashes.Helpers.urlDecode = function (str)
 }
 /**
  * URL Encode
+ * @function
  */
 Hashes.Helpers.urlEncode = function (str)
 {
@@ -179,21 +193,21 @@ Hashes.Base64 = function ()
 	// set custom pad string
 	this.setPad = function (str)
 	{
-		if (typeof (str) == 'string')
+		if (conf && typeof (str) == 'string')
 			pad = str;
 		return this;
 	}
 	// set custom tab string characters
 	this.setTab =  function (str) 
 	{
-		if (typeof (str) == 'string')
+		if (conf && typeof (str) == 'string')
 			tab = str;
 		return this;
 	}
 	
 	this.setUTF8 = function (bool) 
 	{
-		if (typeof bool == 'boolean') 
+		if (conf && typeof bool == 'boolean') 
 			utf8 = bool;
 		return this;
 	}
@@ -251,9 +265,10 @@ Hashes.CRC32 = function (str)
 	return crc ^ (-1);
 }
 
+
 /**
  * @class Hashes.MD5
- * @param {none}
+ * @param {config}
  * 
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
  * Digest Algorithm, as defined in RFC 1321.
@@ -261,7 +276,7 @@ Hashes.CRC32 = function (str)
  * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
  * See http://pajhome.org.uk/crypt/md5 for more info.
  */
-Hashes.MD5 = function ()
+Hashes.MD5 = function (conf)
 {
 	/* PRIVATE PROPERTIES */
 	/**
@@ -270,9 +285,9 @@ Hashes.MD5 = function ()
 	 * @see this.setUpperCase() method
 	 * @see this.setPad() method
 	 */
-	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad  = '=';  /* base-64 pad character. Default "=" for strict RFC compliance   */
-
+	var hexcase = (conf && typeof conf.uppercase == 'boolean') ? conf.uppercase : false ;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
+	var b64pad = (conf && typeof conf.pad == 'string') ? conf.pda : '=' ;  /* base-64 pad character. Default "=" for strict RFC compliance   */
+	var utf8 = (conf && typeof conf.utf8 == 'boolean') ? conf.utf8 : true; /* enable/disable utf8 encoding */
 
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
@@ -309,30 +324,45 @@ Hashes.MD5 = function ()
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
+	 * @return {Object} this
 	 * @public
 	 */ 
 	this.setUpperCase = function (a) {
-		if (typeof (a) == 'boolean' ) {
+		if (conf && typeof (a) == 'boolean' )
 			hexcase = a;
-		}
+		return this;
 	}
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
+	 * @return {Object} this
 	 * @public
 	 */ 
 	this.setPad = function (a) {
-		if (typeof (a) != 'undefined' ) {
+		if (conf && typeof (a) != 'undefined' ) 
 			b64pad = a;
-		}
+		return this;
 	}
-	
+	/** 
+	 * @description Defines a base64 pad string 
+	 * @param {boolean} 
+	 * @return {Object} this
+	 * @public
+	 */ 
+	this.setUTF8 = function (a) {
+		if (conf && typeof (a) == 'boolean' ) 
+			utf8 = a;
+		return this;
+	}
+
+
 	/* PRIVATE METHODS */
 	/*
 	 * Calculate the MD5 of a raw string
 	 */
 	function rstr(s)
 	{
+		s = (utf8) ? Hashes.Helpers.utf8Encode(s) : s;
 		return binl2rstr(binl(rstr2binl(s), s.length * 8));
 	}
 	
@@ -676,14 +706,14 @@ Hashes.MD5 = function ()
 
 /**
  * @class Hashes.SHA1
- * @param {none}
+ * @param {config}
  * 
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined in FIPS 180-1
  * Version 2.2 Copyright Paul Johnston 2000 - 2009.
  * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
  * See http://pajhome.org.uk/crypt/md5 for details.
  */
-Hashes.SHA1 = function ()
+Hashes.SHA1 = function (conf)
 {
 	/* PRIVATE PROPERTIES */
 	/**
@@ -692,39 +722,43 @@ Hashes.SHA1 = function ()
 	 * @see this.setUpperCase() method
 	 * @see this.setPad() method
 	 */
-	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad  = '=';  /* base-64 pad character. Default "=" for strict RFC compliance   */
+	var hexcase = (conf && typeof conf.uppercase == 'boolean') ? conf.uppercase : false ;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
+	var b64pad = (conf && typeof conf.pad == 'string') ? conf.pda : '=' ;  /* base-64 pad character. Default "=" for strict RFC compliance   */
+	var utf8 = (conf && typeof conf.utf8 == 'boolean') ? conf.utf8 : true; /* enable/disable utf8 encoding */
 	
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
 	{ 
-		return rstr2hex(rstr(str2rstr_utf8(s))); 
+		return rstr2hex(rstr(s)); 
 	}
-	this.b64 = function (s) { 
+	this.b64 = function (s) 
+	{ 
 		return rstr2b64(rstr(str2rstr_utf8(s))); 
 	}
 	this.any = function (s, e) 
 	{ 
-		return rstr2any(rstr(str2rstr_utf8(s)), e); 
+		return rstr2any(rstr(str2rstr_utf8(s)), e);
 	}
 	this.hex_hmac = function (k, d)
-	{ 
-		return rstr2hex(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d))); 
+	{
+		return rstr2hex(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)));
 	}
 	this.b64_hmac = function (k, d)
 	{ 
-		return rstr2b64(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)));
+		return rstr2b64(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d))); 
 	}
 	this.any_hmac = function (k, d, e)
 	{ 
-		return rstr2any(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)), e); 
+		return rstr2any(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)), e);
 	}
 	/**
 	 * Perform a simple self-test to see if the VM is working
 	 */
 	this.vm_test = function ()
 	{
-	  return hex("abc").toLowerCase() == "a9993e364706816aba3e25717850c26c9cd0d89d";
+		return hex("abc").toLowerCase() ==
+			"ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a" +
+			"2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f";
 	}
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
@@ -732,7 +766,7 @@ Hashes.SHA1 = function ()
 	 * @public
 	 */ 
 	this.setUpperCase = function (a) {
-		if (typeof (a) == 'boolean' ) {
+		if (conf && typeof (a) == 'boolean' ) {
 			hexcase = a;
 		}
 	}
@@ -742,18 +776,30 @@ Hashes.SHA1 = function ()
 	 * @public
 	 */ 
 	this.setPad = function (a) {
-		if (typeof (a) != 'undefined' ) {
+		if (conf && typeof (a) != 'undefined' ) {
 			b64pad = a;
 		}
 	}
-	
+	/** 
+	 * @description Defines a base64 pad string 
+	 * @param {boolean} 
+	 * @return {Object} this
+	 * @public
+	 */ 
+	this.setUTF8 = function (a) {
+		if (conf && typeof (a) == 'boolean' ) 
+			utf8 = a;
+		return this;
+	}
+
 	/* PRIVATE METHODS */
 	/*
-	 * Calculate the SHA1 of a raw string
+	 * Calculate the SHA-512 of a raw string
 	 */
 	function rstr(s)
 	{
-	  return binb2rstr(binb(rstr2binb(s), s.length * 8));
+		s = (utf8) ? Hashes.Helpers.utf8Encode(s) : s;
+		return binb2rstr(binb(rstr2binb(s), s.length * 8));
 	}
 	
 	/*
@@ -1047,7 +1093,7 @@ Hashes.SHA1 = function ()
 
 /**
  * @class Hashes.SHA256
- * @param {none}
+ * @param {config}
  * 
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined in FIPS 180-2
  * Version 2.2 Copyright Angel Marin, Paul Johnston 2000 - 2009.
@@ -1055,7 +1101,7 @@ Hashes.SHA1 = function ()
  * See http://pajhome.org.uk/crypt/md5 for details.
  * Also http://anmar.eu.org/projects/jssha2/
  */
-Hashes.SHA256 = function ()
+Hashes.SHA256 = function (conf)
 {
 	/* PRIVATE PROPERTIES */
 	/**
@@ -1064,9 +1110,9 @@ Hashes.SHA256 = function ()
 	 * @see this.setUpperCase() method
 	 * @see this.setPad() method
 	 */
-	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad  = '=';  /* base-64 pad character. Default "=" for strict RFC compliance   */
-
+	var hexcase = (conf && typeof conf.uppercase == 'boolean') ? conf.uppercase : false ;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
+	var b64pad = (conf && typeof conf.pad == 'string') ? conf.pda : '=' ;  /* base-64 pad character. Default "=" for strict RFC compliance   */
+	var utf8 = (conf && typeof conf.utf8 == 'boolean') ? conf.utf8 : true; /* enable/disable utf8 encoding */
 
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
@@ -1106,7 +1152,7 @@ Hashes.SHA256 = function ()
 	 * @public
 	 */ 
 	this.setUpperCase = function (a) {
-		if (typeof (a) == 'boolean' ) {
+		if (conf && typeof (a) == 'boolean' ) {
 			hexcase = a;
 		}
 	}
@@ -1116,7 +1162,7 @@ Hashes.SHA256 = function ()
 	 * @public
 	 */ 
 	this.setPad = function (a) {
-		if (typeof (a) != 'undefined' ) {
+		if (conf && typeof (a) != 'undefined' ) {
 			b64pad = a;
 		}
 	}
@@ -1428,14 +1474,14 @@ Hashes.SHA256 = function ()
 
 /**
  * @class Hashes.SHA512
- * @param {none}
+ * @param {config}
  * 
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-512, as defined in FIPS 180-2
  * Version 2.2 Copyright Anonymous Contributor, Paul Johnston 2000 - 2009.
  * Other contributors: Greg Holt, Andrew Kepert, Ydnar, Lostinet
  * See http://pajhome.org.uk/crypt/md5 for details. 
  */
-Hashes.SHA512 = function ()
+Hashes.SHA512 = function (conf)
 {
 	/* PRIVATE PROPERTIES */
 	/**
@@ -1444,8 +1490,9 @@ Hashes.SHA512 = function ()
 	 * @see this.setUpperCase() method
 	 * @see this.setPad() method
 	 */
-	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad  = '=';  /* base-64 pad character. Default "=" for strict RFC compliance   */
+	var hexcase = (conf && typeof conf.uppercase == 'boolean') ? conf.uppercase : false ;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
+	var b64pad = (conf && typeof conf.pad == 'string') ? conf.pda : '=' ;  /* base-64 pad character. Default "=" for strict RFC compliance   */
+	var utf8 = (conf && typeof conf.utf8 == 'boolean') ? conf.utf8 : true; /* enable/disable utf8 encoding */
 
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
@@ -1487,7 +1534,7 @@ Hashes.SHA512 = function ()
 	 * @public
 	 */ 
 	this.setUpperCase = function (a) {
-		if (typeof (a) == 'boolean' ) {
+		if (conf && typeof (a) == 'boolean' ) {
 			hexcase = a;
 		}
 	}
@@ -1497,7 +1544,7 @@ Hashes.SHA512 = function ()
 	 * @public
 	 */ 
 	this.setPad = function (a) {
-		if (typeof (a) != 'undefined' ) {
+		if (conf && typeof (a) != 'undefined' ) {
 			b64pad = a;
 		}
 	}
@@ -1967,7 +2014,7 @@ Hashes.SHA512 = function ()
 
 /**
  * @class Hashes.RMD160
- * @param {none}
+ * @param {config}
  * 
  * A JavaScript implementation of the RIPEMD-160 Algorithm
  * Version 2.2 Copyright Jeremy Lin, Paul Johnston 2000 - 2009.
@@ -1975,7 +2022,7 @@ Hashes.SHA512 = function ()
  * See http://pajhome.org.uk/crypt/md5 for details.
  * Also http://www.ocf.berkeley.edu/~jjlin/jsotp/
  */
-Hashes.RMD160 = function ()
+Hashes.RMD160 = function (conf)
 {
 	/* PRIVATE PROPERTIES */
 	/**
@@ -1984,8 +2031,9 @@ Hashes.RMD160 = function ()
 	 * @see this.setUpperCase() method
 	 * @see this.setPad() method
 	 */
-	var hexcase = false;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
-	var b64pad  = '=';  /* base-64 pad character. Default "=" for strict RFC compliance   */
+	var hexcase = (conf && typeof conf.uppercase == 'boolean') ? conf.uppercase : false ;   /* hexadecimal output case format. false - lowercase; true - uppercase  */
+	var b64pad = (conf && typeof conf.pad == 'string') ? conf.pda : '=' ;  /* base-64 pad character. Default "=" for strict RFC compliance   */
+	var utf8 = (conf && typeof conf.utf8 == 'boolean') ? conf.utf8 : true; /* enable/disable utf8 encoding */
 
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
@@ -2019,12 +2067,12 @@ Hashes.RMD160 = function ()
 		return hex("abc").toLowerCase() == "8eb208f7e05d987a9b044a8e98c6b087f15a0bfc";
 	}
 	/** 
-	 * @description Enable/disable uppercase hexadecimal returned string
+	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
 	 * @public
 	 */ 
 	this.setUpperCase = function (a) {
-		if (typeof (a) == 'boolean' ) {
+		if (conf && typeof (a) == 'boolean' ) {
 			hexcase = a;
 		}
 	}
@@ -2034,7 +2082,7 @@ Hashes.RMD160 = function ()
 	 * @public
 	 */ 
 	this.setPad = function (a) {
-		if (typeof (a) != 'undefined' ) {
+		if (conf && typeof (a) != 'undefined' ) {
 			b64pad = a;
 		}
 	}
@@ -2363,5 +2411,5 @@ Hashes.RMD160 = function ()
 	}
 	
 	/* return this object */
-	return this;	
+	return this;
 }

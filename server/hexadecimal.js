@@ -3,7 +3,7 @@
 var Hashes = require('./lib/hashes');
   
 // sample string
-var str = 'This is a sample text!';
+var str = 'This is a sample text';
 
 // new MD5 instance
 var MD5 = new Hashes.MD5;

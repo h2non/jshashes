@@ -15,11 +15,12 @@ The code is fully compatible with the ECMAScript language specification and was 
 * `HMAC` (<http://www.ietf.org/rfc/rfc2104.txt>)
 * `RIPEMD-160` (<http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>)
 
-**Aditional encoding provided**
+**Aditional funtionalities**
 
-* `Base64` (<http://tools.ietf.org/html/rfc3548>)
-* `CRC-32`
+* `Base64 encode/decode` (<http://tools.ietf.org/html/rfc3548>)
+* `CRC-32 calculation`
 * `URL encode/decode`
+* `UTF-8 encode/decode`
 
 ## Usage
 Following some software design patterns, `jsHashes` implements an object-oriented paradigm for an easy and clean use. 
