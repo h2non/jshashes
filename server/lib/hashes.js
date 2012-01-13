@@ -324,24 +324,22 @@ Hashes.MD5 = function (conf)
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
-	 * @return {Object} this
 	 * @public
 	 */ 
 	this.setUpperCase = function (a) {
-		if (conf && typeof (a) == 'boolean' )
+		if (typeof (a) == 'boolean' ) {
 			hexcase = a;
-		return this;
+		}
 	}
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
-	 * @return {Object} this
 	 * @public
 	 */ 
 	this.setPad = function (a) {
-		if (conf && typeof (a) != 'undefined' ) 
+		if (typeof (a) != 'undefined' ) {
 			b64pad = a;
-		return this;
+		}
 	}
 	/** 
 	 * @description Defines a base64 pad string 
@@ -350,7 +348,7 @@ Hashes.MD5 = function (conf)
 	 * @public
 	 */ 
 	this.setUTF8 = function (a) {
-		if (conf && typeof (a) == 'boolean' ) 
+		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
 	}
@@ -766,7 +764,7 @@ Hashes.SHA1 = function (conf)
 	 * @public
 	 */ 
 	this.setUpperCase = function (a) {
-		if (conf && typeof (a) == 'boolean' ) {
+		if (typeof (a) == 'boolean' ) {
 			hexcase = a;
 		}
 	}
@@ -776,7 +774,7 @@ Hashes.SHA1 = function (conf)
 	 * @public
 	 */ 
 	this.setPad = function (a) {
-		if (conf && typeof (a) != 'undefined' ) {
+		if (typeof (a) != 'undefined' ) {
 			b64pad = a;
 		}
 	}
@@ -787,7 +785,7 @@ Hashes.SHA1 = function (conf)
 	 * @public
 	 */ 
 	this.setUTF8 = function (a) {
-		if (conf && typeof (a) == 'boolean' ) 
+		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
 	}
@@ -1152,7 +1150,7 @@ Hashes.SHA256 = function (conf)
 	 * @public
 	 */ 
 	this.setUpperCase = function (a) {
-		if (conf && typeof (a) == 'boolean' ) {
+		if (typeof (a) == 'boolean' ) {
 			hexcase = a;
 		}
 	}
@@ -1162,9 +1160,20 @@ Hashes.SHA256 = function (conf)
 	 * @public
 	 */ 
 	this.setPad = function (a) {
-		if (conf && typeof (a) != 'undefined' ) {
+		if (typeof (a) != 'undefined' ) {
 			b64pad = a;
 		}
+	}
+	/** 
+	 * @description Defines a base64 pad string 
+	 * @param {boolean} 
+	 * @return {Object} this
+	 * @public
+	 */ 
+	this.setUTF8 = function (a) {
+		if (typeof (a) == 'boolean') 
+			utf8 = a;
+		return this;
 	}
 
 	
@@ -1534,7 +1543,7 @@ Hashes.SHA512 = function (conf)
 	 * @public
 	 */ 
 	this.setUpperCase = function (a) {
-		if (conf && typeof (a) == 'boolean' ) {
+		if (typeof (a) == 'boolean' ) {
 			hexcase = a;
 		}
 	}
@@ -1544,10 +1553,22 @@ Hashes.SHA512 = function (conf)
 	 * @public
 	 */ 
 	this.setPad = function (a) {
-		if (conf && typeof (a) != 'undefined' ) {
+		if (typeof (a) != 'undefined' ) {
 			b64pad = a;
 		}
 	}
+	/** 
+	 * @description Defines a base64 pad string 
+	 * @param {boolean} 
+	 * @return {Object} this
+	 * @public
+	 */ 
+	this.setUTF8 = function (a) {
+		if (typeof (a) == 'boolean') 
+			utf8 = a;
+		return this;
+	}
+
 
 	/* PRIVATE METHODS */
 	/*
@@ -2072,7 +2093,7 @@ Hashes.RMD160 = function (conf)
 	 * @public
 	 */ 
 	this.setUpperCase = function (a) {
-		if (conf && typeof (a) == 'boolean' ) {
+		if (typeof (a) == 'boolean' ) {
 			hexcase = a;
 		}
 	}
@@ -2082,10 +2103,22 @@ Hashes.RMD160 = function (conf)
 	 * @public
 	 */ 
 	this.setPad = function (a) {
-		if (conf && typeof (a) != 'undefined' ) {
+		if (typeof (a) != 'undefined' ) {
 			b64pad = a;
 		}
 	}
+	/** 
+	 * @description Defines a base64 pad string 
+	 * @param {boolean} 
+	 * @return {Object} this
+	 * @public
+	 */ 
+	this.setUTF8 = function (a) {
+		if (typeof (a) == 'boolean') 
+			utf8 = a;
+		return this;
+	}
+
 
 	/* PRIVATE METHODS */
 	/*
@@ -2411,7 +2444,7 @@ Hashes.RMD160 = function (conf)
 	}
 	
 	/* return this object */
-	return this;	
+	return this;
 }
 
 /* node.js module export */
