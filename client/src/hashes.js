@@ -4,7 +4,7 @@
  * @package jsHashes.Client
  * @author Tomas Aparicio <tomas _AT_ rijndael-project . com>
  * @license New BSD (see LICENSE file)
- * @version 0.1.3b revision 12/01/2012
+ * @version 0.1.3b revision 13/01/2012
  * @see https://github.com/h2non/jsHashes
  *
  * The algorithms implementations was based on its respective standard especification:
