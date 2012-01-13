@@ -292,27 +292,27 @@ Hashes.MD5 = function (conf)
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
 	{ 
-		return rstr2hex(rstr(str2rstr_utf8(s)));
+		return rstr2hex(rstr(s));
 	}
 	this.b64 = function (s)
 	{ 
-		return rstr2b64(rstr(str2rstr_utf8(s))); 
+		return rstr2b64(rstr(s)); 
 	}
 	this.any = function(s, e) 
 	{ 
-		return rstr2any(rstr(str2rstr_utf8(s)), e); 
+		return rstr2any(rstr(s), e); 
 	}
 	this.hex_hmac = function (k, d) 
 	{ 
-		return rstr2hex(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d))); 
+		return rstr2hex(rstr_hmac(k, d)); 
 	}
 	this.b64_hmac = function (k, d) 
 	{ 
-		return rstr2b64(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d))); 
+		return rstr2b64(rstr_hmac(k,d)); 
 	}
 	this.any_hmac = function (k, d, e)
 	{ 
-		return rstr2any(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)), e); 
+		return rstr2any(rstr_hmac(k, d), e); 
 	}
 	/**
 	 * Perform a simple self-test to see if the VM is working
@@ -369,18 +369,20 @@ Hashes.MD5 = function (conf)
 	 */
 	function rstr_hmac(key, data)
 	{
-	  var bkey = rstr2binl(key);
-	  if(bkey.length > 16) bkey = binl(bkey, key.length * 8);
-	
-	  var ipad = Array(16), opad = Array(16);
-	  for(var i = 0; i < 16; i++)
-	  {
-		ipad[i] = bkey[i] ^ 0x36363636;
-		opad[i] = bkey[i] ^ 0x5C5C5C5C;
-	  }
-	
-	  var hash = binl(ipad.concat(rstr2binl(data)), 512 + data.length * 8);
-	  return binl2rstr(binl(opad.concat(hash), 512 + 128));
+		key = (utf8) ? Hashes.Helpers.utf8Encode(key) : key;
+		data = (utf8) ? Hashes.Helpers.utf8Encode(data) : data;
+		var bkey = rstr2binl(key);
+		if(bkey.length > 16) bkey = binl(bkey, key.length * 8);
+		
+		var ipad = Array(16), opad = Array(16);
+		for(var i = 0; i < 16; i++)
+		{
+			ipad[i] = bkey[i] ^ 0x36363636;
+			opad[i] = bkey[i] ^ 0x5C5C5C5C;
+		}
+		
+		var hash = binl(ipad.concat(rstr2binl(data)), 512 + data.length * 8);
+		return binl2rstr(binl(opad.concat(hash), 512 + 128));
 	}
 	
 	/*
@@ -471,47 +473,7 @@ Hashes.MD5 = function (conf)
 	
 	  return output;
 	}
-	
-	/*
-	 * Encode a string as utf-8.
-	 * For efficiency, this assumes the input is valid utf-16.
-	 */
-	function str2rstr_utf8(input)
-	{
-	  var output = "";
-	  var i = -1;
-	  var x, y;
-	
-	  while(++i < input.length)
-	  {
-		/* Decode utf-16 surrogate pairs */
-		x = input.charCodeAt(i);
-		y = i + 1 < input.length ? input.charCodeAt(i + 1) : 0;
-		if(0xD800 <= x && x <= 0xDBFF && 0xDC00 <= y && y <= 0xDFFF)
-		{
-		  x = 0x10000 + ((x & 0x03FF) << 10) + (y & 0x03FF);
-		  i++;
-		}
-	
-		/* Encode output as utf-8 */
-		if(x <= 0x7F)
-		  output += String.fromCharCode(x);
-		else if(x <= 0x7FF)
-		  output += String.fromCharCode(0xC0 | ((x >>> 6 ) & 0x1F),
-										0x80 | ( x         & 0x3F));
-		else if(x <= 0xFFFF)
-		  output += String.fromCharCode(0xE0 | ((x >>> 12) & 0x0F),
-										0x80 | ((x >>> 6 ) & 0x3F),
-										0x80 | ( x         & 0x3F));
-		else if(x <= 0x1FFFFF)
-		  output += String.fromCharCode(0xF0 | ((x >>> 18) & 0x07),
-										0x80 | ((x >>> 12) & 0x3F),
-										0x80 | ((x >>> 6 ) & 0x3F),
-										0x80 | ( x         & 0x3F));
-	  }
-	  return output;
-	}
-	
+		
 	/*
 	 * Encode a string as utf-16
 	 */
@@ -731,23 +693,23 @@ Hashes.SHA1 = function (conf)
 	}
 	this.b64 = function (s) 
 	{ 
-		return rstr2b64(rstr(str2rstr_utf8(s))); 
+		return rstr2b64(rstr(s)); 
 	}
 	this.any = function (s, e) 
 	{ 
-		return rstr2any(rstr(str2rstr_utf8(s)), e);
+		return rstr2any(rstr(s), e);
 	}
 	this.hex_hmac = function (k, d)
 	{
-		return rstr2hex(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)));
+		return rstr2hex(rstr_hmac(k, d));
 	}
 	this.b64_hmac = function (k, d)
 	{ 
-		return rstr2b64(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d))); 
+		return rstr2b64(rstr_hmac(k, d)); 
 	}
 	this.any_hmac = function (k, d, e)
 	{ 
-		return rstr2any(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)), e);
+		return rstr2any(rstr_hmac(k, d), e);
 	}
 	/**
 	 * Perform a simple self-test to see if the VM is working
@@ -805,18 +767,20 @@ Hashes.SHA1 = function (conf)
 	 */
 	function rstr_hmac(key, data)
 	{
-	  var bkey = rstr2binb(key);
-	  if(bkey.length > 16) bkey = binb(bkey, key.length * 8);
-	
-	  var ipad = Array(16), opad = Array(16);
-	  for(var i = 0; i < 16; i++)
-	  {
-		ipad[i] = bkey[i] ^ 0x36363636;
-		opad[i] = bkey[i] ^ 0x5C5C5C5C;
-	  }
-	
-	  var hash = binb(ipad.concat(rstr2binb(data)), 512 + data.length * 8);
-	  return binb2rstr(binb(opad.concat(hash), 512 + 160));
+		key = (utf8) ? Hashes.Helpers.utf8Encode(key) : key;
+		data = (utf8) ? Hashes.Helpers.utf8Encode(data) : data;
+		var bkey = rstr2binb(key);
+		if(bkey.length > 16) bkey = binb(bkey, key.length * 8);
+		
+		var ipad = Array(16), opad = Array(16);
+		for(var i = 0; i < 16; i++)
+		{
+			ipad[i] = bkey[i] ^ 0x36363636;
+			opad[i] = bkey[i] ^ 0x5C5C5C5C;
+		}
+		
+		var hash = binb(ipad.concat(rstr2binb(data)), 512 + data.length * 8);
+		return binb2rstr(binb(opad.concat(hash), 512 + 160));
 	}
 	
 	/*
@@ -911,47 +875,7 @@ Hashes.SHA1 = function (conf)
 	
 	  return output;
 	}
-	
-	/*
-	 * Encode a string as utf-8.
-	 * For efficiency, this assumes the input is valid utf-16.
-	 */
-	function str2rstr_utf8(input)
-	{
-	  var output = "";
-	  var i = -1;
-	  var x, y;
-	
-	  while(++i < input.length)
-	  {
-		/* Decode utf-16 surrogate pairs */
-		x = input.charCodeAt(i);
-		y = i + 1 < input.length ? input.charCodeAt(i + 1) : 0;
-		if(0xD800 <= x && x <= 0xDBFF && 0xDC00 <= y && y <= 0xDFFF)
-		{
-		  x = 0x10000 + ((x & 0x03FF) << 10) + (y & 0x03FF);
-		  i++;
-		}
-	
-		/* Encode output as utf-8 */
-		if(x <= 0x7F)
-		  output += String.fromCharCode(x);
-		else if(x <= 0x7FF)
-		  output += String.fromCharCode(0xC0 | ((x >>> 6 ) & 0x1F),
-										0x80 | ( x         & 0x3F));
-		else if(x <= 0xFFFF)
-		  output += String.fromCharCode(0xE0 | ((x >>> 12) & 0x0F),
-										0x80 | ((x >>> 6 ) & 0x3F),
-										0x80 | ( x         & 0x3F));
-		else if(x <= 0x1FFFFF)
-		  output += String.fromCharCode(0xF0 | ((x >>> 18) & 0x07),
-										0x80 | ((x >>> 12) & 0x3F),
-										0x80 | ((x >>> 6 ) & 0x3F),
-										0x80 | ( x         & 0x3F));
-	  }
-	  return output;
-	}
-	
+		
 	/*
 	 * Encode a string as utf-16
 	 */
@@ -1115,27 +1039,27 @@ Hashes.SHA256 = function (conf)
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
 	{ 
-		return rstr2hex(rstr(str2rstr_utf8(s))); 
+		return rstr2hex(rstr(s)); 
 	}
 	this.b64 = function (s) 
 	{ 
-		return rstr2b64(rstr(str2rstr_utf8(s))); 
+		return rstr2b64(rstr(s)); 
 	}
 	this.any = function (s, e) 
 	{ 
-		return rstr2any(rstr(str2rstr_utf8(s)), e); 
+		return rstr2any(rstr(s), e); 
 	}
 	this.hex_hmac = function (k, d)
 	{ 
-		return rstr2hex(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d))); 
+		return rstr2hex(rstr_hmac(k, d)); 
 	}
 	this.b64_hmac = function (k, d)
 	{ 
-		return rstr2b64(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)));
+		return rstr2b64(rstr_hmac(k, d));
 	}
 	this.any_hmac = function (k, d, e)
 	{ 
-		return rstr2any(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)), e); 
+		return rstr2any(rstr_hmac(k, d), e); 
 	}
 	/**
 	 * Perform a simple self-test to see if the VM is working
@@ -1183,7 +1107,8 @@ Hashes.SHA256 = function (conf)
 	 */
 	function rstr(s)
 	{
-	  return binb2rstr(binb(rstr2binb(s), s.length * 8));
+		s = (utf8) ? Hashes.Helpers.utf8Encode(s) : s;
+		return binb2rstr(binb(rstr2binb(s), s.length * 8));
 	}
 	
 	/*
@@ -1191,18 +1116,20 @@ Hashes.SHA256 = function (conf)
 	 */
 	function rstr_hmac(key, data)
 	{
-	  var bkey = rstr2binb(key);
-	  if(bkey.length > 16) bkey = binb(bkey, key.length * 8);
-	
-	  var ipad = Array(16), opad = Array(16);
-	  for(var i = 0; i < 16; i++)
-	  {
-		ipad[i] = bkey[i] ^ 0x36363636;
-		opad[i] = bkey[i] ^ 0x5C5C5C5C;
-	  }
-	
-	  var hash = binb(ipad.concat(rstr2binb(data)), 512 + data.length * 8);
-	  return binb2rstr(binb(opad.concat(hash), 512 + 256));
+		key = (utf8) ? Hashes.Helpers.utf8Encode(key) : key;
+		data = (utf8) ? Hashes.Helpers.utf8Encode(data) : data;
+		var bkey = rstr2binb(key);
+		if(bkey.length > 16) bkey = binb(bkey, key.length * 8);
+		
+		var ipad = Array(16), opad = Array(16);
+		for(var i = 0; i < 16; i++)
+		{
+			ipad[i] = bkey[i] ^ 0x36363636;
+			opad[i] = bkey[i] ^ 0x5C5C5C5C;
+		}
+		
+		var hash = binb(ipad.concat(rstr2binb(data)), 512 + data.length * 8);
+		return binb2rstr(binb(opad.concat(hash), 512 + 256));
 	}
 	
 	/*
@@ -1298,47 +1225,7 @@ Hashes.SHA256 = function (conf)
 	  return output;
 
 	}
-	
-	/*
-	 * Encode a string as utf-8.
-	 * For efficiency, this assumes the input is valid utf-16.
-	 */
-	function str2rstr_utf8(input)
-	{
-	  var output = "";
-	  var i = -1;
-	  var x, y;
-	
-	  while(++i < input.length)
-	  {
-		/* Decode utf-16 surrogate pairs */
-		x = input.charCodeAt(i);
-		y = i + 1 < input.length ? input.charCodeAt(i + 1) : 0;
-		if(0xD800 <= x && x <= 0xDBFF && 0xDC00 <= y && y <= 0xDFFF)
-		{
-		  x = 0x10000 + ((x & 0x03FF) << 10) + (y & 0x03FF);
-		  i++;
-		}
-	
-		/* Encode output as utf-8 */
-		if(x <= 0x7F)
-		  output += String.fromCharCode(x);
-		else if(x <= 0x7FF)
-		  output += String.fromCharCode(0xC0 | ((x >>> 6 ) & 0x1F),
-										0x80 | ( x         & 0x3F));
-		else if(x <= 0xFFFF)
-		  output += String.fromCharCode(0xE0 | ((x >>> 12) & 0x0F),
-										0x80 | ((x >>> 6 ) & 0x3F),
-										0x80 | ( x         & 0x3F));
-		else if(x <= 0x1FFFFF)
-		  output += String.fromCharCode(0xF0 | ((x >>> 18) & 0x07),
-										0x80 | ((x >>> 12) & 0x3F),
-										0x80 | ((x >>> 6 ) & 0x3F),
-										0x80 | ( x         & 0x3F));
-	  }
-	  return output;
-	}
-	
+		
 	/*
 	 * Encode a string as utf-16
 	 */
@@ -1506,27 +1393,27 @@ Hashes.SHA512 = function (conf)
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
 	{ 
-		return rstr2hex(rstr(str2rstr_utf8(s))); 
+		return rstr2hex(rstr(s)); 
 	}
 	this.b64 = function (s) 
 	{ 
-		return rstr2b64(rstr(str2rstr_utf8(s))); 
+		return rstr2b64(rstr(s)); 
 	}
 	this.any = function (s, e) 
 	{ 
-		return rstr2any(rstr(str2rstr_utf8(s)), e);
+		return rstr2any(rstr(s), e);
 	}
 	this.hex_hmac = function (k, d)
 	{
-		return rstr2hex(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)));
+		return rstr2hex(rstr_hmac(k, d));
 	}
 	this.b64_hmac = function (k, d)
 	{ 
-		return rstr2b64(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d))); 
+		return rstr2b64(rstr_hmac(k, d)); 
 	}
 	this.any_hmac = function (k, d, e)
 	{ 
-		return rstr2any(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)), e);
+		return rstr2any(rstr_hmac(k, d), e);
 	}
 	/**
 	 * Perform a simple self-test to see if the VM is working
@@ -1576,7 +1463,8 @@ Hashes.SHA512 = function (conf)
 	 */
 	function rstr(s)
 	{
-	  return binb2rstr(binb(rstr2binb(s), s.length * 8));
+		s = (utf8) ? Hashes.Helpers.utf8Encode(s) : s;
+		return binb2rstr(binb(rstr2binb(s), s.length * 8));
 	}
 	
 	/*
@@ -1584,18 +1472,21 @@ Hashes.SHA512 = function (conf)
 	 */
 	function rstr_hmac(key, data)
 	{
-	  var bkey = rstr2binb(key);
-	  if(bkey.length > 32) bkey = binb(bkey, key.length * 8);
-	
-	  var ipad = Array(32), opad = Array(32);
-	  for(var i = 0; i < 32; i++)
-	  {
-		ipad[i] = bkey[i] ^ 0x36363636;
-		opad[i] = bkey[i] ^ 0x5C5C5C5C;
-	  }
-	
-	  var hash = binb(ipad.concat(rstr2binb(data)), 1024 + data.length * 8);
-	  return binb2rstr(binb(opad.concat(hash), 1024 + 512));
+		key = (utf8) ? Hashes.Helpers.utf8Encode(key) : key;
+		data = (utf8) ? Hashes.Helpers.utf8Encode(data) : data;
+		
+		var bkey = rstr2binb(key);
+		if(bkey.length > 32) bkey = binb(bkey, key.length * 8);
+		
+		var ipad = Array(32), opad = Array(32);
+		for(var i = 0; i < 32; i++)
+		{
+			ipad[i] = bkey[i] ^ 0x36363636;
+			opad[i] = bkey[i] ^ 0x5C5C5C5C;
+		}
+		
+		var hash = binb(ipad.concat(rstr2binb(data)), 1024 + data.length * 8);
+		return binb2rstr(binb(opad.concat(hash), 1024 + 512));
 	}
 	
 	/*
@@ -2059,26 +1950,26 @@ Hashes.RMD160 = function (conf)
 	/* PUBLIC METHODS */
 	this.hex = function (s) 
 	{ 
-		return rstr2hex(rstr(str2rstr_utf8(s))); 
+		return rstr2hex(rstr(s)); 
 	}
 	this.b64 = function (s) {
-		return rstr2b64(rstr(str2rstr_utf8(s))); 
+		return rstr2b64(rstr(s)); 
 	}
 	this.any = function (s, e) 
 	{ 
-		return rstr2any(rstr(str2rstr_utf8(s)), e);
+		return rstr2any(rstr(s), e);
 	}
 	this.hex_hmac = function (k, d)
 	{ 
-		return rstr2hex(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)));
+		return rstr2hex(rstr_hmac(k, d));
 	}
 	this.b64_hmac = function (k, d)
 	{ 
-		return rstr2b64(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d))); 
+		return rstr2b64(rstr_hmac(k, d)); 
 	}
 	this.any_hmac = function (k, d, e)
 	{ 
-		return rstr2any(rstr_hmac(str2rstr_utf8(k), str2rstr_utf8(d)), e); 
+		return rstr2any(rstr_hmac(k, d), e); 
 	}
 	/*
 	 * Perform a simple self-test to see if the VM is working
@@ -2126,7 +2017,8 @@ Hashes.RMD160 = function (conf)
 	 */
 	function rstr(s)
 	{
-	  return binl2rstr(binl(rstr2binl(s), s.length * 8));
+		s = (utf8) ? Hashes.Helpers.utf8Encode(s) : s;
+		return binl2rstr(binl(rstr2binl(s), s.length * 8));
 	}
 	
 	/*
@@ -2134,18 +2026,21 @@ Hashes.RMD160 = function (conf)
 	 */
 	function rstr_hmac(key, data)
 	{
-	  var bkey = rstr2binl(key);
-	  if(bkey.length > 16) bkey = binl(bkey, key.length * 8);
-	
-	  var ipad = Array(16), opad = Array(16);
-	  for(var i = 0; i < 16; i++)
-	  {
-		ipad[i] = bkey[i] ^ 0x36363636;
-		opad[i] = bkey[i] ^ 0x5C5C5C5C;
-	  }
-	
-	  var hash = binl(ipad.concat(rstr2binl(data)), 512 + data.length * 8);
-	  return binl2rstr(binl(opad.concat(hash), 512 + 160));
+		key = (utf8) ? Hashes.Helpers.utf8Encode(key) : key;
+		data = (utf8) ? Hashes.Helpers.utf8Encode(data) : data;
+
+		var bkey = rstr2binl(key);
+		if(bkey.length > 16) bkey = binl(bkey, key.length * 8);
+		
+		var ipad = Array(16), opad = Array(16);
+		for(var i = 0; i < 16; i++)
+		{
+			ipad[i] = bkey[i] ^ 0x36363636;
+			opad[i] = bkey[i] ^ 0x5C5C5C5C;
+		}
+		
+		var hash = binl(ipad.concat(rstr2binl(data)), 512 + data.length * 8);
+		return binl2rstr(binl(opad.concat(hash), 512 + 160));
 	}
 	
 	/*
@@ -2240,47 +2135,7 @@ Hashes.RMD160 = function (conf)
 	
 	  return output;
 	}
-	
-	/*
-	 * Encode a string as utf-8.
-	 * For efficiency, this assumes the input is valid utf-16.
-	 */
-	function str2rstr_utf8(input)
-	{
-	  var output = "";
-	  var i = -1;
-	  var x, y;
-	
-	  while(++i < input.length)
-	  {
-		/* Decode utf-16 surrogate pairs */
-		x = input.charCodeAt(i);
-		y = i + 1 < input.length ? input.charCodeAt(i + 1) : 0;
-		if(0xD800 <= x && x <= 0xDBFF && 0xDC00 <= y && y <= 0xDFFF)
-		{
-		  x = 0x10000 + ((x & 0x03FF) << 10) + (y & 0x03FF);
-		  i++;
-		}
-	
-		/* Encode output as utf-8 */
-		if(x <= 0x7F)
-		  output += String.fromCharCode(x);
-		else if(x <= 0x7FF)
-		  output += String.fromCharCode(0xC0 | ((x >>> 6 ) & 0x1F),
-										0x80 | ( x         & 0x3F));
-		else if(x <= 0xFFFF)
-		  output += String.fromCharCode(0xE0 | ((x >>> 12) & 0x0F),
-										0x80 | ((x >>> 6 ) & 0x3F),
-										0x80 | ( x         & 0x3F));
-		else if(x <= 0x1FFFFF)
-		  output += String.fromCharCode(0xF0 | ((x >>> 18) & 0x07),
-										0x80 | ((x >>> 12) & 0x3F),
-										0x80 | ((x >>> 6 ) & 0x3F),
-										0x80 | ( x         & 0x3F));
-	  }
-	  return output;
-	}
-	
+		
 	/*
 	 * Encode a string as utf-16
 	 */
