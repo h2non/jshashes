@@ -1,4 +1,5 @@
-# jsHashes `A hash algorithm independent library purely JavaScript implemented for both server and client side`
+# jsHashes 
+`A hash algorithm independent library purely JavaScript implemented for both server and client side`
 
 # About
 
@@ -118,9 +119,9 @@ Each algorithm `class` provides the following public methods:
 
 * Hexadecimal (most extended)
 * Base64
-* Custom hash values `anyOany()` method
+* Custom hash values `any()` method
 
-All include HMAC support. UTF-8 support.
+All include HMAC and UTF-8 support.
 
 ## Benchmark
 TODO...
@@ -128,7 +129,7 @@ TODO...
 ## Notes
 
 * Don't support checksum hash for files on the server-side, only text-based inputs are supported.
-* It has not been planned to include support for more hash algorithms.
+* It has not been planned to include support for more hash algorithms (maybe some in experimental version).
 * The goal is to provide the same JavaScript code in both server and client side, so it isn't planned to improve it in other ways. 
 * Only Node.js server-side was tested, so with minimal changes, you can setup `jsHashes` in other server-side JS environment.
 
@@ -155,13 +156,12 @@ TODO...
   
 ## TODO list
 
-* Add support for CRC32
 * Debugging and validation
 * Code refactoring
 * Remove redundancy and create a global functions
 * Implement new hash algorithms for experimental proposals (tiger, ripemd320, gost, adler32, haval...)
-* Improve and standard code documentation
-* Benchmarking 
+* Improve and standarize code documentation
+* Benchmarking
 
 ## Authors 
 
