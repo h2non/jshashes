@@ -91,8 +91,9 @@ You can use it like module. Here a simple example:
 
 ```javascript
 #!/usr/bin/env node
-// require the module and use Hash object
-var Hashes = require('./lib/hashes');
+// require the module and use the Hash object
+// note is like was installed globally in node_modules/ path
+var Hashes = require('jshashes/server/lib/hashes');
 // sample string
 var str = 'This is a sample text!';
 // new SHA1 instance and base64 string encoding
