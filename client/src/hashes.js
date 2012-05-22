@@ -4,7 +4,7 @@
  * @package jsHashes.Client
  * @author Tomas Aparicio <tomas _AT_ rijndael-project . com>
  * @license New BSD (see LICENSE file)
- * @version 0.1.3b revision 13/01/2012
+ * @version 0.1.4b revision 22/05/2012
  * @see https://github.com/h2non/jsHashes
  *
  * The algorithms implementations was based on its respective standard especification:
@@ -22,13 +22,13 @@
  * Define like namespace and creates an new object
  * @namespace Hashes
  */
-var Hashes = new Object;
+var Hashes = {};
 
 /**
  * Define a Helper object inside Hashes main object
  * @object Helpers
  */
-Hashes.Helpers = new Object;
+Hashes.Helpers = {};
 
 Hashes.Helpers.utf8Encode = function (input)
 {
@@ -89,9 +89,9 @@ Hashes.Helpers.utf8Decode = function (str_data)
 			i += 3;
 		}
 	}
-	
 	return arr.join('');
 }
+
 /**
  * URL Decode
  * @function
@@ -147,7 +147,7 @@ Hashes.Base64 = function ()
 		}
 		
 		return output;		
-	}
+	};
  
 	// public method for decoding
 	this.decode = function (input) 
@@ -188,7 +188,7 @@ Hashes.Base64 = function ()
 		dec = (utf8) ? Hashes.Helpers.utf8Decode(dec) : dec;
 		
 		return dec;
-	}
+	};
 		
 	// set custom pad string
 	this.setPad = function (str)
@@ -196,21 +196,21 @@ Hashes.Base64 = function ()
 		if (conf && typeof (str) == 'string')
 			pad = str;
 		return this;
-	}
+	};
 	// set custom tab string characters
 	this.setTab =  function (str) 
 	{
 		if (conf && typeof (str) == 'string')
 			tab = str;
 		return this;
-	}
+	};
 	
 	this.setUTF8 = function (bool) 
 	{
 		if (conf && typeof bool == 'boolean') 
 			utf8 = bool;
 		return this;
-	}
+	};
 	
 	/* return this object */
 	return this;
@@ -265,7 +265,6 @@ Hashes.CRC32 = function (str)
 	return crc ^ (-1);
 }
 
-
 /**
  * @class Hashes.MD5
  * @param {config}
@@ -293,27 +292,27 @@ Hashes.MD5 = function (conf)
 	this.hex = function (s) 
 	{ 
 		return rstr2hex(rstr(s));
-	}
+	};
 	this.b64 = function (s)
 	{ 
 		return rstr2b64(rstr(s)); 
-	}
+	};
 	this.any = function(s, e) 
 	{ 
 		return rstr2any(rstr(s), e); 
-	}
+	};
 	this.hex_hmac = function (k, d) 
 	{ 
 		return rstr2hex(rstr_hmac(k, d)); 
-	}
+	};
 	this.b64_hmac = function (k, d) 
 	{ 
 		return rstr2b64(rstr_hmac(k,d)); 
-	}
+	};
 	this.any_hmac = function (k, d, e)
 	{ 
 		return rstr2any(rstr_hmac(k, d), e); 
-	}
+	};
 	/**
 	 * Perform a simple self-test to see if the VM is working
 	 * @return {String} Hexadecimal hash sample
@@ -322,7 +321,7 @@ Hashes.MD5 = function (conf)
 	this.vm_test = function ()
 	{
 	  return hex("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
-	}
+	};
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
@@ -333,7 +332,7 @@ Hashes.MD5 = function (conf)
 		if (typeof (a) == 'boolean' ) 
 			hexcase = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
@@ -344,7 +343,7 @@ Hashes.MD5 = function (conf)
 		if (typeof (a) != 'undefined' )
 			b64pad = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {boolean} 
@@ -355,7 +354,7 @@ Hashes.MD5 = function (conf)
 		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
-	}
+	};
 
 
 	/* PRIVATE METHODS */
@@ -694,27 +693,27 @@ Hashes.SHA1 = function (conf)
 	this.hex = function (s) 
 	{ 
 		return rstr2hex(rstr(s)); 
-	}
+	};
 	this.b64 = function (s) 
 	{ 
 		return rstr2b64(rstr(s)); 
-	}
+	};
 	this.any = function (s, e) 
 	{ 
 		return rstr2any(rstr(s), e);
-	}
+	};
 	this.hex_hmac = function (k, d)
 	{
 		return rstr2hex(rstr_hmac(k, d));
-	}
+	};
 	this.b64_hmac = function (k, d)
 	{ 
 		return rstr2b64(rstr_hmac(k, d)); 
-	}
+	};
 	this.any_hmac = function (k, d, e)
 	{ 
 		return rstr2any(rstr_hmac(k, d), e);
-	}
+	};
 	/**
 	 * Perform a simple self-test to see if the VM is working
 	 * @return {String} Hexadecimal hash sample
@@ -723,7 +722,7 @@ Hashes.SHA1 = function (conf)
 	this.vm_test = function ()
 	{
 	  return hex("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
-	}
+	};
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
@@ -734,7 +733,7 @@ Hashes.SHA1 = function (conf)
 		if (typeof (a) == 'boolean' ) 
 			hexcase = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
@@ -745,7 +744,7 @@ Hashes.SHA1 = function (conf)
 		if (typeof (a) != 'undefined' )
 			b64pad = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {boolean} 
@@ -756,7 +755,7 @@ Hashes.SHA1 = function (conf)
 		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
-	}
+	};
 
 	/* PRIVATE METHODS */
 	/*
@@ -1046,27 +1045,27 @@ Hashes.SHA256 = function (conf)
 	this.hex = function (s) 
 	{ 
 		return rstr2hex(rstr(s)); 
-	}
+	};
 	this.b64 = function (s) 
 	{ 
 		return rstr2b64(rstr(s)); 
-	}
+	};
 	this.any = function (s, e) 
 	{ 
 		return rstr2any(rstr(s), e); 
-	}
+	};
 	this.hex_hmac = function (k, d)
 	{ 
 		return rstr2hex(rstr_hmac(k, d)); 
-	}
+	};
 	this.b64_hmac = function (k, d)
 	{ 
 		return rstr2b64(rstr_hmac(k, d));
-	}
+	};
 	this.any_hmac = function (k, d, e)
 	{ 
 		return rstr2any(rstr_hmac(k, d), e); 
-	}
+	};
 	/**
 	 * Perform a simple self-test to see if the VM is working
 	 * @return {String} Hexadecimal hash sample
@@ -1075,7 +1074,7 @@ Hashes.SHA256 = function (conf)
 	this.vm_test = function ()
 	{
 	  return hex("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
-	}
+	};
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
@@ -1086,7 +1085,7 @@ Hashes.SHA256 = function (conf)
 		if (typeof (a) == 'boolean' ) 
 			hexcase = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
@@ -1097,7 +1096,7 @@ Hashes.SHA256 = function (conf)
 		if (typeof (a) != 'undefined' )
 			b64pad = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {boolean} 
@@ -1108,7 +1107,7 @@ Hashes.SHA256 = function (conf)
 		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
-	}
+	};
 	
 	/* PRIVATE METHODS */
 	/*
@@ -1226,8 +1225,7 @@ Hashes.SHA256 = function (conf)
 		output += encoding.charAt(remainders[i]);
 	
 	  /* Append leading zero equivalents */
-	  var full_length = Math.ceil(input.length * 8 /
-										(Math.log(encoding.length) / Math.log(2)))
+	  var full_length = Math.ceil(input.length * 8 / (Math.log(encoding.length) / Math.log(2)))
 	  for(i = output.length; i < full_length; i++)
 		output = encoding[0] + output;
 	
@@ -1403,27 +1401,27 @@ Hashes.SHA512 = function (conf)
 	this.hex = function (s) 
 	{ 
 		return rstr2hex(rstr(s)); 
-	}
+	};
 	this.b64 = function (s) 
 	{ 
 		return rstr2b64(rstr(s)); 
-	}
+	};
 	this.any = function (s, e) 
 	{ 
 		return rstr2any(rstr(s), e);
-	}
+	};
 	this.hex_hmac = function (k, d)
 	{
 		return rstr2hex(rstr_hmac(k, d));
-	}
+	};
 	this.b64_hmac = function (k, d)
 	{ 
 		return rstr2b64(rstr_hmac(k, d)); 
-	}
+	};
 	this.any_hmac = function (k, d, e)
 	{ 
 		return rstr2any(rstr_hmac(k, d), e);
-	}
+	};
 	/**
 	 * Perform a simple self-test to see if the VM is working
 	 * @return {String} Hexadecimal hash sample
@@ -1432,7 +1430,7 @@ Hashes.SHA512 = function (conf)
 	this.vm_test = function ()
 	{
 	  return hex("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
-	}
+	};
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
@@ -1443,7 +1441,7 @@ Hashes.SHA512 = function (conf)
 		if (typeof (a) == 'boolean' ) 
 			hexcase = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
@@ -1454,7 +1452,7 @@ Hashes.SHA512 = function (conf)
 		if (typeof (a) != 'undefined' )
 			b64pad = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {boolean} 
@@ -1465,7 +1463,7 @@ Hashes.SHA512 = function (conf)
 		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
-	}
+	};
 
 	/* PRIVATE METHODS */
 	/*
@@ -1961,26 +1959,26 @@ Hashes.RMD160 = function (conf)
 	this.hex = function (s) 
 	{ 
 		return rstr2hex(rstr(s)); 
-	}
+	};
 	this.b64 = function (s) {
 		return rstr2b64(rstr(s)); 
-	}
+	};
 	this.any = function (s, e) 
 	{ 
 		return rstr2any(rstr(s), e);
-	}
+	};
 	this.hex_hmac = function (k, d)
 	{ 
 		return rstr2hex(rstr_hmac(k, d));
-	}
+	};
 	this.b64_hmac = function (k, d)
 	{ 
 		return rstr2b64(rstr_hmac(k, d)); 
-	}
+	};
 	this.any_hmac = function (k, d, e)
 	{ 
 		return rstr2any(rstr_hmac(k, d), e); 
-	}
+	};
 	/**
 	 * Perform a simple self-test to see if the VM is working
 	 * @return {String} Hexadecimal hash sample
@@ -1989,7 +1987,7 @@ Hashes.RMD160 = function (conf)
 	this.vm_test = function ()
 	{
 	  return hex("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
-	}
+	};
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
@@ -2000,7 +1998,7 @@ Hashes.RMD160 = function (conf)
 		if (typeof (a) == 'boolean' ) 
 			hexcase = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
@@ -2011,7 +2009,7 @@ Hashes.RMD160 = function (conf)
 		if (typeof (a) != 'undefined' )
 			b64pad = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {boolean} 
@@ -2022,7 +2020,7 @@ Hashes.RMD160 = function (conf)
 		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
-	}
+	};
 
 	/* PRIVATE METHODS */
 	/*

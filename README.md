@@ -137,6 +137,9 @@ TODO...
 ## Changelog
 
 ### Beta
+* `0.1.4b`
+  - Now declaring objects using Literal Notation.
+  - Solved sintax errors on minimized version (jshashes.min.js)
 * `0.1.3b`
   - Starting non-redundancy code refactorization
   - Added `Helpers` Object with some global functions

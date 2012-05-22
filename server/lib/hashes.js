@@ -4,7 +4,7 @@
  * @package jsHashes.Server
  * @author Tomas Aparicio <tomas _AT_ rijndael-project . com>
  * @license New BSD (see LICENSE file)
- * @version 0.1.3b revision 13/01/2012
+ * @version 0.1.4b revision 22/05/2012
  * @see https://github.com/h2non/jsHashes
  *
  * The algorithms implementations was based on its respective standard especification:
@@ -22,13 +22,13 @@
  * Define like namespace and creates an new object
  * @namespace Hashes
  */
-var Hashes = new Object;
+var Hashes = {};
 
 /**
  * Define a Helper object inside Hashes main object
  * @object Helpers
  */
-Hashes.Helpers = new Object;
+Hashes.Helpers = {};
 
 Hashes.Helpers.utf8Encode = function (input)
 {
