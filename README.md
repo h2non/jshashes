@@ -92,7 +92,7 @@ You can use it like module. Here a simple example:
 ```javascript
 #!/usr/bin/env node
 // require the module and use the Hash object
-// suppossing you install via NPM and is located on node_modules/
+// suppossing you install via NPM and is located at node/lib/node_modules/
 var Hashes = require('jshashes/server/lib/hashes');
 // sample string
 var str = 'This is a sample text!';
