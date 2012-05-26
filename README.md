@@ -125,7 +125,26 @@ Each algorithm `class` provides the following public methods:
 All include HMAC and UTF-8 support.
 
 ## Benchmark
-TODO...
+
+Node.js 0.6.18 running on a VPS Intel I7 930 with 512 MB of RAM (see `server/benchmark.js`) 
+
+```javascript
+Simple benchmark test generating 10000 hashes for each algorithm.
+String: "A0gTtNtKh3RaduBfIo59ZdfTc5pTdOQrkxdZ5EeVOIZh1cXxqPyexKZBg6VlE1KzIz6pd6r1LLIpT5B8THRfcGvbJElwhWBi9ZAE"
+
+* MD5
+** Done in: 205 miliseconds
+* SHA1
+** Done in: 277 miliseconds
+* SHA256
+** Done in: 525 miliseconds
+* SHA512
+** Done in: 593 miliseconds
+* RMD160
+** Done in: 383 miliseconds
+```
+
+See `client/benchmark.html` for client-side.
 
 ## Notes
 
