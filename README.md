@@ -128,7 +128,7 @@ All include HMAC and UTF-8 support.
 
 Node.js 0.6.18 running on a VPS Intel I7 930 with 512 MB of RAM (see `server/benchmark.js`) 
 
-```javascript
+```bash
 Simple benchmark test generating 10000 hashes for each algorithm.
 String: "A0gTtNtKh3RaduBfIo59ZdfTc5pTdOQrkxdZ5EeVOIZh1cXxqPyexKZBg6VlE1KzIz6pd6r1LLIpT5B8THRfcGvbJElwhWBi9ZAE"
 
