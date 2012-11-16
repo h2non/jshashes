@@ -1,13 +1,13 @@
 /**
- * jsHashes - A hash algorithm independent library purely JavaScript implemented for both server and client side
+ * jsHashes - A fast and independent hashing library pure JavaScript implemented for both server and client side
  * 
  * @package jsHashes.Server
  * @author Tomas Aparicio <tomas _AT_ rijndael-project . com>
  * @license New BSD (see LICENSE file)
- * @version 0.1.4b revision 22/05/2012
+ * @version 0.1.5b revision 16/11/2012
  * @see https://github.com/h2non/jsHashes
  *
- * The algorithms implementations was based on its respective standard especification:
+ * Hash algorithms specification:
  *
  * MD5 <http://www.ietf.org/rfc/rfc1321.txt>
  * RIPEMD-160 <http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>
@@ -32,85 +32,86 @@ Hashes.Helpers = {};
 
 Hashes.Helpers.utf8Encode = function (input)
 {
-	var output = "";
-	var i = -1;
-	var x, y;
-	
-	while(++i < input.length)
-	{
-		/* Decode utf-16 surrogate pairs */
-		x = input.charCodeAt(i);
-		y = i + 1 < input.length ? input.charCodeAt(i + 1) : 0;
-		if(0xD800 <= x && x <= 0xDBFF && 0xDC00 <= y && y <= 0xDFFF)
-		{
-			x = 0x10000 + ((x & 0x03FF) << 10) + (y & 0x03FF);
-			i++;
-		}
-		
-		/* Encode output as utf-8 */
-		if(x <= 0x7F)
-			output += String.fromCharCode(x);
-		else if(x <= 0x7FF)
-			output += String.fromCharCode(0xC0 | ((x >>> 6 ) & 0x1F),
-										0x80 | ( x         & 0x3F));
-		else if(x <= 0xFFFF)
-			output += String.fromCharCode(0xE0 | ((x >>> 12) & 0x0F),
-										0x80 | ((x >>> 6 ) & 0x3F),
-										0x80 | ( x         & 0x3F));
-		else if(x <= 0x1FFFFF)
-			output += String.fromCharCode(0xF0 | ((x >>> 18) & 0x07),
-										0x80 | ((x >>> 12) & 0x3F),
-										0x80 | ((x >>> 6 ) & 0x3F),
-										0x80 | ( x         & 0x3F));
-	}
-	return output;
-}
+    var output = "";
+    var i = -1;
+    var x, y;
+
+    while(++i < input.length)
+    {
+            /* Decode utf-16 surrogate pairs */
+            x = input.charCodeAt(i);
+            y = i + 1 < input.length ? input.charCodeAt(i + 1) : 0;
+            if(0xD800 <= x && x <= 0xDBFF && 0xDC00 <= y && y <= 0xDFFF)
+            {
+                    x = 0x10000 + ((x & 0x03FF) << 10) + (y & 0x03FF);
+                    i++;
+            }
+
+            /* Encode output as utf-8 */
+            if(x <= 0x7F)
+                    output += String.fromCharCode(x);
+            else if(x <= 0x7FF)
+                    output += String.fromCharCode(0xC0 | ((x >>> 6 ) & 0x1F),
+                                                                            0x80 | ( x         & 0x3F));
+            else if(x <= 0xFFFF)
+                    output += String.fromCharCode(0xE0 | ((x >>> 12) & 0x0F),
+                                                                            0x80 | ((x >>> 6 ) & 0x3F),
+                                                                            0x80 | ( x         & 0x3F));
+            else if(x <= 0x1FFFFF)
+                    output += String.fromCharCode(0xF0 | ((x >>> 18) & 0x07),
+                                                                            0x80 | ((x >>> 12) & 0x3F),
+                                                                            0x80 | ((x >>> 6 ) & 0x3F),
+                                                                            0x80 | ( x         & 0x3F));
+    }
+    return output;
+};
 
 Hashes.Helpers.utf8Decode = function (str_data) 
 {
-	var arr = [],
-	 	 i = ac = c1 = c2 = c3 = 0;
-	str_data += '';
-	
-	while (i < str_data.length)
-	{
-		c1 = str_data.charCodeAt(i);
-		if (c1 < 128) {
-			arr[ac++] = String.fromCharCode(c1);
-			i++;
-		} else if (c1 > 191 && c1 < 224) {
-			c2 = str_data.charCodeAt(i + 1);
-			arr[ac++] = String.fromCharCode(((c1 & 31) << 6) | (c2 & 63));
-			i += 2;
-		} else {
-			c2 = str_data.charCodeAt(i + 1);
-			c3 = str_data.charCodeAt(i + 2);
-			arr[ac++] = String.fromCharCode(((c1 & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
-			i += 3;
-		}
-	}
-	
-	return arr.join('');
-}
+    var arr = [],
+             i = ac = c1 = c2 = c3 = 0;
+    str_data += '';
+
+    while (i < str_data.length)
+    {
+            c1 = str_data.charCodeAt(i);
+            if (c1 < 128) {
+                    arr[ac++] = String.fromCharCode(c1);
+                    i++;
+            } else if (c1 > 191 && c1 < 224) {
+                    c2 = str_data.charCodeAt(i + 1);
+                    arr[ac++] = String.fromCharCode(((c1 & 31) << 6) | (c2 & 63));
+                    i += 2;
+            } else {
+                    c2 = str_data.charCodeAt(i + 1);
+                    c3 = str_data.charCodeAt(i + 2);
+                    arr[ac++] = String.fromCharCode(((c1 & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
+                    i += 3;
+            }
+    }
+    return arr.join('');
+};
+
 /**
  * URL Decode
  * @function
  */
 Hashes.Helpers.urlDecode = function (str)
 {
-	str = str.replace(new RegExp('\\+','g'),' ');
-	return unescape(str);
-}
+    str = str.replace(new RegExp('\\+','g'),' ');
+    return unescape(str);
+};
+
 /**
  * URL Encode
  * @function
  */
 Hashes.Helpers.urlEncode = function (str)
 {
-	str = escape(str);
-	str = str.replace(new RegExp('\\+','g'),'%2B');
-	return str.replace(new RegExp('%20','g'),'+');
-}
+    str = escape(str);
+    str = str.replace(new RegExp('\\+','g'),'%2B');
+    return str.replace(new RegExp('%20','g'),'+');
+};
 
 /**
  * @class Base64
@@ -118,103 +119,103 @@ Hashes.Helpers.urlEncode = function (str)
  */ 
 Hashes.Base64 = function () 
 {
-	// private properties
-	var tab = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
- 	var pad = '='; // default pad according with the RFC standard
-	var url = false; // URL encoding support @todo
-	var utf8 = true; // by default enable UTF-8 support encoding
-	
-	// public method for encoding
-	this.encode = function (input) 
-	{
-		try { pad } catch(e) { pad='='; }
-		var output = "";
-		var len = input.length;
-		input = (utf8) ? Hashes.Helpers.utf8Encode(input) : input;
-		
-		for(var i = 0; i < len; i += 3)
-		{
-			var triplet = (input.charCodeAt(i) << 16)
-						 | (i + 1 < len ? input.charCodeAt(i+1) << 8 : 0)
-						 | (i + 2 < len ? input.charCodeAt(i+2)      : 0);
-			for(var j = 0; j < 4; j++)
-			{
-				if (i * 8 + j * 6 > input.length * 8) 
-					output += pad;
-				else 
-					output += tab.charAt((triplet >>> 6*(3-j)) & 0x3F);
-			}
-		}
-		
-		return output;		
-	}
- 
-	// public method for decoding
-	this.decode = function (input) 
-	{
-		// var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-		var o1, o2, o3, h1, h2, h3, h4, bits,
-		  i = ac = 0,
-		  dec = "",
-		  arr = [];
-		
-		if (!input) 
-			return input;
-		
-		input = input.replace(new RegExp('\\'+pad,'gi'),''); // use '='
-		//input += '';
-		
-		do { // unpack four hexets into three octets using index points in b64
-		  h1 = tab.indexOf(input.charAt(i++));
-		  h2 = tab.indexOf(input.charAt(i++));
-		  h3 = tab.indexOf(input.charAt(i++));
-		  h4 = tab.indexOf(input.charAt(i++));
-		
-		  bits = h1 << 18 | h2 << 12 | h3 << 6 | h4;
-		
-		  o1 = bits >> 16 & 0xff;
-		  o2 = bits >> 8 & 0xff;
-		  o3 = bits & 0xff;
-		
-		  if (h3 == 64)
-				arr[ac++] = String.fromCharCode(o1);
-		  else if (h4 == 64) 
-				arr[ac++] = String.fromCharCode(o1, o2);
-		  else 
-				arr[ac++] = String.fromCharCode(o1, o2, o3);
-		} while (i < input.length);
-		
-		dec = arr.join('');
-		dec = (utf8) ? Hashes.Helpers.utf8Decode(dec) : dec;
-		
-		return dec;
-	}
-		
-	// set custom pad string
-	this.setPad = function (str)
-	{
-		if (conf && typeof (str) == 'string')
-			pad = str;
-		return this;
-	}
-	// set custom tab string characters
-	this.setTab =  function (str) 
-	{
-		if (conf && typeof (str) == 'string')
-			tab = str;
-		return this;
-	}
-	
-	this.setUTF8 = function (bool) 
-	{
-		if (conf && typeof bool == 'boolean') 
-			utf8 = bool;
-		return this;
-	}
-	
-	/* return this object */
-	return this;
-}
+    // private properties
+    var tab = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+    var pad = '='; // default pad according with the RFC standard
+    var url = false; // URL encoding support @todo
+    var utf8 = true; // by default enable UTF-8 support encoding
+
+    // public method for encoding
+    this.encode = function (input) 
+    {
+            try { pad } catch(e) { pad='='; }
+            var output = "";
+            var len = input.length;
+            input = (utf8) ? Hashes.Helpers.utf8Encode(input) : input;
+
+            for(var i = 0; i < len; i += 3)
+            {
+                    var triplet = (input.charCodeAt(i) << 16)
+                                             | (i + 1 < len ? input.charCodeAt(i+1) << 8 : 0)
+                                             | (i + 2 < len ? input.charCodeAt(i+2)      : 0);
+                    for(var j = 0; j < 4; j++)
+                    {
+                            if (i * 8 + j * 6 > input.length * 8) 
+                                    output += pad;
+                            else 
+                                    output += tab.charAt((triplet >>> 6*(3-j)) & 0x3F);
+                    }
+            }
+
+            return output;		
+    };
+
+    // public method for decoding
+    this.decode = function (input) 
+    {
+            // var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+            var o1, o2, o3, h1, h2, h3, h4, bits,
+              i = ac = 0,
+              dec = "",
+              arr = [];
+
+            if (!input) 
+                    return input;
+
+            input = input.replace(new RegExp('\\'+pad,'gi'),''); // use '='
+            //input += '';
+
+            do { // unpack four hexets into three octets using index points in b64
+              h1 = tab.indexOf(input.charAt(i++));
+              h2 = tab.indexOf(input.charAt(i++));
+              h3 = tab.indexOf(input.charAt(i++));
+              h4 = tab.indexOf(input.charAt(i++));
+
+              bits = h1 << 18 | h2 << 12 | h3 << 6 | h4;
+
+              o1 = bits >> 16 & 0xff;
+              o2 = bits >> 8 & 0xff;
+              o3 = bits & 0xff;
+
+              if (h3 == 64)
+                            arr[ac++] = String.fromCharCode(o1);
+              else if (h4 == 64) 
+                            arr[ac++] = String.fromCharCode(o1, o2);
+              else 
+                            arr[ac++] = String.fromCharCode(o1, o2, o3);
+            } while (i < input.length);
+
+            dec = arr.join('');
+            dec = (utf8) ? Hashes.Helpers.utf8Decode(dec) : dec;
+
+            return dec;
+    };
+
+    // set custom pad string
+    this.setPad = function (str)
+    {
+            if (conf && typeof (str) == 'string')
+                    pad = str;
+            return this;
+    };
+    // set custom tab string characters
+    this.setTab =  function (str) 
+    {
+            if (conf && typeof (str) == 'string')
+                    tab = str;
+            return this;
+    };
+
+    this.setUTF8 = function (bool) 
+    {
+            if (conf && typeof bool == 'boolean') 
+                    utf8 = bool;
+            return this;
+    };
+
+    /* return this object */
+    return this;
+};
 
 /**
  * CRC-32 calculation
@@ -263,8 +264,7 @@ Hashes.CRC32 = function (str)
 	}
  
 	return crc ^ (-1);
-}
-
+};
 
 /**
  * @class Hashes.MD5
@@ -293,27 +293,27 @@ Hashes.MD5 = function (conf)
 	this.hex = function (s) 
 	{ 
 		return rstr2hex(rstr(s));
-	}
+	};
 	this.b64 = function (s)
 	{ 
 		return rstr2b64(rstr(s)); 
-	}
+	};
 	this.any = function(s, e) 
 	{ 
 		return rstr2any(rstr(s), e); 
-	}
+	};
 	this.hex_hmac = function (k, d) 
 	{ 
 		return rstr2hex(rstr_hmac(k, d)); 
-	}
+	};
 	this.b64_hmac = function (k, d) 
 	{ 
 		return rstr2b64(rstr_hmac(k,d)); 
-	}
+	};
 	this.any_hmac = function (k, d, e)
 	{ 
 		return rstr2any(rstr_hmac(k, d), e); 
-	}
+	};
 	/**
 	 * Perform a simple self-test to see if the VM is working
 	 * @return {String} Hexadecimal hash sample
@@ -322,7 +322,7 @@ Hashes.MD5 = function (conf)
 	this.vm_test = function ()
 	{
 	  return hex("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
-	}
+	};
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
@@ -333,7 +333,7 @@ Hashes.MD5 = function (conf)
 		if (typeof (a) == 'boolean' ) 
 			hexcase = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
@@ -344,7 +344,7 @@ Hashes.MD5 = function (conf)
 		if (typeof (a) != 'undefined' )
 			b64pad = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {boolean} 
@@ -355,7 +355,7 @@ Hashes.MD5 = function (conf)
 		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
-	}
+	};
 
 
 	/* PRIVATE METHODS */
@@ -666,7 +666,7 @@ Hashes.MD5 = function (conf)
 	
 	/* return this object */
 	return this;	
-}
+};
 
 /**
  * @class Hashes.SHA1
@@ -694,27 +694,27 @@ Hashes.SHA1 = function (conf)
 	this.hex = function (s) 
 	{ 
 		return rstr2hex(rstr(s)); 
-	}
+	};
 	this.b64 = function (s) 
 	{ 
 		return rstr2b64(rstr(s)); 
-	}
+	};
 	this.any = function (s, e) 
 	{ 
 		return rstr2any(rstr(s), e);
-	}
+	};
 	this.hex_hmac = function (k, d)
 	{
 		return rstr2hex(rstr_hmac(k, d));
-	}
+	};
 	this.b64_hmac = function (k, d)
 	{ 
 		return rstr2b64(rstr_hmac(k, d)); 
-	}
+	};
 	this.any_hmac = function (k, d, e)
 	{ 
 		return rstr2any(rstr_hmac(k, d), e);
-	}
+	};
 	/**
 	 * Perform a simple self-test to see if the VM is working
 	 * @return {String} Hexadecimal hash sample
@@ -723,7 +723,7 @@ Hashes.SHA1 = function (conf)
 	this.vm_test = function ()
 	{
 	  return hex("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
-	}
+	};
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
@@ -734,7 +734,7 @@ Hashes.SHA1 = function (conf)
 		if (typeof (a) == 'boolean' ) 
 			hexcase = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
@@ -745,7 +745,7 @@ Hashes.SHA1 = function (conf)
 		if (typeof (a) != 'undefined' )
 			b64pad = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {boolean} 
@@ -756,7 +756,7 @@ Hashes.SHA1 = function (conf)
 		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
-	}
+	};
 
 	/* PRIVATE METHODS */
 	/*
@@ -1017,7 +1017,7 @@ Hashes.SHA1 = function (conf)
 	
 	/* return this object */
 	return this;	
-}
+};
 
 /**
  * @class Hashes.SHA256
@@ -1046,27 +1046,27 @@ Hashes.SHA256 = function (conf)
 	this.hex = function (s) 
 	{ 
 		return rstr2hex(rstr(s)); 
-	}
+	};
 	this.b64 = function (s) 
 	{ 
 		return rstr2b64(rstr(s)); 
-	}
+	};
 	this.any = function (s, e) 
 	{ 
 		return rstr2any(rstr(s), e); 
-	}
+	};
 	this.hex_hmac = function (k, d)
 	{ 
 		return rstr2hex(rstr_hmac(k, d)); 
-	}
+	};
 	this.b64_hmac = function (k, d)
 	{ 
 		return rstr2b64(rstr_hmac(k, d));
-	}
+	};
 	this.any_hmac = function (k, d, e)
 	{ 
 		return rstr2any(rstr_hmac(k, d), e); 
-	}
+	};
 	/**
 	 * Perform a simple self-test to see if the VM is working
 	 * @return {String} Hexadecimal hash sample
@@ -1075,7 +1075,7 @@ Hashes.SHA256 = function (conf)
 	this.vm_test = function ()
 	{
 	  return hex("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
-	}
+	};
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
@@ -1086,7 +1086,7 @@ Hashes.SHA256 = function (conf)
 		if (typeof (a) == 'boolean' ) 
 			hexcase = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
@@ -1097,7 +1097,7 @@ Hashes.SHA256 = function (conf)
 		if (typeof (a) != 'undefined' )
 			b64pad = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {boolean} 
@@ -1108,7 +1108,7 @@ Hashes.SHA256 = function (conf)
 		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
-	}
+	};
 	
 	/* PRIVATE METHODS */
 	/*
@@ -1226,8 +1226,7 @@ Hashes.SHA256 = function (conf)
 		output += encoding.charAt(remainders[i]);
 	
 	  /* Append leading zero equivalents */
-	  var full_length = Math.ceil(input.length * 8 /
-										(Math.log(encoding.length) / Math.log(2)))
+	  var full_length = Math.ceil(input.length * 8 / (Math.log(encoding.length) / Math.log(2)))
 	  for(i = output.length; i < full_length; i++)
 		output = encoding[0] + output;
 	
@@ -1375,7 +1374,7 @@ Hashes.SHA256 = function (conf)
 	
 	/* return this object */
 	return this;	
-}
+};
 
 /**
  * @class Hashes.SHA512
@@ -1403,27 +1402,27 @@ Hashes.SHA512 = function (conf)
 	this.hex = function (s) 
 	{ 
 		return rstr2hex(rstr(s)); 
-	}
+	};
 	this.b64 = function (s) 
 	{ 
 		return rstr2b64(rstr(s)); 
-	}
+	};
 	this.any = function (s, e) 
 	{ 
 		return rstr2any(rstr(s), e);
-	}
+	};
 	this.hex_hmac = function (k, d)
 	{
 		return rstr2hex(rstr_hmac(k, d));
-	}
+	};
 	this.b64_hmac = function (k, d)
 	{ 
 		return rstr2b64(rstr_hmac(k, d)); 
-	}
+	};
 	this.any_hmac = function (k, d, e)
 	{ 
 		return rstr2any(rstr_hmac(k, d), e);
-	}
+	};
 	/**
 	 * Perform a simple self-test to see if the VM is working
 	 * @return {String} Hexadecimal hash sample
@@ -1432,7 +1431,7 @@ Hashes.SHA512 = function (conf)
 	this.vm_test = function ()
 	{
 	  return hex("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
-	}
+	};
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
@@ -1443,7 +1442,7 @@ Hashes.SHA512 = function (conf)
 		if (typeof (a) == 'boolean' ) 
 			hexcase = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
@@ -1454,7 +1453,7 @@ Hashes.SHA512 = function (conf)
 		if (typeof (a) != 'undefined' )
 			b64pad = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {boolean} 
@@ -1465,7 +1464,7 @@ Hashes.SHA512 = function (conf)
 		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
-	}
+	};
 
 	/* PRIVATE METHODS */
 	/*
@@ -1932,7 +1931,7 @@ Hashes.SHA512 = function (conf)
 	
 	/* return this object */
 	return this;	
-}
+};
 
 /**
  * @class Hashes.RMD160
@@ -1961,26 +1960,26 @@ Hashes.RMD160 = function (conf)
 	this.hex = function (s) 
 	{ 
 		return rstr2hex(rstr(s)); 
-	}
+	};
 	this.b64 = function (s) {
 		return rstr2b64(rstr(s)); 
-	}
+	};
 	this.any = function (s, e) 
 	{ 
 		return rstr2any(rstr(s), e);
-	}
+	};
 	this.hex_hmac = function (k, d)
 	{ 
 		return rstr2hex(rstr_hmac(k, d));
-	}
+	};
 	this.b64_hmac = function (k, d)
 	{ 
 		return rstr2b64(rstr_hmac(k, d)); 
-	}
+	};
 	this.any_hmac = function (k, d, e)
 	{ 
 		return rstr2any(rstr_hmac(k, d), e); 
-	}
+	};
 	/**
 	 * Perform a simple self-test to see if the VM is working
 	 * @return {String} Hexadecimal hash sample
@@ -1989,7 +1988,7 @@ Hashes.RMD160 = function (conf)
 	this.vm_test = function ()
 	{
 	  return hex("abc").toLowerCase() == "900150983cd24fb0d6963f7d28e17f72";
-	}
+	};
 	/** 
 	 * @description Enable/disable uppercase hexadecimal returned string 
 	 * @param {boolean} 
@@ -2000,7 +1999,7 @@ Hashes.RMD160 = function (conf)
 		if (typeof (a) == 'boolean' ) 
 			hexcase = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {string} Pad
@@ -2011,7 +2010,7 @@ Hashes.RMD160 = function (conf)
 		if (typeof (a) != 'undefined' )
 			b64pad = a;
 		return this;
-	}
+	};
 	/** 
 	 * @description Defines a base64 pad string 
 	 * @param {boolean} 
@@ -2022,7 +2021,7 @@ Hashes.RMD160 = function (conf)
 		if (typeof (a) == 'boolean') 
 			utf8 = a;
 		return this;
-	}
+	};
 
 	/* PRIVATE METHODS */
 	/*
@@ -2313,7 +2312,7 @@ Hashes.RMD160 = function (conf)
 	
 	/* return this object */
 	return this;
-}
+};
 
-/* node.js module export */
+// node module exports
 module.exports = Hashes;

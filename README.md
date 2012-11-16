@@ -1,11 +1,11 @@
 # jsHashes 
-`A hash algorithm independent library purely JavaScript implemented for both server and client side`
+`A fast and independent hashing library pure JavaScript implemented for both server and client side`
 
 # About
 
 `jsHashes` is a pure JavaScript implementation of the most extended hash algorithms.
 Its goal is to provide an independent, fast and easy solution for hash algorithms both for client-side and server-side JavaScript environments.
-The code is fully compatible with the ECMAScript language specification and was tested in all major browsers (client-side) and node.js all versions (server-side).   
+The code is fully compatible with the ECMAScript language specification and was tested in all major browsers (client-side) and node.js (server-side).   
 
 ## Supported hash algorithms
 
@@ -91,9 +91,8 @@ You can use it like module. Here a simple example:
 
 ```javascript
 #!/usr/bin/env node
-// require the module and use the Hash object
-// suppossing you install via NPM and is located at node/lib/node_modules/
-var Hashes = require('jshashes/server/lib/hashes');
+// require the module
+var Hashes = require('jshashes');
 // sample string
 var str = 'This is a sample text!';
 // new SHA1 instance and base64 string encoding
@@ -156,6 +155,9 @@ See `client/benchmark.html` for client-side.
 ## Changelog
 
 ### Beta
+* `0.1.5b`
+  - Added index.js for easy call the module in Node.js
+  - Updated documentation
 * `0.1.4b`
   - Now declaring objects using Literal Notation.
   - Solved sintax errors on minimized version (jshashes.min.js)
@@ -180,12 +182,8 @@ See `client/benchmark.html` for client-side.
   
 ## TODO list
 
-* Debugging and validation
 * Code refactoring
-* Remove redundancy and create a global functions
-* Implement new hash algorithms for experimental proposals (tiger, ripemd320, gost, adler32, haval...)
-* Improve and standarize code documentation
-* Benchmarking
+* Remove redundant methods 
 
 ## Authors 
 
@@ -213,4 +211,3 @@ jsHashes is released under `New BSD` license. See `LICENSE` file.
 ## Issues
 
 Feel free to report any issue you experiment via Github <https://github.com/h2non/jsHashes/issues>.
-
