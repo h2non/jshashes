@@ -1,6 +1,4 @@
-#!/usr/bin/env node
-
-var Hashes = require('./lib/hashes');
+var Hashes = require('../../hashes');
  
 function randomString(string_length) {
 	var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";

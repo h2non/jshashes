@@ -1,5 +1,6 @@
 # jsHashes 
-`A fast and independent hashing library pure JavaScript implemented for both server and client side`
+
+A fast and independent hashing library pure JavaScript implemented for both server and client side
 
 # About
 
@@ -18,16 +19,23 @@ The code is fully compatible with the ECMAScript language specification and was 
 
 **Aditional functionalities**
 
-* `Base64 encode/decode` (<http://tools.ietf.org/html/rfc3548>)
+* `Base64 encoding/decoding` (<http://tools.ietf.org/html/rfc3548>)
 * `CRC-32 calculation`
-* `URL encode/decode`
-* `UTF-8 encode/decode`
+* `UTF-8 encoding/decoding`
+
+## Environments
+
+- Browser (ES5)
+- Node.js (all versions)
+- Rhino
+- RingoJS
 
 ## Usage
-Following some software design patterns, `jsHashes` implements an object-oriented paradigm for an easy and clean use. 
-Each algorithm has its respective own `class`, providing encapsulation (public and private methods) and independence from other classes.   
 
-All the `classes` are defined inside the Object called `Hashes` (like namespace). 
+Following some software design patterns, `jsHashes` implements an object-oriented class-based paradigm for an easy and clean use. 
+Each algorithm has its respective own `class`, providing encapsulation and independence from other classes.   
+
+All the `classes` are defined inside the `Hashes` Object namespace. 
 
 Here you can see an example of how to create a new instance for each algorithm:
 
@@ -49,16 +57,17 @@ Now, an example of how to output an hexadecimal-based hash encoding for each alg
 ```javascript
 // sample string
 var str = 'Sample text!';
-// output into DOM
-document.write('<p>MD5: <b>' + MD5.hex(str) + '</b></p>');
-document.write('<p>SHA1: <b>' + SHA1.hex(str) + '</b></p>');
-document.write('<p>SHA256: <b>' + SHA256.hex(str) + '</b></p>');
-document.write('<p>SHA512: <b>' + SHA512.hex(str) + '</b></p>');
-document.write('<p>RIPEMD-160: <b>' + RMD160.hex(str) + '</b></p>');
+// output to console
+console.log('MD5: ' + MD5.hex(str));
+console.log('SHA1: ' + SHA1.hex(str));
+console.log('SHA256: ' + SHA256.hex(str));
+console.log('SHA512: ' + SHA512.hex(str));
+console.log('RIPEMD-160: ' + RMD160.hex(str));
 ```
 
 ### Client-Side
-This is a simple implementation for client-side environment:
+
+This is a simple implementation for a client-side environment:
 
 ```html
 <html>
@@ -79,7 +88,8 @@ document.write('<p>MD5: <b>' + MD5 + '</b></p>');
 ```
 
 ### Server-Side
-The server-side was implemented by default for node.js (V8 chrome engine) <http://nodejs.org>.
+
+The library was builded using the CommonJS module standard, so the same code works in [Node](http://nodejs.org).
 
 `jsHashes` is available via NPM. You can install it simply doing:
 
@@ -87,10 +97,9 @@ The server-side was implemented by default for node.js (V8 chrome engine) <http:
 $ npm install jshashes
 ```
 
-You can use it like module. Here a simple example:
+A Node use example:
 
 ```javascript
-#!/usr/bin/env node
 // require the module
 var Hashes = require('jshashes');
 // sample string
@@ -121,8 +130,6 @@ Each algorithm `class` provides the following public methods:
 * Base64
 * Custom hash values `any()` method
 
-All include HMAC and UTF-8 support.
-
 ## Benchmark
 
 Node.js 0.6.18 running on a VPS Intel I7 930 with 512 MB of RAM (see `server/benchmark.js`) 
@@ -147,14 +154,21 @@ See `client/benchmark.html` for client-side.
 
 ## Notes
 
-* Don't support checksum hash for files on the server-side, only text-based inputs are supported.
-* It has not been planned to include support for more hash algorithms (maybe some in experimental version).
+* Don't support checksum hash for files on the server-side, only strings-based inputs are supported.
+* It has not been planned to include support for more hash algorithms.
 * The goal is to provide the same JavaScript code in both server and client side, so it isn't planned to improve it in other ways. 
 * Only Node.js server-side was tested, so with minimal changes, you can setup `jsHashes` in other server-side JS environment.
 
 ## Changelog
 
-### Beta
+* `1.0.1`
+  - Refactoring (hoisting, coercion, removed redundant functions, scoping, restructure...)
+  - Performance improves
+  - JSLint validation (except bitwise operators)
+  - Now the library can be used like a AMD CommonJS module
+  - Updated documentation
+  - New folders structure
+  - Added closure compiled and minized version
 * `0.1.5b`
   - Added index.js for easy call the module in Node.js
   - Updated documentation
@@ -180,20 +194,20 @@ See `client/benchmark.html` for client-side.
 * `0.1.0b` 
   - First release: the code is stable, but the library is still beta and must be improved and documented.
   
-## TODO list
+## TODO
 
-* Code refactoring
-* Remove redundant methods 
+* Detailed code documentation
+* Performance tests with JSLitmus
 
 ## Authors 
 
 ### Library author
 
-* Tomas Aparicio (<https://github.com/h2non/>)
+* [Tomas Aparicio](tomas@aparicio.me) (<https://github.com/h2non/>)
 
 ### Original algorithms implementation authors
 
-* Paul Johnston (<http://pajhome.org.uk/crypt/md5/>)
+* [Paul Johnston](http://pajhome.org.uk/crypt/md5/)
 * Angel Marin (SHA256)
 * Jeremy Lin (RIPEMD-160)
 
