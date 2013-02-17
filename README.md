@@ -168,7 +168,7 @@ See `client/benchmark.html` for client-side.
   - Now the library can be used like a AMD CommonJS module
   - Updated documentation
   - New folders structure
-  - Added closure compiled and minized version
+  - Added closure compiled and minimized library version
 * `0.1.5b`
   - Added index.js for easy call the module in Node.js
   - Updated documentation
