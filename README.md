@@ -205,6 +205,7 @@ See `client/benchmark.html` for client-side.
 
 * Detailed code documentation
 * Performance tests with JSLitmus
+* CLI support
 
 ## Authors 
 
