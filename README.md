@@ -87,7 +87,7 @@ document.write('<p>MD5: <b>' + MD5 + '</b></p>');
 </html>
 ```
 
-### Server-Side
+### Module
 
 The library was builded using the CommonJS module standard, so the same code works in [Node](http://nodejs.org).
 
@@ -95,6 +95,12 @@ The library was builded using the CommonJS module standard, so the same code wor
 
 ```
 $ npm install jshashes
+```
+
+Aditionaly, you can get jsHashes using [Jam](http://jamjs.org/) package manager.
+
+```
+$ jam install jshashes
 ```
 
 A Node use example:
@@ -169,6 +175,7 @@ See `client/benchmark.html` for client-side.
   - Updated documentation
   - New folders structure
   - Added closure compiled and minimized library version
+  - Available from Jam package manager
 * `0.1.5b`
   - Added index.js for easy call the module in Node.js
   - Updated documentation

@@ -13,6 +13,9 @@
 , "bugs" : { "url" : "http://github.com/h2non/jsHashes/issues" }
 , "engines" : {"node" : "*"}
 , "main" : "hashes"
+, "bin": {
+    "hashes": "./bin/hashes.js"
+  }
 , "licenses": [
     {
       "type": "New BSD",
