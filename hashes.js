@@ -1607,4 +1607,4 @@
       window.Hashes = Hashes;
     }
   }( this ));
-}()); // IIEF
+}()); // IIFE
