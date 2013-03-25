@@ -169,6 +169,7 @@ See `client/benchmark.html` for client-side.
 
 * `1.0.2`
   - Performance improvements and minimal refactor (length property caching, literal notation)
+  - Available from Bower package manager
 * `1.0.1`
   - Refactoring (hoisting, coercion, removed redundant functions, scoping, restructure...)
   - Performance improves
