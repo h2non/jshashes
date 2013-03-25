@@ -1,17 +1,24 @@
 { 
   "name" : "jshashes"
-, "description" : "A fast and independent hashing library pure JavaScript implemented for both server and client side"
-, "tags" : ["hash", "md5", "sha1", "sha256", "hashes", "sha512", "RIPEMD","checksum", "base64", "crc", "encoding", "algorithm" ]
-, "version" : "1.0.1"
+, "description" : "A fast and independent hashing library pure JavaScript implemented (ES5 compliant) for both server and client side (MD5, SHA1, SHA256, SHA512, RIPEMD, HMAC and Base64)"
+, "keywords" : [ "hash", "md5", "sha1", "sha256", "hashes", "sha512", "RIPEMD", "base64", "crc", "encoding", "algorithm" ]
+, "version" : "1.0.2"
 , "author" : "Tomas Aparicio <tomas@rijndael-project.com>"
+, "maintainers" : [
+    {
+        "name": "Tomas Aparicio",
+        "email": "tomas@rijndael-project.com",
+        "web": "http://tomas.aparicio.me"
+    }  
+  ]
 , "repository" : { 
-    "type" : "git"
-  , "url" : "http://github.com/h2non/jsHashes.git"
+    "type" : "git",
+    "url" : "http://github.com/h2non/jsHashes.git"
   }
 , "homepage": "https://github.com/h2non/jsHashes"
 , "dependencies": {}
 , "bugs" : { "url" : "http://github.com/h2non/jsHashes/issues" }
-, "engines" : {"node" : "*"}
+, "engines" : { "node" : "*", "browser": "*"}
 , "main" : "hashes"
 , "bin": {
     "hashes": "./bin/hashes.js"
@@ -21,5 +28,9 @@
       "type": "New BSD",
       "url": "http://github.com/h2non/jsHashes/raw/master/LICENSE"
     }
+  ]
+, "demos": [
+    "/examples/client/hexadecimal.html",
+    "/examples/client/benchmark.html"
   ]
 }

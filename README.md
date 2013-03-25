@@ -167,6 +167,8 @@ See `client/benchmark.html` for client-side.
 
 ## Changelog
 
+* `1.0.2`
+  - Performance improvements and minimal refactor (length property caching, literal notation)
 * `1.0.1`
   - Refactoring (hoisting, coercion, removed redundant functions, scoping, restructure...)
   - Performance improves
@@ -203,8 +205,8 @@ See `client/benchmark.html` for client-side.
   
 ## TODO
 
-* Detailed code documentation
 * Performance tests with JSLitmus
+* Testing
 * CLI support
 
 ## Authors 
