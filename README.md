@@ -97,17 +97,21 @@ The library was builded using the CommonJS module standard, so the same code wor
 $ npm install jshashes
 ```
 
-Aditionaly, you can get jsHashes using [Jam](http://jamjs.org/) package manager.
+Aditionaly, you can get jsHashes using [Bower](http://twitter.github.com/bower/) or [Jam](http://jamjs.org/) package managers.
+
+```
+$ bower install jshashes
+```
 
 ```
 $ jam install jshashes
 ```
 
-A Node use example:
+A Node.js example:
 
 ```javascript
 // require the module
-var Hashes = require('jshashes');
+var Hashes = require('hashes');
 // sample string
 var str = 'This is a sample text!';
 // new SHA1 instance and base64 string encoding
