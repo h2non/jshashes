@@ -111,7 +111,7 @@ A Node.js example:
 
 ```javascript
 // require the module
-var Hashes = require('hashes');
+var Hashes = require('jshashes');
 // sample string
 var str = 'This is a sample text!';
 // new SHA1 instance and base64 string encoding
@@ -218,9 +218,9 @@ See `client/benchmark.html` for client-side.
 
 ### Library author
 
-* [Tomas Aparicio](tomas@aparicio.me) (<https://github.com/h2non/>)
+* [Tomas Aparicio](https://github.com/h2non/)
 
-### Original algorithms implementation authors
+### Original algorithm authors
 
 * [Paul Johnston](http://pajhome.org.uk/crypt/md5/)
 * Angel Marin (SHA256)
