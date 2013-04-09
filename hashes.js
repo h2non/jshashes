@@ -353,7 +353,7 @@
    * @return {String}
    */
   CRC32 : function (str) {
-    var crc = 0, x = 0, y = 0, table, i;
+    var crc = 0, x = 0, y = 0, table, i, iTop;
     str = utf8Encode(str);
         
     table = [ 
@@ -488,7 +488,7 @@
      * Calculate the HMAC-MD5, of a key and some data (raw strings)
      */
     function rstr_hmac(key, data) {
-      var bkey, ipad, hash, i;
+      var bkey, ipad, opad, hash, i;
 
       key = (utf8) ? utf8Encode(key) : key;
       data = (utf8) ? utf8Encode(data) : data;
@@ -718,7 +718,7 @@
      * Calculate the HMAC-SHA1 of a key and some data (raw strings)
      */
     function rstr_hmac(key, data) {
-      var bkey, ipad, i, hash;
+    	var bkey, ipad, opad, i, hash;
     	key = (utf8) ? utf8Encode(key) : key;
     	data = (utf8) ? utf8Encode(data) : data;
     	bkey = rstr2binb(key);
@@ -1124,7 +1124,7 @@
      */
     function binb(x, len) {
       var j, i, l,
-          W = new Array(80);
+          W = new Array(80),
           hash = new Array(16),
           //Initial hash values
           H = [
