@@ -391,7 +391,8 @@
         x = '0x' + table.substr( y * 9, 8 );
         crc = ( crc >>> 8 ) ^ x;
     }
-    return crc ^ (-1);
+    // always return a positive number (that's what >>> 0 does)
+    return (crc ^ (-1)) >>> 0;
   },
   /**
    * @member Hashes
