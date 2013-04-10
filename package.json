@@ -42,7 +42,7 @@
     "test": "test"
   }
 , "scripts": {
-    "test": "mocha -R spec"
+    "test": "mocha"
   }
 , "demos": [
     "/examples/client/hexadecimal.html",
