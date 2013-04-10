@@ -172,6 +172,10 @@ See `client/benchmark.html` for client-side.
 ## Changelog
 
 * `1.0.3`
+  - Important bugfixes to UTF-8 encoding (broken in 1.0.2) and the RIPEMD-160 hash (broken in 1.0.1). (gh #6)
+  - New test suite for hashes, CRC32, and hmac; run with 'npm test' in node. 
+  - Fixed global variable leaks. (gh #13) 
+  - CRC32 will now always return positive values. (gh #11)
   - Bugs fixed (#5, #6, #8, #10, #11)
   - Added package version property to the exposed Hashes Object
   - Added test cases
@@ -225,10 +229,6 @@ See `client/benchmark.html` for client-side.
 
 * [Tomas Aparicio](https://github.com/h2non/)
 
-### Library contributors
-
- * [C. Scott Ananian](https://github.com/cscott)
-
 ### Original algorithm authors
 
 * [Paul Johnston](http://pajhome.org.uk/crypt/md5/)
@@ -237,6 +237,7 @@ See `client/benchmark.html` for client-side.
 
 ### Other contributors
 
+* [C. Scott Ananian](https://github.com/cscott)
 * Greg Holt
 * Andrew Kepert
 * Ydnar
