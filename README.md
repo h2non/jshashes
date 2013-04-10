@@ -171,6 +171,12 @@ See `client/benchmark.html` for client-side.
 
 ## Changelog
 
+* `1.0.3`
+  - Important bugfixes to UTF-8 encoding (broken in 1.0.2) and the
+    RIPEMD-160 hash (broken in 1.0.1). (gh #6)
+  - New test suite for hashes, CRC32, and hmac; run with 'npm test' in node.
+  - Fixed global variable leaks. (gh #13)
+  - CRC32 will now always return positive values. (gh #11)
 * `1.0.2`
   - Performance improvements and minimal refactor (length property caching, literal notation)
   - Available from Bower package manager
@@ -232,6 +238,7 @@ See `client/benchmark.html` for client-side.
 * Andrew Kepert
 * Ydnar
 * Lostinet
+* [C. Scott Ananian](http://cscott.net)
 
 ## License
 
