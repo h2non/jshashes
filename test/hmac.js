@@ -77,7 +77,7 @@ describe('Test HMAC (wikipedia test vectors)', function() {
         describe('key='+JSON.stringify(key)+" data="+JSON.stringify(data), function() {
             Object.keys(tv.hmac).forEach(function(h) {
                 it('should have the correct HMAC_'+h, function() {
-                    HF = new jsHashes[h]();
+                    var HF = new jsHashes[h]();
                     assert.equal(HF.hex_hmac(key, data), tv.hmac[h]);
                 });
             });
