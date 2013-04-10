@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * A simple CLI for jsHashes to simplify common taks :)
+ * Simple CLI to simplify common tasks :)
+ * @beta
  */
 var Hashes = require('../hashes'),
     args = process.argv,
@@ -8,7 +9,7 @@ var Hashes = require('../hashes'),
 
 // Usage dialog
 usage = [
-    'jsHashes 1.0.2'
+    'jsHashes 1.0.3'
   , ''
   , 'Usage:'
   , '  hashes [option] [string]'
@@ -58,7 +59,7 @@ function die (str) {
 }
 
 // process algorithm
-function process() {
+function procesAlgorithm() {
     var algorithm = args[0].split('-')[0].toUpperCase(),
         encoding = args[0].split('-')[1],
         string = args.slice(1).join(''),
@@ -70,7 +71,7 @@ function process() {
         output = instance[encoding](string);
       }
     } else {
-      output = 'Algorithm not supported. See the help for list of available options.'
+      output = 'Algorithm not supported. Type help to see the list of available options.'
     }
     return output;
 }
@@ -82,4 +83,4 @@ if (args[0] === '-h' || args[0] === '--help' || args[0] === 'help' || args.lengt
   die(usage);
 }
 
-die(process());
+die(procesAlgorithm());

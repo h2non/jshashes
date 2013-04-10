@@ -4,7 +4,7 @@
  * @class Hashes
  * @author Tomas Aparicio <tomas@rijndael-project.com>
  * @license New BSD (see LICENSE file)
- * @version 1.0.2 - 25/03/2013
+ * @version 1.0.3
  *
  * Algorithms specification:
  *
@@ -250,6 +250,11 @@
   }
 
   Hashes = {
+  /**  
+   * @property {String} version
+   * @readonly
+   */
+  VERSION : '1.0.3',
   /**
    * @member Hashes
    * @class Base64

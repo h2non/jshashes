@@ -171,6 +171,11 @@ See `client/benchmark.html` for client-side.
 
 ## Changelog
 
+* `1.0.3`
+  - Bugs fixed (#5, #6, #8, #10, #11)
+  - Added package version property to the exposed Hashes Object
+  - Added test cases
+  - Updated CLI script utility (bin/hashes)
 * `1.0.2`
   - Performance improvements and minimal refactor (length property caching, literal notation)
   - Available from Bower package manager
@@ -210,8 +215,8 @@ See `client/benchmark.html` for client-side.
   
 ## TODO
 
-* Performance tests with JSLitmus
-* Testing
+* Performance benchmarking
+* Testing (in process)
 * CLI support
 
 ## Authors 
@@ -219,6 +224,10 @@ See `client/benchmark.html` for client-side.
 ### Library author
 
 * [Tomas Aparicio](https://github.com/h2non/)
+
+### Library contributors
+
+ * [C. Scott Ananian](https://github.com/cscott)
 
 ### Original algorithm authors
 
