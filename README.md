@@ -221,7 +221,6 @@ See `client/benchmark.html` for client-side.
 
 * Performance benchmarking
 * Testing (in process)
-* CLI support
 
 ## Authors 
 
