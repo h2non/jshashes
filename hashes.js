@@ -10,9 +10,9 @@
  *
  * MD5 <http://www.ietf.org/rfc/rfc1321.txt>
  * RIPEMD-160 <http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>
- * SHA1 <http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>
- * SHA256 <http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf>
- * SHA512 <http://csrc.nist.gov/publications/fips/fips180-2/fips180-2.pdf>
+ * SHA1   <http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf>
+ * SHA256 <http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf>
+ * SHA512 <http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf>
  * HMAC <http://www.ietf.org/rfc/rfc2104.txt>
  *
  */
@@ -22,7 +22,7 @@
   // private helper methods
   function utf8Encode(input) {
     var  x, y, output = '', i = -1, l = input.length;
-    while (i+=1 < l) {
+    while ((i+=1) < l) {
       /* Decode utf-16 surrogate pairs */
       x = input.charCodeAt(i);
       y = i + 1 < l ? input.charCodeAt(i + 1) : 0;
@@ -1504,7 +1504,7 @@
      * Convert an array of little-endian words to a string
      */
     function binl2rstr(input) {
-      var i, output = '', l = input.length * 3;
+      var i, output = '', l = input.length * 32;
       for (i = 0; i < l; i += 8) {
         output += String.fromCharCode((input[i>>5] >>> (i % 32)) & 0xFF);
       }
@@ -1521,8 +1521,8 @@
           h2 = 0x98badcfe,
           h3 = 0x10325476,
           h4 = 0xc3d2e1f0,
-          A1 = h0, B1 = h1, C1 = h2, D1 = h3, E1 = h4,
-          A2 = h0, B2 = h1, C2 = h2, D2 = h3, E2 = h4;
+          A1, B1, C1, D1, E1,
+          A2, B2, C2, D2, E2;
 
       /* append padding */
       x[len >> 5] |= 0x80 << (len % 32);
@@ -1530,6 +1530,7 @@
       l = x.length;
       
       for (i = 0; i < l; i+=16) {
+        A1 = A2 = h0; B1 = B2 = h1; C1 = C2 = h2; D1 = D2 = h3; E1 = E2 = h4;
         for (j = 0; j <= 79; j+=1) {
           T = safe_add(A1, rmd160_f(j, B1, C1, D1));
           T = safe_add(T, x[i + rmd160_r1[j]]);

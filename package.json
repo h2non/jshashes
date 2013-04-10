@@ -17,6 +17,9 @@
   }
 , "homepage": "https://github.com/h2non/jsHashes"
 , "dependencies": {}
+, "devDependencies": {
+    "mocha": "~1.9.0"
+  }
 , "bugs" : { "url" : "http://github.com/h2non/jsHashes/issues" }
 , "engines" : { "node" : "*", "browser": "*"}
 , "main" : "hashes"
@@ -29,6 +32,12 @@
       "url": "http://github.com/h2non/jsHashes/raw/master/LICENSE"
     }
   ]
+, "directories": {
+    "test": "test"
+  }
+, "scripts": {
+    "test": "mocha -R spec"
+  }
 , "demos": [
     "/examples/client/hexadecimal.html",
     "/examples/client/benchmark.html"
