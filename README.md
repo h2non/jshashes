@@ -126,9 +126,9 @@ Each algorithm `class` provides the following public methods:
 * `hex(string)` - Hexadecimal hash encoding from string. 
 * `b64(string)` - Base64 hash encondig from string.
 * `any(string,encoding)` - Custom hash algorithm values encoding.
-* `hex_hmac(string,key)` - Hexadecimal hash with HMAC salt key.
-* `b64_hmac(string,key)` - Base64 hash with HMAC salt key.
-* `any_hmac(string,key,encoding)` - Custom hash values encoding with HMAC salt key support.
+* `hex_hmac(key,string)` - Hexadecimal hash with HMAC salt key.
+* `b64_hmac(key,string)` - Base64 hash with HMAC salt key.
+* `any_hmac(key,string,encoding)` - Custom hash values encoding with HMAC salt key support.
 * `vm_test()` - Simple self-test to see is working. Returns `this` Object.
 * `setUpperCase(boolean)` - Enable/disable uppercase hexadecimal returned string. Returns `this` Object. 
 * `setPad(string)` - Defines a custom base64 pad string. Default is '=' according with the RFC standard. Returns `this` Object.
