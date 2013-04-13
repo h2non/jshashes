@@ -5,11 +5,12 @@
  */
 var Hashes = require('../hashes'),
     args = process.argv,
+    version = '1.0.3',
     usage, options;
 
 // Usage dialog
 usage = [
-    'jsHashes 1.0.3'
+    'jsHashes ' + version
   , ''
   , 'Usage:'
   , '  hashes [option] [string]'
@@ -30,6 +31,9 @@ usage = [
   , ''
   , 'Help:'
   , '  -h , --help, help'
+  , ''
+  , 'Current version:'
+  , '  -v , --version, version'
   , ''
   , 'Examples:'
   , '  $ hashes sha1-hex "sample text!"'
@@ -78,6 +82,9 @@ function procesAlgorithm() {
 
 if (args[0] && args[0].indexOf('node') !== -1) {
     args = args.slice(2);
+}
+if (args[0] === '-v' || args[0] === '--version' || args[0] === 'version') {
+  die(version);
 }
 if (args[0] === '-h' || args[0] === '--help' || args[0] === 'help' || args.length < 2 || options.indexOf(args[0]) === -1) {
   die(usage);
