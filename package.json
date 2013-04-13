@@ -30,7 +30,7 @@
 , "engines" : { "node" : "*", "browser": "*"}
 , "main" : "hashes"
 , "bin": {
-    "hashes": "./bin/hashes"
+    "hashes": "./bin/hashes.js"
   }
 , "licenses": [
     {
