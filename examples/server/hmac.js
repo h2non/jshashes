@@ -1,5 +1,5 @@
 var Hashes = require('../../hashes');
-  
+
 // sample string
 var str = 'This is a sample text!';
 
@@ -21,27 +21,27 @@ var key = 'th!$-!S-@-k3Y';
 
 // hexadecimal
 console.log('Hexadecimal:');
-console.log('MD5 -> ' + MD5.hex_hmac(str,key));
-console.log('SHA1 -> ' + SHA1.hex_hmac(str,key));
-console.log('SHA256 -> ' + SHA256.hex_hmac(str,key));
-console.log('SHA512 -> ' + SHA512.hex_hmac(str,key));
-console.log('RIPEMD160 -> ' + RMD160.hex_hmac(str,key));
+console.log('MD5 -> ' + MD5.hex_hmac(key,str));
+console.log('SHA1 -> ' + SHA1.hex_hmac(key,str));
+console.log('SHA256 -> ' + SHA256.hex_hmac(key,str));
+console.log('SHA512 -> ' + SHA512.hex_hmac(key,str));
+console.log('RIPEMD160 -> ' + RMD160.hex_hmac(key,str));
 
 // base64
 console.log('\nBase64:');
-console.log('MD5 -> ' + MD5.b64_hmac(str,key));
-console.log('SHA1 -> ' + SHA1.b64_hmac(str,key));
-console.log('SHA256 -> ' + SHA256.b64_hmac(str,key));
-console.log('SHA512 -> ' + SHA512.b64_hmac(str,key));
-console.log('RIPEMD160 -> ' + RMD160.b64_hmac(str,key));
+console.log('MD5 -> ' + MD5.b64_hmac(key,str));
+console.log('SHA1 -> ' + SHA1.b64_hmac(key,str));
+console.log('SHA256 -> ' + SHA256.b64_hmac(key,str));
+console.log('SHA512 -> ' + SHA512.b64_hmac(key,str));
+console.log('RIPEMD160 -> ' + RMD160.b64_hmac(key,str));
 
 // custom encoding values
 
 var custom = 'abc123';
 
 console.log('\nCustom encoding values:');
-console.log('MD5 -> ' + MD5.any_hmac(str,key,custom));
-console.log('SHA1 -> ' + SHA1.any_hmac(str,key,custom));
-console.log('SHA256 -> ' + SHA256.any_hmac(str,key,custom));
-console.log('SHA512 -> ' + SHA512.any_hmac(str,key,custom));
-console.log('RIPEMD160 -> ' + RMD160.any_hmac(str,key,custom));
+console.log('MD5 -> ' + MD5.any_hmac(key,str,custom));
+console.log('SHA1 -> ' + SHA1.any_hmac(key,str,custom));
+console.log('SHA256 -> ' + SHA256.any_hmac(key,str,custom));
+console.log('SHA512 -> ' + SHA512.any_hmac(key,str,custom));
+console.log('RIPEMD160 -> ' + RMD160.any_hmac(key,str,custom));
