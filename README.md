@@ -6,7 +6,9 @@ A fast and independent hashing library pure JavaScript implemented for both serv
 
 `jsHashes` is a pure JavaScript implementation of the most extended hash algorithms.
 Its goal is to provide an independent, fast and easy solution for hash algorithms both for client-side and server-side JavaScript environments.
-The code is fully compatible with the ECMAScript language specification and was tested in all major browsers (client-side) and node.js (server-side).   
+The code is fully compatible with the ECMAScript language specification version 3 and was tested in all major browsers (client-side) and node.js (server-side).   
+
+If you are looking for a high low-level performance on the server-side, note that Node.js provides its own C++ native module ([Crypto](http://nodejs.org/api/crypto.html)).
 
 ## Supported hash algorithms
 
