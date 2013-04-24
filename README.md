@@ -72,8 +72,8 @@ This is a simple implementation for a client-side environment:
 ```html
 <html>
 <head>
-<script type="application/javascript" src="src/hashes.js"></script>
-<script type="application/javascript">
+<script type="text/javascript" src="src/hashes.js"></script>
+<script type="text/javascript">
 // sample string 
 var str = 'This is a sample text!';
 // new MD5 instance and hexadecimal string encoding
@@ -219,7 +219,6 @@ See `client/benchmark.html` for client-side.
 ## TODO
 
 * Performance benchmarking
-* Testing (in process)
 
 ## Authors 
 
