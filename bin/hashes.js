@@ -24,10 +24,11 @@ usage = [
   , '  sha256-b64'
   , '  sha512-hex'
   , '  sha512-b64'
-  , '  ripe-hex'
+  , '  rmd160-hex'
+  , '  rmd160-b64'
   , '  b64-enc'
   , '  b64-dec'
-  , '  crc'
+  , '  crc32'
   , ''
   , 'Help:'
   , '  -h , --help, help'
@@ -50,10 +51,11 @@ options = [
   ,'sha256-b64'
   ,'sha512-hex'
   ,'sha512-b64'
-  ,'ripe-hex'
+  ,'rmd160-hex'
+  ,'rmd160-b64'
   ,'b64-enc'
   ,'b64-dec'
-  ,'crc'
+  ,'crc32'
 ];
 
 // Exit the process with a message
@@ -69,10 +71,19 @@ function procesAlgorithm() {
         string = args.slice(1).join(''),
         instance, output;
     
+    if (algorithm === 'B64') {
+      algorithm = 'Base64';
+      encoding = encoding === 'dec' ? 'decode' : 'encode';
+    }
+
     if (Hashes.hasOwnProperty(algorithm)) {
-      instance = new Hashes[algorithm];
-      if (instance.hasOwnProperty(encoding)) {
-        output = instance[encoding](string);
+      if (algorithm === 'CRC32') {
+        output = Hashes[algorithm](string);
+      } else {
+        instance = new Hashes[algorithm];
+        if (instance.hasOwnProperty(encoding)) {
+          output = instance[encoding](string);
+        }
       }
     } else {
       output = 'Algorithm not supported. Type help to see the list of available options.'
