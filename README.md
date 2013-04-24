@@ -33,9 +33,7 @@ The code is fully compatible with the ECMAScript language specification and was 
 ## Usage
 
 Following some software design patterns, `jsHashes` implements an object-oriented class-based paradigm for an easy and clean use. 
-Each algorithm has its respective own `class`, providing encapsulation and independence from other classes.   
-
-All the `classes` are defined inside the `Hashes` Object namespace. 
+Each algorithm has its respective own `class`, providing encapsulation and low coupling between classes.
 
 Here you can see an example of how to create a new instance for each algorithm:
 
@@ -89,7 +87,7 @@ document.write('<p>MD5: <b>' + MD5 + '</b></p>');
 
 ### Module
 
-The library was builded using the CommonJS module standard, so the same code works in [Node](http://nodejs.org).
+The library is based on CommonJS module standard, so the same code works in [Node](http://nodejs.org) and other environments.
 
 `jsHashes` is available via NPM. You can install it simply doing:
 
@@ -97,7 +95,7 @@ The library was builded using the CommonJS module standard, so the same code wor
 $ npm install jshashes
 ```
 
-Aditionaly, you can get jsHashes using [Bower](http://twitter.github.com/bower/) or [Jam](http://jamjs.org/) package managers.
+Additionally, you can get jsHashes using [Bower](http://twitter.github.com/bower/) or [Jam](http://jamjs.org/) package managers.
 
 ```
 $ bower install jshashes
@@ -177,7 +175,8 @@ See `client/benchmark.html` for client-side.
   - Fixed global variable leaks. (gh #13) 
   - CRC32 will now always return positive values. (gh #11)
   - Added package version property to the exposed Hashes Object
-  - Updated CLI script utility (bin/hashes)
+  - Updated CLI script utility supporting all algorithms (see bin/hashes)
+  - Fixed UTF-8 encoding/decoding error (if input parameter is undefined or invalid)
 * `1.0.2`
   - Performance improvements and minimal refactor (length property caching, literal notation)
   - Available from Bower package manager
