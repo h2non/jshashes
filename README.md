@@ -87,6 +87,25 @@ document.write('<p>MD5: <b>' + MD5 + '</b></p>');
 </html>
 ```
 
+### CLI
+
+You can use the simple command-line interface to generate hashes.
+
+```bash
+$ hashes sha1-hex This is a sample string
+> b6a8501d8a70e74e1dc12a6082102622fdc719bb
+
+# or with quotes
+$ hashes sha1-hex "This is a sample string"
+> b6a8501d8a70e74e1dc12a6082102622fdc719bb
+```
+
+For more information about the options supported, type:
+
+```bash
+$ hashes -h
+```
+
 ### Module
 
 The library is based on CommonJS module standard, so the same code works in [Node](http://nodejs.org) and other environments.
@@ -171,6 +190,9 @@ See `client/benchmark.html` for client-side.
 
 ## Changelog
 
+* `1.0.4`
+  - Fix CLI script call error when use it from Bash
+  - Added CLI usage example
 * `1.0.3`
   - Important bugfixes to UTF-8 encoding (broken in 1.0.2) and the RIPEMD-160 hash (broken in 1.0.1). (gh #6)
   - New test suite for hashes, CRC32, and hmac; run with 'npm test' in node. 
