@@ -19,14 +19,14 @@
   ]
 , "repository" : { 
     "type" : "git",
-    "url" : "http://github.com/h2non/jsHashes.git"
+    "url" : "http://github.com/h2non/jshashes.git"
   }
-, "homepage": "https://github.com/h2non/jsHashes"
+, "homepage": "https://github.com/h2non/jshashes"
 , "dependencies": {}
 , "devDependencies": {
     "mocha": "~1.9.0"
   }
-, "bugs" : { "url" : "http://github.com/h2non/jsHashes/issues" }
+, "bugs" : { "url" : "http://github.com/h2non/jshashes/issues" }
 , "engines" : { "node" : "*", "browser": "*"}
 , "main" : "hashes"
 , "bin": {
@@ -35,7 +35,7 @@
 , "licenses": [
     {
       "type": "New BSD",
-      "url": "http://github.com/h2non/jsHashes/raw/master/LICENSE"
+      "url": "http://github.com/h2non/jshashes/raw/master/LICENSE"
     }
   ]
 , "directories": {
