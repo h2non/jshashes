@@ -1,0 +1,10 @@
+{
+  "name": "jsHashes",
+  "version": "1.0.4",
+  "main": "hashes.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ]
+}
