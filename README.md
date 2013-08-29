@@ -2,6 +2,8 @@
 
 A fast and independent hashing library pure JavaScript implemented for both server and client side
 
+[![NPM](https://nodei.co/npm/jshashes.png?stars&downloads)](https://nodei.co/npm/jshashes/) 
+
 # About
 
 `jsHashes` is a pure JavaScript implementation of the most extended hash algorithms.
