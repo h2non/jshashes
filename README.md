@@ -1,5 +1,7 @@
 # jsHashes 
 
+[![Build Status](https://travis-ci.org/h2non/jshashes.png)](https://travis-ci.org/h2non/jshashes)
+
 A fast and independent hashing library pure JavaScript implemented for both server and client side
 
 [![NPM](https://nodei.co/npm/jshashes.png?stars&downloads)](https://nodei.co/npm/jshashes/) 
