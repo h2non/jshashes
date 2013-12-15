@@ -1,6 +1,7 @@
 # jsHashes 
 
 [![Build Status](https://travis-ci.org/h2non/jshashes.png)](https://travis-ci.org/h2non/jshashes)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/h2non/jshashes/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 A fast and independent hashing library pure JavaScript implemented for both server and client side
 
@@ -273,7 +274,3 @@ jsHashes is released under `New BSD` license. See `LICENSE` file.
 ## Issues
 
 Feel free to report any issue you experiment via Github <https://github.com/h2non/jsHashes/issues>.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/h2non/jshashes/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
