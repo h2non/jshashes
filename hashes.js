@@ -1623,6 +1623,38 @@
     else {
       // in a browser or Rhino
       window.Hashes = Hashes;
+      
+      /// string prototype shortcuts
+      String.prototype.MD5 = (function (hasher) {
+        return function () {
+          return hasher.hex(this);
+        }
+      })(new Hashes.MD5);
+      
+      String.prototype.SHA1 = (function (hasher) {
+        return function () {
+          return hasher.hex(this);
+        }
+      })(new Hashes.SHA1);
+      
+      String.prototype.SHA256 = (function (hasher) {
+        return function () {
+          return hasher.hex(this);
+        }
+      })(new Hashes.SHA256);
+      
+      String.prototype.SHA512 = (function (hasher) {
+        return function () {
+          return hasher.hex(this);
+        }
+      })(new Hashes.SHA512);
+      
+      String.prototype.RMD160 = (function (hasher) {
+        return function () {
+          return hasher.hex(this);
+        }
+      })(new Hashes.RMD160);
+      
     }
   }( this ));
 }()); // IIFE
