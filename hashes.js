@@ -439,6 +439,9 @@
     this.any = function(s, e) { 
       return rstr2any(rstr(s, utf8), e); 
     };
+    this.raw = function (s) {
+        return rstr(s, utf8);
+    };
     this.hex_hmac = function (k, d) { 
       return rstr2hex(rstr_hmac(k, d), hexcase); 
     };
@@ -665,6 +668,9 @@
     this.any = function (s, e) { 
     	return rstr2any(rstr(s, utf8), e);
     };
+    this.raw = function (s) {
+        return rstr(s, utf8);
+    };
     this.hex_hmac = function (k, d) {
     	return rstr2hex(rstr_hmac(k, d));
     };
@@ -845,6 +851,9 @@
     };
     this.any = function (s, e) { 
       return rstr2any(rstr(s, utf8), e); 
+    };
+    this.raw = function (s) {
+        return rstr(s, utf8);
     };
     this.hex_hmac = function (k, d) { 
       return rstr2hex(rstr_hmac(k, d)); 
@@ -1048,6 +1057,9 @@
     };
     this.any = function (s, e) { 
       return rstr2any(rstr(s), e);
+    };
+    this.raw = function (s) {
+        return rstr(s, utf8);
     };
     this.hex_hmac = function (k, d) {
       return rstr2hex(rstr_hmac(k, d));
@@ -1433,6 +1445,9 @@
     };
     this.any = function (s, e) { 
       return rstr2any(rstr(s, utf8), e);
+    };
+    this.raw = function (s) {
+        return rstr(s, utf8);
     };
     this.hex_hmac = function (k, d) { 
       return rstr2hex(rstr_hmac(k, d));
