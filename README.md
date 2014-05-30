@@ -1,17 +1,17 @@
-# jsHashes 
+# jsHashes
 
 [![Build Status](https://travis-ci.org/h2non/jshashes.png)](https://travis-ci.org/h2non/jshashes)
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/h2non/jshashes/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![NPM version](https://badge.fury.io/js/jshashes.png)](http://badge.fury.io/js/jshashes)
 
 A fast and independent hashing library pure JavaScript implemented for both server and client side
 
-[![NPM](https://nodei.co/npm/jshashes.png?stars&downloads)](https://nodei.co/npm/jshashes/) 
+[![NPM](https://nodei.co/npm/jshashes.png?stars&downloads)](https://nodei.co/npm/jshashes/)
 
 # About
 
 `jshashes` is a pure JavaScript implementation of the most extended hash algorithms.
 Its goal is to provide an independent, fast and easy solution for hash algorithms both for client-side and server-side JavaScript environments.
-The code is fully compatible with the ECMAScript language specification version 3 and was tested in all major browsers (client-side) and node.js (server-side).   
+The code is fully compatible with the ECMAScript language specification version 3 and was tested in all major browsers (client-side) and node.js (server-side).
 
 If you are looking for a high low-level performance on the server-side, note that Node.js provides its own C++ native module ([Crypto](http://nodejs.org/api/crypto.html)).
 
@@ -39,7 +39,7 @@ If you are looking for a high low-level performance on the server-side, note tha
 
 ## Usage
 
-Following some software design patterns, `jsHashes` implements an object-oriented class-based paradigm for an easy and clean use. 
+Following some software design patterns, `jsHashes` implements an object-oriented class-based paradigm for an easy and clean use.
 Each algorithm has its respective own `class`, providing encapsulation and low coupling between classes.
 
 Here you can see an example of how to create a new instance for each algorithm:
@@ -54,7 +54,7 @@ var SHA256 =  new Hashes.SHA256;
 // new SHA512 instace
 var SHA512 = new Hashes.SHA512;
 // new RIPEMD-160 instace
-var RMD160 = new Hashes.RMD160; 
+var RMD160 = new Hashes.RMD160;
 ```
 
 Now, an example of how to output an hexadecimal-based hash encoding for each algorithm (client-side):
@@ -79,7 +79,7 @@ This is a simple implementation for a client-side environment:
 <head>
 <script type="text/javascript" src="src/hashes.js"></script>
 <script type="text/javascript">
-// sample string 
+// sample string
 var str = 'This is a sample text!';
 // new MD5 instance and hexadecimal string encoding
 var MD5 = new Hashes.MD5().hex(str);
@@ -147,14 +147,14 @@ console.log('SHA1: ' + SHA1);
 ## Public methods
 Each algorithm `class` provides the following public methods:
 
-* `hex(string)` - Hexadecimal hash encoding from string. 
+* `hex(string)` - Hexadecimal hash encoding from string.
 * `b64(string)` - Base64 hash encondig from string.
 * `any(string,encoding)` - Custom hash algorithm values encoding.
 * `hex_hmac(key,string)` - Hexadecimal hash with HMAC salt key.
 * `b64_hmac(key,string)` - Base64 hash with HMAC salt key.
 * `any_hmac(key,string,encoding)` - Custom hash values encoding with HMAC salt key support.
 * `vm_test()` - Simple self-test to see is working. Returns `this` Object.
-* `setUpperCase(boolean)` - Enable/disable uppercase hexadecimal returned string. Returns `this` Object. 
+* `setUpperCase(boolean)` - Enable/disable uppercase hexadecimal returned string. Returns `this` Object.
 * `setPad(string)` - Defines a custom base64 pad string. Default is '=' according with the RFC standard. Returns `this` Object.
 * `setUTF8(boolean)` - Enable/disable UTF-8 character encoding. Returns `this` Object.
 
@@ -166,7 +166,7 @@ Each algorithm `class` provides the following public methods:
 
 ## Benchmark
 
-Node.js 0.6.18 running on a VPS Intel I7 930 with 512 MB of RAM (see `server/benchmark.js`) 
+Node.js 0.6.18 running on a VPS Intel I7 930 with 512 MB of RAM (see `server/benchmark.js`)
 
 ```javascript
 Simple benchmark test generating 10000 hashes for each algorithm.
@@ -190,7 +190,7 @@ See `client/benchmark.html` for client-side.
 
 * Don't support checksum hash for files on the server-side, only strings-based inputs are supported.
 * It has not been planned to include support for more hash algorithms.
-* The goal is to provide the same JavaScript code in both server and client side, so it isn't planned to improve it in other ways. 
+* The goal is to provide the same JavaScript code in both server and client side, so it isn't planned to improve it in other ways.
 * Only Node.js server-side was tested, so with minimal changes, you can setup `jsHashes` in other server-side JS environment.
 
 ## Changelog
@@ -200,8 +200,8 @@ See `client/benchmark.html` for client-side.
   - Added CLI usage example
 * `1.0.3`
   - Important bugfixes to UTF-8 encoding (broken in 1.0.2) and the RIPEMD-160 hash (broken in 1.0.1). (gh #6)
-  - New test suite for hashes, CRC32, and hmac; run with 'npm test' in node. 
-  - Fixed global variable leaks. (gh #13) 
+  - New test suite for hashes, CRC32, and hmac; run with 'npm test' in node.
+  - Fixed global variable leaks. (gh #13)
   - CRC32 will now always return positive values. (gh #11)
   - Added package version property to the exposed Hashes Object
   - Updated CLI script utility supporting all algorithms (see bin/hashes)
@@ -230,24 +230,24 @@ See `client/benchmark.html` for client-side.
   - Added `Helpers` Object with some global functions
   - Added native support for Base64 provided as `class`
   - Added CRC-32 calculation support
-  - Added URL encode/decode helpers functions 
-* `0.1.2b` 
-  - SHA1 error fixed. 
-  - General code changes (renaming classes, private methods, new methods...). 
-  - Changing library namespace to 'Hashes'. 
-  - Starting code documentation. 
-  - Added new examples of how to use. 
-* `0.1.1b` 
-  - Minimal library improvements. 
+  - Added URL encode/decode helpers functions
+* `0.1.2b`
+  - SHA1 error fixed.
+  - General code changes (renaming classes, private methods, new methods...).
+  - Changing library namespace to 'Hashes'.
+  - Starting code documentation.
+  - Added new examples of how to use.
+* `0.1.1b`
+  - Minimal library improvements.
   - There has been added some samples, like how to use it and support for NPM package.
-* `0.1.0b` 
+* `0.1.0b`
   - First release: the code is stable, but the library is still beta and must be improved and documented.
-  
+
 ## TODO
 
 * Performance benchmarking
 
-## Authors 
+## Authors
 
 ### Library author
 
