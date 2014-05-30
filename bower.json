@@ -12,6 +12,7 @@
     "test",
     "examples/server",
     "package.json",
+    "Makefile",
     "node_modules"
   ]
 }
