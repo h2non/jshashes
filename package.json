@@ -1,51 +1,52 @@
-{ 
-  "name" : "jshashes"
-, "description" : "A fast and independent hashing library pure JavaScript implemented (ES3 compliant) for both server and client side (MD5, SHA1, SHA256, SHA512, RIPEMD, HMAC and Base64)"
-, "keywords" : [ "hash", "md5", "sha1", "sha256", "hashes", "sha512", "RIPEMD", "base64", "hmac", "crc", "encoding", "algorithm" ]
-, "version" : "1.0.4"
-, "maintainers" : [
-    {
-        "name": "Tomas Aparicio",
-        "email": "tomas@aparicio.me",
-        "web": "http://tomas.aparicio.me"
-    }  
-  ]
-, "contributors": [ 
+{
+  "name": "jshashes",
+  "description": "A fast and independent hashing library pure JavaScript implemented (ES3 compliant) for both server and client side (MD5, SHA1, SHA256, SHA512, RIPEMD, HMAC and Base64)",
+  "version": "1.0.5",
+  "repository": "h2non/jshashes",
+  "author": "Tomas Aparicio <tomas@aparicio.me>",
+  "contributors": [
     {
       "name": "C. Scott Ananian",
       "email": "cscott@cscott.net",
       "web": "http://cscott.net"
-    } 
-  ]
-, "repository" : { 
-    "type" : "git",
-    "url" : "http://github.com/h2non/jshashes.git"
-  }
-, "homepage": "https://github.com/h2non/jshashes"
-, "dependencies": {}
-, "devDependencies": {
-    "mocha": "~1.9.0"
-  }
-, "bugs" : { "url" : "http://github.com/h2non/jshashes/issues" }
-, "engines" : { "node" : "*", "browser": "*"}
-, "main" : "hashes"
-, "bin": {
-    "hashes": "./bin/cli.js"
-  }
-, "licenses": [
+    }
+  ],
+  "engines": {
+    "node": "*",
+    "browser": "*"
+  },
+  "main": "hashes",
+  "bin": {
+    "hashes": "./bin/hashes"
+  },
+  "licenses": [
     {
       "type": "New BSD",
       "url": "http://github.com/h2non/jshashes/raw/master/LICENSE"
     }
-  ]
-, "directories": {
+  ],
+  "directories": {
     "test": "test"
-  }
-, "scripts": {
+  },
+  "scripts": {
     "test": "mocha"
-  }
-, "demos": [
-    "/examples/client/hexadecimal.html",
-    "/examples/client/benchmark.html"
+  },
+  "devDependencies": {
+    "mocha": "~1.9.0",
+    "uglify-js": "^2.4.13"
+  },
+  "keywords": [
+    "hash",
+    "md5",
+    "sha1",
+    "sha256",
+    "hashes",
+    "sha512",
+    "RIPEMD",
+    "base64",
+    "hmac",
+    "crc",
+    "encoding",
+    "algorithm"
   ]
 }
