@@ -32,7 +32,7 @@ If you are looking for a high low-level performance on the server-side, note tha
 
 ## Environments
 
-- Browser (ES5)
+- Browsers (ES3)
 - Node.js (all versions)
 - Rhino
 - RingoJS
