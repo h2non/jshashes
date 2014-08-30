@@ -1,13 +1,4 @@
-# jsHashes
-
-[![Build Status](https://travis-ci.org/h2non/jshashes.png)](https://travis-ci.org/h2non/jshashes)
-[![NPM version](https://badge.fury.io/js/jshashes.png)](http://badge.fury.io/js/jshashes)
-
-A fast and independent hashing library pure JavaScript implemented for both server and client side
-
-[![NPM](https://nodei.co/npm/jshashes.png?stars&downloads)](https://nodei.co/npm/jshashes/)
-
-# About
+# jsHashes [![Build Status](https://travis-ci.org/h2non/jshashes.png)](https://travis-ci.org/h2non/jshashes) [![NPM version](https://badge.fury.io/js/jshashes.png)](http://badge.fury.io/js/jshashes) [![NPM](https://nodei.co/npm/jshashes.png?stars&downloads)](https://nodei.co/npm/jshashes/)
 
 `jshashes` is a pure JavaScript implementation of the most extended hash algorithms.
 Its goal is to provide an independent, fast and easy solution for hash algorithms both for client-side and server-side JavaScript environments.
