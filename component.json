@@ -1,0 +1,9 @@
+{
+    "name": "jshashes",
+    
+    "main": "hashes.js",
+    
+    "scripts": [
+        "hashes.js"
+    ]
+}
