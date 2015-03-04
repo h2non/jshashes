@@ -1,12 +1,12 @@
-# jsHashes [![Build Status](https://travis-ci.org/h2non/jshashes.png)](https://travis-ci.org/h2non/jshashes) [![NPM version](https://badge.fury.io/js/jshashes.png)](http://badge.fury.io/js/jshashes) 
+# jsHashes [![Build Status](https://travis-ci.org/h2non/jshashes.png)](https://travis-ci.org/h2non/jshashes) [![NPM version](https://img.shields.io/npm/v/jshashes.svg)](https://www.npmjs.com/package/jshashes) 
 
 [![NPM](https://nodei.co/npm/jshashes.png?stars&downloads)](https://nodei.co/npm/jshashes/)
 
-`jshashes` is a pure JavaScript implementation of the most extended hash algorithms.
-Its goal is to provide an independent, fast and easy solution for hash algorithms both for client-side and server-side JavaScript environments.
-The code is fully compatible with the ECMAScript language specification version 3 and was tested in all major browsers (client-side) and node.js (server-side).
+`jshashes` is a pure JavaScript implementation of the most extended [cryptographic hash function](http://en.wikipedia.org/wiki/Cryptographic_hash_function) algorithms.
+Its goal is to provide an dependency-free, fast and reliable solution for hash algorithms for both client-side and server-side JavaScript environments.
+The code is fully compatible with the ECMAScript3 language specification and was tested and used in production in all major browsers and [node.js](http://nodejs.org)/[io.js](http://iojs.org)
 
-If you are looking for a high low-level performance on the server-side, note that Node.js provides its own C++ native module ([Crypto](http://nodejs.org/api/crypto.html)).
+If you are looking for a low-level performance library on the server-side, note that node.js/io.js provides its own C++ native module ([Crypto](http://nodejs.org/api/crypto.html))
 
 ## Supported hash algorithms
 
@@ -26,7 +26,7 @@ If you are looking for a high low-level performance on the server-side, note tha
 ## Environments
 
 - Browsers (ES3)
-- Node.js (all versions)
+- node.js/io.js (all versions)
 - Rhino
 - RingoJS
 
@@ -114,7 +114,7 @@ For more information about the options supported, type:
 $ hashes -h
 ```
 
-### Module
+### Installation
 
 The library is based on CommonJS module standard, so the same code works in [Node](http://nodejs.org) and other environments.
 
