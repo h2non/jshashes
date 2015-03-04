@@ -1,4 +1,4 @@
-# jsHashes [![Build Status](https://travis-ci.org/h2non/jshashes.png)](https://travis-ci.org/h2non/jshashes) [![NPM version](https://img.shields.io/npm/v/jshashes.svg)](https://www.npmjs.com/package/jshashes) 
+# jsHashes [![Build Status](https://travis-ci.org/h2non/jshashes.svg)](https://travis-ci.org/h2non/jshashes) [![NPM version](https://img.shields.io/npm/v/jshashes.svg)](https://www.npmjs.com/package/jshashes) 
 
 [![NPM](https://nodei.co/npm/jshashes.png?stars&downloads)](https://nodei.co/npm/jshashes/)
 
