@@ -32,38 +32,35 @@ If you are looking for a high low-level performance on the server-side, note tha
 
 ## Usage
 
-Following some software design patterns, `jsHashes` implements an object-oriented class-based paradigm for an easy and clean use.
-Each algorithm has its respective own `class`, providing encapsulation and low coupling between classes.
-
-Here you can see an example of how to create a new instance for each algorithm:
+Each algorithm has its respective own instantiable `object`. Here you can see an example of how to create a new instance for each one:
 
 ```javascript
 // new MD5 instance
-var MD5 = new Hashes.MD5;
+var MD5 = new Hashes.MD5
 // new SHA1 instance
-var SHA1 = new Hashes.SHA1;
+var SHA1 = new Hashes.SHA1
 // new SHA256 instance
-var SHA256 =  new Hashes.SHA256;
+var SHA256 =  new Hashes.SHA256
 // new SHA512 instace
-var SHA512 = new Hashes.SHA512;
+var SHA512 = new Hashes.SHA512
 // new RIPEMD-160 instace
-var RMD160 = new Hashes.RMD160;
+var RMD160 = new Hashes.RMD160
 ```
 
-Now, an example of how to output an hexadecimal-based hash encoding for each algorithm (client-side):
+An example of how to generate an hexadecimal-based hash encoding for each algorithm:
 
 ```javascript
 // sample string
-var str = 'Sample text!';
+var str = 'Sample text!'
 // output to console
-console.log('MD5: ' + MD5.hex(str));
-console.log('SHA1: ' + SHA1.hex(str));
-console.log('SHA256: ' + SHA256.hex(str));
-console.log('SHA512: ' + SHA512.hex(str));
-console.log('RIPEMD-160: ' + RMD160.hex(str));
+console.log('MD5: ' + MD5.hex(str))
+console.log('SHA1: ' + SHA1.hex(str))
+console.log('SHA256: ' + SHA256.hex(str))
+console.log('SHA512: ' + SHA512.hex(str))
+console.log('RIPEMD-160: ' + RMD160.hex(str))
 ```
 
-### Client-Side
+### Browsers
 
 This is a simple implementation for a client-side environment:
 
@@ -73,11 +70,11 @@ This is a simple implementation for a client-side environment:
 <script type="text/javascript" src="src/hashes.js"></script>
 <script type="text/javascript">
 // sample string
-var str = 'This is a sample text!';
+var str = 'This is a sample text!'
 // new MD5 instance and hexadecimal string encoding
-var MD5 = new Hashes.MD5().hex(str);
+var MD5 = new Hashes.MD5().hex(str)
 // output into DOM
-document.write('<p>MD5: <b>' + MD5 + '</b></p>');
+document.write('<p>MD5: <b>' + MD5 + '</b></p>')
 </script>
 </head>
 <body>
@@ -85,7 +82,20 @@ document.write('<p>MD5: <b>' + MD5 + '</b></p>');
 </html>
 ```
 
-### CLI
+### node.js / io.js
+
+```javascript
+// require the module
+var Hashes = require('jshashes')
+// sample string
+var str = 'This is a sample text!'
+// new SHA1 instance and base64 string encoding
+var SHA1 = new Hashes.SHA1().b64(str)
+// output to console
+console.log('SHA1: ' + SHA1)
+```
+
+### Command-line interface
 
 You can use the simple command-line interface to generate hashes.
 
@@ -108,36 +118,28 @@ $ hashes -h
 
 The library is based on CommonJS module standard, so the same code works in [Node](http://nodejs.org) and other environments.
 
-`jsHashes` is available via NPM. You can install it simply doing:
+`jsHashes` is available via npm. You can install it simply doing:
 
 ```
 $ npm install jshashes
 ```
 
-Additionally, you can get jsHashes using [Bower](http://twitter.github.com/bower/) or [Jam](http://jamjs.org/) package managers.
+You can get jsHashes using [Bower](http://twitter.github.com/bower/), [Component](https://github.com/component/component) or [Jam](http://jamjs.org/) package managers.
 
 ```
 $ bower install jshashes
 ```
 
 ```
+$ component install h2non/jshashes
+```
+
+```
 $ jam install jshashes
 ```
 
-A Node.js example:
-
-```javascript
-// require the module
-var Hashes = require('jshashes');
-// sample string
-var str = 'This is a sample text!';
-// new SHA1 instance and base64 string encoding
-var SHA1 = new Hashes.SHA1().b64(str);
-// output to console
-console.log('SHA1: ' + SHA1);
-```
-
 ## Public methods
+
 Each algorithm `class` provides the following public methods:
 
 * `hex(string)` - Hexadecimal hash encoding from string.
