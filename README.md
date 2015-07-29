@@ -1,12 +1,11 @@
 # jsHashes [![Build Status](https://travis-ci.org/h2non/jshashes.svg)](https://travis-ci.org/h2non/jshashes) [![NPM version](https://img.shields.io/npm/v/jshashes.svg)](https://www.npmjs.com/package/jshashes) 
 
-[![NPM](https://nodei.co/npm/jshashes.png?stars&downloads)](https://nodei.co/npm/jshashes/)
+`jshashes` is lightweight library implementing the most extended [cryptographic hash function](http://en.wikipedia.org/wiki/Cryptographic_hash_function) algorithms in pure JavaScript (ES5 compliant).
 
-`jshashes` is a pure JavaScript implementation of the most extended [cryptographic hash function](http://en.wikipedia.org/wiki/Cryptographic_hash_function) algorithms.
-Its goal is to provide an dependency-free, fast and reliable solution for hash algorithms for both client-side and server-side JavaScript environments.
-The code is fully compatible with the ECMAScript3 language specification and was tested and used in production in all major browsers and [node.js](http://nodejs.org)/[io.js](http://iojs.org)
+The goal is to provide an dependency-free, fast and reliable solution for hash algorithms for both client-side and server-side JavaScript environments. 
+The code is fully compatible with the ECMAScript 5 specification and is used in production in browsers and [node.js](http://nodejs.org)/[io.js](http://iojs.org)
 
-If you are looking for a low-level performance library on the server-side, note that node.js/io.js provides its own C++ native module ([Crypto](http://nodejs.org/api/crypto.html))
+If you are looking for a low-level performance library for the server-side, note that node.js/io.js provides its own native module: [`crypto`](http://nodejs.org/api/crypto.html)
 
 ## Supported hash algorithms
 
@@ -116,26 +115,25 @@ $ hashes -h
 
 ### Installation
 
-The library is based on CommonJS module standard, so the same code works in [Node](http://nodejs.org) and other environments.
-
-`jsHashes` is available via npm. You can install it simply doing:
+Via [npm](https://npmjs.org)
 
 ```
 $ npm install jshashes
 ```
 
-You can get jsHashes using [Bower](http://twitter.github.com/bower/), [Component](https://github.com/component/component) or [Jam](http://jamjs.org/) package managers.
-
+Via [Bower](http://bower.io/):
 ```
 $ bower install jshashes
 ```
 
+Via [Component](https://github.com/component/component):
 ```
 $ component install h2non/jshashes
 ```
 
+Or loading the script directly:
 ```
-$ jam install jshashes
+http://cdn.rawgit.com/h2non/jsHashes/master/hashes.js
 ```
 
 ## Public methods
