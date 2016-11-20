@@ -445,7 +445,7 @@
        * See {@link Hashes.MD5#method-setUpperCase} and {@link Hashes.SHA1#method-setUpperCase}
        */
       var hexcase = (options && typeof options.uppercase === 'boolean') ? options.uppercase : false, // hexadecimal output case format. false - lowercase; true - uppercase
-        b64pad = (options && typeof options.pad === 'string') ? options.pda : '=', // base-64 pad character. Defaults to '=' for strict RFC compliance
+        b64pad = (options && typeof options.pad === 'string') ? options.pad : '=', // base-64 pad character. Defaults to '=' for strict RFC compliance
         utf8 = (options && typeof options.utf8 === 'boolean') ? options.utf8 : true; // enable/disable utf8 encoding
 
       // privileged (public) methods
@@ -682,7 +682,7 @@
        * See {@link Hashes.MD5#method-setUpperCase} and {@link Hashes.SHA1#method-setUpperCase}
        */
       var hexcase = (options && typeof options.uppercase === 'boolean') ? options.uppercase : false, // hexadecimal output case format. false - lowercase; true - uppercase
-        b64pad = (options && typeof options.pad === 'string') ? options.pda : '=', // base-64 pad character. Defaults to '=' for strict RFC compliance
+        b64pad = (options && typeof options.pad === 'string') ? options.pad : '=', // base-64 pad character. Defaults to '=' for strict RFC compliance
         utf8 = (options && typeof options.utf8 === 'boolean') ? options.utf8 : true; // enable/disable utf8 encoding
 
       // public methods
@@ -876,7 +876,7 @@
        * @see this.setPad() method
        */
       var hexcase = (options && typeof options.uppercase === 'boolean') ? options.uppercase : false, // hexadecimal output case format. false - lowercase; true - uppercase  */
-        b64pad = (options && typeof options.pad === 'string') ? options.pda : '=',
+        b64pad = (options && typeof options.pad === 'string') ? options.pad : '=',
         /* base-64 pad character. Default '=' for strict RFC compliance   */
         utf8 = (options && typeof options.utf8 === 'boolean') ? options.utf8 : true,
         /* enable/disable utf8 encoding */
@@ -1120,7 +1120,7 @@
        */
       var hexcase = (options && typeof options.uppercase === 'boolean') ? options.uppercase : false,
         /* hexadecimal output case format. false - lowercase; true - uppercase  */
-        b64pad = (options && typeof options.pad === 'string') ? options.pda : '=',
+        b64pad = (options && typeof options.pad === 'string') ? options.pad : '=',
         /* base-64 pad character. Default '=' for strict RFC compliance   */
         utf8 = (options && typeof options.utf8 === 'boolean') ? options.utf8 : true,
         /* enable/disable utf8 encoding */
@@ -1498,7 +1498,7 @@
        */
       var hexcase = (options && typeof options.uppercase === 'boolean') ? options.uppercase : false,
         /* hexadecimal output case format. false - lowercase; true - uppercase  */
-        b64pad = (options && typeof options.pad === 'string') ? options.pda : '=',
+        b64pad = (options && typeof options.pad === 'string') ? options.pa : '=',
         /* base-64 pad character. Default '=' for strict RFC compliance   */
         utf8 = (options && typeof options.utf8 === 'boolean') ? options.utf8 : true,
         /* enable/disable utf8 encoding */
