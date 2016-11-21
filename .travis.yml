@@ -1,7 +1,11 @@
 language: node_js
 node_js:
-  - "0.10"
-  - "0.12"
-  - iojs
+  - 0.10
+  - 0.12
+  - 4
+  - 5
+  - 6
+  - 7
+  - stable
 before_install:
   - npm update -g npm

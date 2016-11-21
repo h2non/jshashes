@@ -188,6 +188,8 @@ See `client/benchmark.html` for client-side.
 
 ## Changelog
 
+* `1.0.6`
+  - Fix #34: options `pad` typo.
 * `1.0.4`
   - Fix CLI script call error when use it from Bash
   - Added CLI usage example

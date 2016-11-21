@@ -278,7 +278,7 @@
      * @property {String} version
      * @readonly
      */
-    VERSION: '1.0.5',
+    VERSION: '1.0.6',
     /**
      * @member Hashes
      * @class Base64
