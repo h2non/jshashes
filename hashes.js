@@ -801,7 +801,7 @@
         x[((len + 64 >> 9) << 4) + 15] = len;
 
         for (i = 0; i < x.length; i += 16) {
-          olda = a,
+          olda = a;
           oldb = b;
           oldc = c;
           oldd = d;
