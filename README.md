@@ -188,6 +188,8 @@ See `client/benchmark.html` for client-side.
 
 ## Changelog
 
+* `1.0.7`
+  - Merge #37: fix terminator statement token.
 * `1.0.6`
   - Fix #34: options `pad` typo.
 * `1.0.4`
