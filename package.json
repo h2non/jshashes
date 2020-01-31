@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "mocha": "~1.9.0",
-    "uglify-js": "~2.4.13"
+    "uglify-js": "~3.7.6"
   },
   "keywords": [
     "hash",
