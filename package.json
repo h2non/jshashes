@@ -14,7 +14,7 @@
   "engines": {
     "node": "*"
   },
-  "main": "hashes",
+  "main": "./hashes.js",
   "bin": {
     "hashes": "./bin/hashes"
   },
