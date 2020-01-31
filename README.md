@@ -1,4 +1,4 @@
-# jsHashes [![Build Status](https://travis-ci.org/h2non/jshashes.svg)](https://travis-ci.org/h2non/jshashes) [![NPM version](https://img.shields.io/npm/v/jshashes.svg)](https://www.npmjs.com/package/jshashes) 
+# jsHashes [![Build Status](https://travis-ci.org/h2non/jshashes.svg)](https://travis-ci.org/h2non/jshashes) [![NPM version](https://img.shields.io/npm/v/jshashes.svg)](https://www.npmjs.com/package/jshashes) [![](https://data.jsdelivr.com/v1/package/npm/jshashes/badge)](https://www.jsdelivr.com/package/npm/jshashes)
 
 `jshashes` is lightweight library implementing the most extended [cryptographic hash function](http://en.wikipedia.org/wiki/Cryptographic_hash_function) algorithms in pure JavaScript (ES5 compliant).
 
