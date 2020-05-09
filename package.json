@@ -15,6 +15,7 @@
     "node": "*"
   },
   "main": "./hashes.js",
+  "types": "./hashes.d.ts",
   "bin": {
     "hashes": "./bin/hashes"
   },
