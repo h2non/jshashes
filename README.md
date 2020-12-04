@@ -16,7 +16,7 @@ If you are looking for a low-level performance library for the server-side, note
 * `HMAC` (<http://www.ietf.org/rfc/rfc2104.txt>)
 * `RIPEMD-160` (<http://homes.esat.kuleuven.be/~bosselae/ripemd160.html>)
 
-**Aditional functionalities**
+**Additional functionalities**
 
 * `Base64 encoding/decoding` (<http://tools.ietf.org/html/rfc3548>)
 * `CRC-32 calculation`
@@ -141,7 +141,7 @@ http://cdn.rawgit.com/h2non/jsHashes/master/hashes.js
 Each algorithm `class` provides the following public methods:
 
 * `hex(string)` - Hexadecimal hash encoding from string.
-* `b64(string)` - Base64 hash encondig from string.
+* `b64(string)` - Base64 hash encoding from string.
 * `any(string,encoding)` - Custom hash algorithm values encoding.
 * `hex_hmac(key,string)` - Hexadecimal hash with HMAC salt key.
 * `b64_hmac(key,string)` - Base64 hash with HMAC salt key.
@@ -166,15 +166,15 @@ Simple benchmark test generating 10000 hashes for each algorithm.
 String: "A0gTtNtKh3RaduBfIo59ZdfTc5pTdOQrkxdZ5EeVOIZh1cXxqPyexKZBg6VlE1KzIz6pd6r1LLIpT5B8THRfcGvbJElwhWBi9ZAE"
 
 * MD5
-** Done in: 205 miliseconds
+** Done in: 205 milliseconds
 * SHA1
-** Done in: 277 miliseconds
+** Done in: 277 milliseconds
 * SHA256
-** Done in: 525 miliseconds
+** Done in: 525 milliseconds
 * SHA512
-** Done in: 593 miliseconds
+** Done in: 593 milliseconds
 * RMD160
-** Done in: 383 miliseconds
+** Done in: 383 milliseconds
 ```
 
 See `client/benchmark.html` for client-side.
@@ -220,7 +220,7 @@ See `client/benchmark.html` for client-side.
   - Updated documentation
 * `0.1.4b`
   - Now declaring objects using Literal Notation.
-  - Solved sintax errors on minimized version (jshashes.min.js)
+  - Solved syntax errors on minimized version (jshashes.min.js)
   - Added benchmark test and sample
 * `0.1.3b`
   - Starting non-redundancy code refactorization
