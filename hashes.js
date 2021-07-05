@@ -328,10 +328,10 @@
         //input += '';
 
         do { // unpack four hexets into three octets using index points in b64
-          h1 = tab.indexOf(input.charAt(i += 1));
-          h2 = tab.indexOf(input.charAt(i += 1));
-          h3 = tab.indexOf(input.charAt(i += 1));
-          h4 = tab.indexOf(input.charAt(i += 1));
+          h1 = tab.indexOf(input.charAt(i++));
+          h2 = tab.indexOf(input.charAt(i++));
+          h3 = tab.indexOf(input.charAt(i++));
+          h4 = tab.indexOf(input.charAt(i++));
 
           bits = h1 << 18 | h2 << 12 | h3 << 6 | h4;
 
